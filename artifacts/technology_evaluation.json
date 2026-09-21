@@ -1,0 +1,112 @@
+{
+  "artifact_type": "production_technology_evaluation",
+  "generated_at": "2026-09-08",
+  "validated_retrieval_gate": "RETRIEVAL_PROTOTYPE_VALIDATED",
+  "evidence_labels": ["OBSERVED", "BENCHMARKED", "DOCUMENTED", "INFERRED", "UNKNOWN"],
+  "corpus_observed": {
+    "physical_files": 45,
+    "production_usable_sources": 44,
+    "excluded_sources": 1,
+    "documents": 44,
+    "structured_rows": 3042,
+    "pdf_pages": 334,
+    "semantic_units": 378,
+    "benchmark_cases": 40,
+    "recall_at_10": 1.0,
+    "cross_document_accuracy": 1.0,
+    "provenance_accuracy": 1.0,
+    "exact_retrieval_accuracy": 0.96875,
+    "structured_retrieval_accuracy": 0.92,
+    "hybrid_retrieval_accuracy": 1.0
+  },
+  "decisions": [
+    {
+      "component": "answer_generation",
+      "candidate": "xAI Grok 4.6",
+      "evidence": ["DOCUMENTED", "INFERRED", "UNKNOWN"],
+      "advantages": ["Required project target", "500k context documented", "JSON Schema structured outputs documented", "custom function calling documented"],
+      "risks": ["Live JJM grounding, citation fidelity, abstention, latency, and failure behavior not benchmarked because no XAI_API_KEY is present", "external API and data-transfer dependency"],
+      "cost_complexity": "Documented pricing: $2/M input and $6/M output below 200k prompt tokens; higher long-context tier documented by xAI. Actual per-query cost requires token and traffic inputs.",
+      "decision": "SHORTLISTED",
+      "readiness": "REQUIRES_BENCHMARK"
+    },
+    {
+      "component": "structured_source_of_truth",
+      "candidate": "PostgreSQL",
+      "evidence": ["OBSERVED", "DOCUMENTED", "INFERRED"],
+      "advantages": ["Relational filtering, joins, dates, numeric aggregation, transactions, auditability, backup and recovery", "fits row/table/provenance model"],
+      "risks": ["Requires schema design and operational ownership", "production scale and concurrency are unknown"],
+      "cost_complexity": "Known as a standard database deployment category; provider and traffic pricing require external selection.",
+      "decision": "SELECTED",
+      "readiness": "SELECTED"
+    },
+    {
+      "component": "vector_store",
+      "candidate": "PostgreSQL plus pgvector",
+      "evidence": ["OBSERVED", "DOCUMENTED", "INFERRED"],
+      "advantages": ["Keeps vectors, metadata, provenance, filters, and structured rows in one transactional system", "pgvector documents exact and approximate search, HNSW/IVFFlat, filtering, hybrid FTS, WAL/PITR compatibility"],
+      "risks": ["Filtered approximate-search tuning is required", "not yet benchmarked on JJM embeddings", "large future scale may justify a dedicated store"],
+      "cost_complexity": "Lower operational complexity than adding a second database; exact cost requires hosting and traffic inputs.",
+      "decision": "SELECTED",
+      "readiness": "REQUIRES_BENCHMARK"
+    },
+    {
+      "component": "embedding_model",
+      "candidate": "BAAI/bge-m3",
+      "evidence": ["DOCUMENTED", "INFERRED", "UNKNOWN"],
+      "advantages": ["1024 dimensions, 8192-token limit, multilingual, dense/sparse/ColBERT modes documented", "good fit for policy/OCR/report descriptions and hybrid retrieval"],
+      "risks": ["No JJM-specific embedding benchmark performed", "local inference hardware and model-serving complexity", "embedding quality for Indian government terminology remains unknown"],
+      "cost_complexity": "No per-token API fee for self-hosting; GPU/CPU hosting cost is unknown.",
+      "decision": "SHORTLISTED",
+      "readiness": "REQUIRES_BENCHMARK"
+    },
+    {
+      "component": "exact_retrieval",
+      "candidate": "PostgreSQL B-tree plus PostgreSQL full-text search",
+      "evidence": ["OBSERVED", "DOCUMENTED", "BENCHMARKED", "INFERRED"],
+      "advantages": ["Exact identifiers and metadata remain deterministic", "current benchmark exact accuracy is 0.96875", "avoids unnecessary search infrastructure"],
+      "risks": ["Very large future corpus or fuzzy multilingual search could exceed this design", "requires normalization and field-specific indexes"],
+      "cost_complexity": "Low additional operational complexity when PostgreSQL is already selected.",
+      "decision": "SELECTED",
+      "readiness": "SELECTED"
+    },
+    {
+      "component": "reranking",
+      "candidate": "None initially; evaluate cross-encoder only if top-k quality degrades",
+      "evidence": ["BENCHMARKED", "INFERRED"],
+      "advantages": ["Recall@10 is 1.0 and hybrid retrieval is 1.0", "avoids latency and model-serving cost"],
+      "risks": ["Recall@1 is 0.4957, so user-facing top-1 quality may still warrant a later experiment", "no answer-quality benchmark yet"],
+      "cost_complexity": "Avoided until a JJM-specific benchmark demonstrates benefit.",
+      "decision": "NOT_JUSTIFIED",
+      "readiness": "NOT_REQUIRED"
+    },
+    {
+      "component": "orchestration",
+      "candidate": "Custom lightweight Python orchestration",
+      "evidence": ["OBSERVED", "BENCHMARKED", "INFERRED"],
+      "advantages": ["Matches validated logical architecture", "small deterministic routing and evidence services already work", "low lock-in and easy testing"],
+      "risks": ["Team owns retries, tracing, tool-loop policy, and interfaces", "stateful workflow requirements may grow"],
+      "cost_complexity": "Lower dependency and framework complexity than adopting a graph framework now.",
+      "decision": "SELECTED",
+      "readiness": "SELECTED"
+    },
+    {
+      "component": "api_framework",
+      "candidate": "FastAPI",
+      "evidence": ["INFERRED", "UNKNOWN"],
+      "advantages": ["Natural Python integration and typed request/response boundary", "supports async external API calls and OpenAPI generation"],
+      "risks": ["Deployment, auth, and concurrency requirements are not yet specified"],
+      "cost_complexity": "Low implementation complexity; production hosting remains unknown.",
+      "decision": "SHORTLISTED",
+      "readiness": "REQUIRES_EXTERNAL_DECISION"
+    }
+  ],
+  "rejected_or_deferred": [
+    {"candidate": "LangChain", "decision": "NOT_SELECTED", "reason": "No demonstrated replacement for deterministic schema, numeric, or provenance logic."},
+    {"candidate": "LangGraph", "decision": "NOT_SELECTED", "reason": "No demonstrated stateful workflow requiring graph orchestration."},
+    {"candidate": "LlamaIndex", "decision": "NOT_SELECTED", "reason": "Document abstractions do not replace custom table alignment and exact evidence contracts."},
+    {"candidate": "Dedicated vector database", "decision": "DEFERRED", "reason": "Corpus size and benchmark do not yet demonstrate a need for a second operational datastore."},
+    {"candidate": "xAI Collections/native retrieval", "decision": "REQUIRES_BENCHMARK", "reason": "Current official documentation endpoint was not confirmed for this evaluation, and deterministic row/table provenance portability is unresolved."},
+    {"candidate": "Elasticsearch/OpenSearch", "decision": "DEFERRED", "reason": "No benchmarked need for a separate search cluster; PostgreSQL FTS and exact indexes fit current evidence."}
+  ]
+}

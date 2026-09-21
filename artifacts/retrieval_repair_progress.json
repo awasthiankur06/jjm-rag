@@ -1,0 +1,38 @@
+{
+  "artifact_type": "deterministic_retrieval_repair_progress",
+  "timestamp": "2026-09-17",
+  "evaluation_contract": "40-case resumable PostgreSQL-only evaluation",
+  "baseline": {
+    "recall_at_10": 0.45299145299145294,
+    "source_identification_accuracy": 0.35,
+    "routing_accuracy": 0.65,
+    "exact_retrieval_accuracy": 0.125,
+    "structured_retrieval_accuracy": 0.2,
+    "cross_document_accuracy": 0.25
+  },
+  "after_document_ranking_and_routing": {
+    "recall_at_1": 0.46153846153846156,
+    "recall_at_5": 0.8653846153846154,
+    "recall_at_10": 0.9508547008547009,
+    "source_identification_accuracy": 0.9,
+    "routing_accuracy": 0.8,
+    "exact_retrieval_accuracy": 0.90625,
+    "lexical_retrieval_accuracy": 0.8974358974358975,
+    "structured_retrieval_accuracy": 0.2,
+    "provenance_accuracy": 0.975,
+    "cross_document_accuracy": 0.5,
+    "excluded_source_safety": true
+  },
+  "changes": [
+    "Rank exact and lexical content at document granularity before applying top-k, avoiding chunk-row crowding.",
+    "Search authoritative extracted titles in exact, lexical, and structured retrieval.",
+    "Normalize punctuation in query tokenization.",
+    "Add generic version and cross-document routing intents."
+  ],
+  "unresolved": [
+    "Structured retrieval source accuracy remains 0.2.",
+    "Numeric aggregation correctness remains not evaluable without answer-level ground truth.",
+    "Cross-document source acquisition is incomplete despite improved routing."
+  ],
+  "final_gate": "RAG_PARTIALLY_VALIDATED"
+}

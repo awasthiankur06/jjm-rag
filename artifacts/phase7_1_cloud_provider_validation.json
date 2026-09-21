@@ -1,0 +1,33 @@
+{
+  "artifact_type": "phase7_1_cloud_provider_validation",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "provider": "Voyage AI",
+  "model": "voyage-4-large",
+  "dimension": 1024,
+  "vector_store": "Qdrant Cloud",
+  "distance": "COSINE",
+  "configuration": {
+    "voyage_api_key": "not_configured",
+    "qdrant_url": "not_configured",
+    "qdrant_api_key": "not_configured",
+    "qdrant_collection": "not_configured"
+  },
+  "dependencies": {
+    "qdrant-client": "1.19.0",
+    "voyage_sdk": "not_installed",
+    "voyage_integration": "direct_cloud_http_api",
+    "langchain_packages": "not_installed"
+  },
+  "cloud_calls": {
+    "voyage": "EXECUTED_ONE_QUERY_SMOKE",
+    "qdrant": "EXECUTED_COLLECTION_INSPECTION_FAILED",
+    "grok": "EXECUTED_ONE_SYNTHETIC_SMOKE"
+  },
+  "smoke_results": {
+    "voyage": {"status": "PASS", "model": "voyage-4-large", "dimension": 1024, "vectors": 1, "finite": true, "input_type": "query", "latency_ms": 493.24},
+    "qdrant": {"status": "FAILED", "error_class": "collection_inspection_timeout_or_unavailable", "credentials_printed": false},
+    "grok": {"status": "PASS", "model": "grok-4.6", "exact_ready": true, "latency_ms": 2976.61}
+  },
+  "status": "PARTIAL_CLOUD_VALIDATION",
+  "reason": "Voyage and Grok smoke calls passed. Qdrant collection inspection did not complete, so no indexing or Qdrant writes were attempted."
+}

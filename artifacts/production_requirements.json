@@ -1,0 +1,46 @@
+{
+  "artifact_type": "production_requirements",
+  "evidence_labels": ["OBSERVED", "BENCHMARKED", "DOCUMENTED", "INFERRED", "UNKNOWN"],
+  "observed_corpus": {"physical_files":45,"production_usable_sources":44,"excluded_sources":1,"documents":44,"structured_rows":3042,"pdf_pages":334,"semantic_units":378,"benchmark_cases":40},
+  "functional_requirements": [
+    {"requirement":"query routing","evidence":"OBSERVED","priority":"MUST"},
+    {"requirement":"exact retrieval for filenames, format codes, identifiers, hashes","evidence":"OBSERVED","priority":"MUST"},
+    {"requirement":"deterministic structured retrieval and computation","evidence":"OBSERVED","priority":"MUST"},
+    {"requirement":"semantic policy/PDF retrieval","evidence":"OBSERVED","priority":"MUST"},
+    {"requirement":"cross-document alignment by entity, geography, date, version, metric, and schema","evidence":"BENCHMARKED","priority":"MUST"},
+    {"requirement":"source/page/table/row/column/hash provenance","evidence":"BENCHMARKED","priority":"MUST"},
+    {"requirement":"Grok/xAI answer generation with strict structured output","evidence":"DOCUMENTED","priority":"MUST"},
+    {"requirement":"abstention and insufficient-evidence behavior","evidence":"INFERRED","priority":"MUST"},
+    {"requirement":"observability for query class, filters, sources, computation, latency, citations","evidence":"INFERRED","priority":"MUST"}
+  ],
+  "operational_variables": [
+    {"name":"queries_per_day","status":"REQUIRES_PRODUCTION_TRAFFIC_INPUT"},
+    {"name":"average_input_tokens","status":"REQUIRES_PRODUCTION_TRAFFIC_INPUT"},
+    {"name":"average_output_tokens","status":"REQUIRES_PRODUCTION_TRAFFIC_INPUT"},
+    {"name":"embedding_refreshes_per_month","status":"REQUIRES_PRODUCTION_TRAFFIC_INPUT"},
+    {"name":"availability_slo","status":"REQUIRES_EXTERNAL_DECISION"},
+    {"name":"retention_period","status":"REQUIRES_EXTERNAL_DECISION"},
+    {"name":"allowed_external_data_transfer","status":"REQUIRES_EXTERNAL_DECISION"}
+  ],
+  "cost_formulas": {
+    "llm_generation": "monthly_queries * ((avg_input_tokens / 1000000) * xai_input_price + (avg_output_tokens / 1000000) * xai_output_price)",
+    "embedding_api": "monthly_embedded_tokens / 1000000 * embedding_input_price",
+    "self_hosted_embedding": "GPU_or_CPU_hours * infrastructure_hourly_rate + storage + operations",
+    "database": "database_compute + storage + backup + replicas",
+    "api": "service_compute + network + observability + secrets_management"
+  },
+  "cost_classification": {
+    "known": ["xAI published token prices for listed models", "corpus size and current unit counts"],
+    "assumption": ["PostgreSQL can serve current corpus scale", "pgvector operational surface is acceptable"],
+    "requires_production_traffic_input": ["monthly query cost", "capacity", "SLO staffing", "backup size and frequency"]
+  },
+  "security_requirements": [
+    "secret manager for XAI_API_KEY",
+    "TLS in transit and encrypted database/storage at rest",
+    "least-privilege database roles and row-level access policy if multi-tenant",
+    "audit logging without API keys or sensitive prompt contents",
+    "approved policy for data sent to xAI",
+    "timeouts, retries with bounded backoff, rate limits, and circuit breaking",
+    "backup restore drills and reproducible corpus/model manifests"
+  ]
+}

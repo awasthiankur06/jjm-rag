@@ -1,0 +1,27 @@
+{
+  "artifact_type": "phase6b_semantic_dataset_reconciliation",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "historical_discrepancy": {
+    "earlier_claimed_case_count": 8,
+    "evidence_backed_case_count": 4,
+    "earlier_artifacts_modified": false
+  },
+  "benchmark_dataset": "artifacts/semantic_benchmark_dataset.json",
+  "eligible_case_ids": ["Q001", "Q002", "Q031", "Q039"],
+  "eligible_case_count": 4,
+  "case_source_evidence": {
+    "Q001": ["JJM_Operational_Guidelines.pdf", "Operational-Guidelines-JJM-2.pdf"],
+    "Q002": ["JJM_Operational_Guidelines.pdf", "Operational-Guidelines-JJM-2.pdf"],
+    "Q031": ["Status of geo-tagged water sources.xls"],
+    "Q039": ["JJM_Operational_Guidelines.pdf", "Progress at district level.xls"]
+  },
+  "excluded_case_count": 4,
+  "excluded_case_ids": ["UNRECONSTRUCTED_HISTORICAL_CASE_1", "UNRECONSTRUCTED_HISTORICAL_CASE_2", "UNRECONSTRUCTED_HISTORICAL_CASE_3", "UNRECONSTRUCTED_HISTORICAL_CASE_4"],
+  "reconciliation_result": "PASS_WITH_EXPLICIT_UNRESOLVED_HISTORICAL_COUNT",
+  "why_8_is_not_used": "Protected evidence supports four reproducible cases only. No additional case-level query, expected source, and provenance tuple can be reconstructed without inventing benchmark ground truth.",
+  "reproducibility": {
+    "dataset_hash": "6a47459c87c41d62e42d839b0d72b15df30d6ce675d528584c446bcd0e0a866a",
+    "raw_numeric_rows_included": false,
+    "protected_dataset_modified": false
+  }
+}

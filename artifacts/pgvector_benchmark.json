@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-09-08T11:49:31.342929+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "psql_available": false,
+    "psycopg_available": false,
+    "pgvector_driver_available": false,
+    "postgres_server_tested": false
+  },
+  "corpus": {
+    "documents": 44,
+    "rows": 3042,
+    "pages": 334,
+    "semantic_units": 378
+  },
+  "artifact_type": "pgvector_benchmark",
+  "status": "BLOCKED_BY_MISSING_POSTGRESQL",
+  "execution_scope": "isolated local benchmark; no corpus upload occurred",
+  "representative_subset": {
+    "semantic_units": 20,
+    "source": "artifacts/semantic_benchmark_dataset.json",
+    "provenance_fields_available": [
+      "filename",
+      "sha256",
+      "page",
+      "format_code",
+      "state",
+      "date"
+    ]
+  },
+  "tests": {
+    "vector_insertion": "NOT_RUN",
+    "vector_indexing": "NOT_RUN",
+    "nearest_neighbor": "NOT_RUN",
+    "metadata_filtering": "NOT_RUN",
+    "state_filtering": "NOT_RUN",
+    "district_filtering": "NOT_RUN",
+    "report_family_filtering": "NOT_RUN",
+    "date_filtering": "NOT_RUN",
+    "combined_vector_metadata_query": "NOT_RUN",
+    "provenance_retrieval": "NOT_RUN",
+    "exact_lookup_coexistence": "NOT_RUN",
+    "structured_sql_coexistence": "NOT_RUN"
+  },
+  "measurements": {
+    "ingestion_throughput": null,
+    "query_latency_ms": null,
+    "p50_ms": null,
+    "p95_ms": null,
+    "p99_ms": null,
+    "top_k_quality": null,
+    "filtered_correctness": null,
+    "index_build_time_ms": null,
+    "storage_bytes": null
+  },
+  "decision": "REQUIRES_BENCHMARK",
+  "interpretation": "No PostgreSQL or pgvector measurement is claimed. Adequacy at current corpus size remains unresolved until an isolated PostgreSQL environment is available."
+}

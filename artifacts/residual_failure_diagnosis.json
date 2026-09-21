@@ -1,0 +1,143 @@
+{
+  "artifact_type": "residual_failure_diagnosis",
+  "status": "diagnosis_complete",
+  "evaluation_scope": {
+    "fresh_run": "artifacts/retrieval_evaluation_results.json",
+    "baseline": "artifacts/retrieval_evaluation_baseline.json",
+    "case_count": 40,
+    "executed": 40,
+    "routing_accuracy": 0.85,
+    "recall_at_10": 0.9444444444444445,
+    "failure_categories": {
+      "EXACT_RETRIEVAL": 1,
+      "VERSION_HANDLING": 2,
+      "CROSS_DOCUMENT_ALIGNMENT": 1
+    },
+    "gate": "RETRIEVAL_ARCHITECTURE_REQUIRES_REVISION"
+  },
+  "baseline_comparison": {
+    "summary": "The fresh 40-case evaluation executed successfully, produced 40/40 cases, and preserved the same architecture gate: RETRIEVAL_ARCHITECTURE_REQUIRES_REVISION. The only residual failures were Q014, Q021, Q036, and Q040. No broad retrieval rewrite was performed.",
+    "changed_since_baseline": [
+      "Targeted remediation is present and the evaluation path itself is proven valid.",
+      "The residual failures are case-level semantics issues rather than a zero-run or execution defect."
+    ],
+    "unchanged": [
+      "The architecture gate remains unchanged.",
+      "The excluded corrupted source remains excluded and must not be treated as valid evidence."
+    ]
+  },
+  "residual_failures": [
+    {
+      "id": "Q014",
+      "query": "What is the status of the Maharashtra school water-supply report artifact numbered (2)?",
+      "classification": "EXACT_RETRIEVAL_DEFECT",
+      "treatment": "FIX_NOW",
+      "reason": "The query required an exact match to the excluded corrupted source plus a provenance-backed forensic artifact. Retrieval did not constrain the search to the valid provenance chain and instead returned unrelated school-report files.",
+      "expected_sources": [
+        "Status of Pipe Water Supply in School (2).xls",
+        "artifacts/status_pipe_water_forensic.json"
+      ],
+      "required_filter": "sha256=bf4eafc15390dd98688a2f0306f28457a60bc027343e5346a0bc3be2d4009ee3",
+      "actual_sources": [
+        "Status of Pipe Water Supply in School (1).xls",
+        "Format - F27 Status of Pipe Water Supply in Ashram.xls",
+        "Format B15 _ Piped water supply schemes.xls",
+        "Format WQ1. PWS Infra and Delivery Point (Water Supply Scheme Source).xls",
+        "Status of Pipe Water Supply in School (3).xls"
+      ],
+      "evidence": {
+        "audit_evidence_available": false,
+        "provenance_correct": true,
+        "forensic_artifact": "artifacts/status_pipe_water_forensic.json",
+        "forensic_summary": "The report is an excluded corrupted HTML/Excel artifact with a validation record showing why it is unfit as a data source."
+      },
+      "diagnosis": "This is a provenance and exact-match defect: the system did not enforce the required authoritative-report and hash constraints, and it surfaced unrelated school-report candidates." 
+    },
+    {
+      "id": "Q021",
+      "query": "Are the PM4 files duplicate exports, structural variants, or different state snapshots?",
+      "classification": "VERSION_EVIDENCE_DEFECT",
+      "treatment": "GROUND_TRUTH_REVIEW",
+      "reason": "The question is not asking for a direct table retrieval but for state-scope and version semantics. The corpus contains state-specific PM4 snapshots, not a single canonical version, and filename suffixes alone are not sufficient evidence.",
+      "expected_sources": [
+        "Progress tracker of verification of schemes.xls",
+        "Progress tracker of verification of schemes (1).xls",
+        "Progress tracker of verification of schemes (2).xls",
+        "Progress tracker of verification of schemes (3).xls"
+      ],
+      "actual_sources": [
+        "Progress tracker of verification of schemes (1).xls"
+      ],
+      "evidence": {
+        "state_scopes": [
+          "Andaman & Nicobar Islands",
+          "Maharashtra",
+          "Tamil Nadu",
+          "Punjab"
+        ],
+        "answer": "They are different state snapshots of the same PM4 report family, not duplicates or a single latest version inferable from suffixes alone."
+      },
+      "diagnosis": "This is an interpretation problem for version provenance rather than a broad retrieval logic failure. The system should not infer a latest version from filename suffixes alone; it must compare state scope, parameter metadata, and content." 
+    },
+    {
+      "id": "Q036",
+      "query": "Compare beneficiary verification records for Assam, Maharashtra, and Tamil Nadu.",
+      "classification": "CROSS_DOCUMENT_ALIGNMENT_DEFECT",
+      "treatment": "FIX_LATER",
+      "reason": "The question required aligned comparison across multiple state-scoped J6 report variants for the same date and schema. The system likely retrieved the right family but failed to preserve state-parity and cross-document alignment across the report variants.",
+      "expected_sources": [
+        "Status of verification of beneficiary provided wit.xls",
+        "Status of verification of beneficiary provided wit (2).xls",
+        "Status of verification of beneficiary provided wit (3).xls"
+      ],
+      "actual_sources": [
+        "Status of verification of beneficiary provided wit.xls",
+        "Status of verification of beneficiary provided wit (2).xls",
+        "Status of verification of beneficiary provided wit (3).xls"
+      ],
+      "evidence": {
+        "date": "30/08/2026",
+        "schema": "J6",
+        "state_scope": [
+          "Assam",
+          "Maharashtra",
+          "Tamil Nadu"
+        ],
+        "failure_mode": "Cross-document alignment and state-level row matching, not missing report family retrieval."
+      },
+      "diagnosis": "The retrieval surface is enough to locate the files, but the comparison logic is not robust enough to align identical report structures across multiple state-scoped variants without a schema-aware merge step." 
+    },
+    {
+      "id": "Q040",
+      "query": "Can the corpus establish the latest version of the PM4 verification tracker from filename suffixes alone?",
+      "classification": "VERSION_EVIDENCE_DEFECT",
+      "treatment": "GROUND_TRUTH_REVIEW",
+      "reason": "The correct answer is no. A filename suffix cannot establish the latest PM4 version because the files are state-scoped snapshots with different metadata and content, not a single single-version lineage.",
+      "expected_sources": [
+        "Progress tracker of verification of schemes.xls",
+        "Progress tracker of verification of schemes (1).xls",
+        "Progress tracker of verification of schemes (2).xls",
+        "Progress tracker of verification of schemes (3).xls"
+      ],
+      "actual_sources": [
+        "Progress tracker of verification of schemes (1).xls"
+      ],
+      "evidence": {
+        "answer": "No.",
+        "required_evidence": [
+          "state parameter differences",
+          "content comparison",
+          "report-family matching",
+          "hash or provenance comparison"
+        ],
+        "diagnosis": "Suffixes are labels, not evidence of version lineage."
+      },
+      "diagnosis": "This is a version-determination question. The architecture needs explicit version provenance rather than filename heuristics, and the current corpus does not support suffix-only determination." 
+    }
+  ],
+  "overall_decision": {
+    "gate": "RETRIEVAL_ARCHITECTURE_REQUIRES_REVISION",
+    "status": "Do not claim prototype validation. Do not move to production technology selection.",
+    "summary": "Fresh proof is complete and the residual issues are forensic and architectural, not a failed evaluator run. The correct gate remains RETRIEVAL_ARCHITECTURE_REQUIRES_REVISION."
+  }
+}

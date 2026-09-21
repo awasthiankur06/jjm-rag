@@ -1,0 +1,37 @@
+{
+  "artifact_type": "embedding_benchmark_runtime",
+  "status": "BLOCKED_BY_MISSING_EMBEDDING_RUNTIME",
+  "timestamp": "2026-09-09T09:31:49.318000+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "machine": "AMD64",
+    "dataset_sha256": "6a47459c87c41d62e42d839b0d72b15df30d6ce675d528584c446bcd0e0a866a",
+    "package_versions": {
+      "numpy": "2.4.6",
+      "torch": null,
+      "transformers": null,
+      "FlagEmbedding": null,
+      "sentence-transformers": null
+    }
+  },
+  "dataset": "artifacts\\semantic_benchmark_dataset.json",
+  "results": [],
+  "errors": [
+    {
+      "model": "bge-m3",
+      "error": "RuntimeError: Model path is not local: BAAI/bge-m3; pass --allow-download only in an approved environment"
+    },
+    {
+      "model": "multilingual-e5-large",
+      "error": "RuntimeError: Model path is not local: intfloat/multilingual-e5-large; pass --allow-download only in an approved environment"
+    }
+  ],
+  "configuration": {
+    "model": "all",
+    "bge_path": "BAAI/bge-m3",
+    "e5_path": "intfloat/multilingual-e5-large",
+    "revision": null,
+    "allow_download": false
+  }
+}

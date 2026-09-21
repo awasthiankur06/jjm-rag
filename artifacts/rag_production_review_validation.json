@@ -1,0 +1,64 @@
+{
+  "artifact_type": "ground_up_rag_production_review",
+  "timestamp": "2026-09-16",
+  "repository_revision": null,
+  "repository_revision_note": "No Git repository metadata was available.",
+  "corpus": {
+    "physical_sources": 45,
+    "production_eligible_sources": 44,
+    "excluded_sources": 1,
+    "hash_mismatches": 0,
+    "formats": {"html": 42, "pdf": 3},
+    "quality_states": {"PASS": 43, "PASS_WITH_WARNINGS": 1, "BLOCKED": 1},
+    "excluded_filename": "Status of Pipe Water Supply in School (2).xls"
+  },
+  "postgresql": {
+    "connection": "PASS",
+    "version": "PostgreSQL 18.6 on x86_64-windows",
+    "configuration": "environment-driven disposable local database; credentials omitted",
+    "counts": {
+      "documents": 44,
+      "document_versions": 44,
+      "structured_records": 34310,
+      "observations": 34310,
+      "canonical_content": 3557,
+      "provenance_records": 37867,
+      "geography_dimensions": 2700,
+      "reporting_dimensions": 43,
+      "ingestion_audit": 88
+    },
+    "excluded_document_count": 0,
+    "transaction_rollback": "PASS: intentional invalid foreign key left zero partial document rows"
+  },
+  "current_live_evaluation": {
+    "mode": "PostgreSQL exact, lexical, and structured retrieval only; semantic provider unavailable",
+    "case_count": 40,
+    "routing_accuracy": 0.65,
+    "recall_at_10": 0.45299145299145294,
+    "exact_retrieval_accuracy": 0.125,
+    "structured_retrieval_accuracy": 0.16,
+    "provenance_accuracy": 0.975,
+    "cross_document_accuracy": 0.25,
+    "numeric_aggregation_accuracy": "NOT_EVALUABLE",
+    "failure_categories": {
+      "SEMANTIC_RETRIEVAL": 1,
+      "STRUCTURED_RETRIEVAL": 9,
+      "CROSS_DOCUMENT_ALIGNMENT": 3,
+      "EXACT_RETRIEVAL": 11,
+      "VERSION_HANDLING": 2
+    }
+  },
+  "validation": {
+    "focused_tests": "40 passed, 2 warnings",
+    "full_suite": "NOT_COMPLETED: runner limit interrupted the corpus-wide final validation test after prior tests had passed",
+    "protected_artifacts": "unchanged during review"
+  },
+  "defects_fixed": [
+    "Source persistence now has an atomic transaction boundary.",
+    "SQLite foreign-key enforcement is enabled for fidelity with PostgreSQL.",
+    "Configured PostgreSQL failures no longer silently fall back to SQLite.",
+    "Production evaluation safely degrades when semantic retrieval is unavailable."
+  ],
+  "final_gate": "RAG_PARTIALLY_VALIDATED",
+  "gate_reason": "Canonical PostgreSQL ingestion and integrity checks pass, but current live retrieval coverage is below production-ready accuracy requirements and cloud semantic validation was not executed."
+}

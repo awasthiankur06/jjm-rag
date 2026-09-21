@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-09-18T12:08:59+05:30",
+  "scope": "Live disposable PostgreSQL canonical corpus",
+  "reason": "A source-to-database reconciliation found that exact standalone State Name dimensions were preserved as records but were not linked to same-row structured facts in legacy ingestion output.",
+  "repair": {
+    "method": "transactional source-row geography relink",
+    "reingestion": "not required; documents, canonical text, provenance IDs, and Qdrant point identities were retained",
+    "source_rows_examined": 1467,
+    "rows_reconciled": 1403,
+    "structured_records_relinked": 7942,
+    "geography_dimensions_upserted": 428,
+    "invalid_or_total_labels_skipped": 64
+  },
+  "validation": {
+    "documents": 44,
+    "structured_records": 30934,
+    "canonical_content": 3466,
+    "provenance_records": 34400,
+    "j5_karnataka_linked_structured_records": 21,
+    "valid_standalone_state_dimensions_unlinked": 0,
+    "excluded_source_production_documents": 0,
+    "focused_tests": "30 passed",
+    "full_pytest": "125 passed, 0 failed, 0 skipped, 2 warnings",
+    "browser_api": {
+      "status": "ready",
+      "ambiguous_multiheader_request": "asks for a source-derived metric/header choice",
+      "selected_metric_result": {
+        "state": "Karnataka",
+        "header_path": ["PWS Habitations", "With FHTC Coverage >=100 %", "House Connectons"],
+        "value_raw": "6990630",
+        "provenance_cell": "R18C22"
+      }
+    }
+  },
+  "qdrant": {
+    "rebuild_required": false,
+    "reason": "Canonical content text and content identities were unchanged; this repair only attached existing structured records to existing geography dimensions.",
+    "collection_exists": true,
+    "points_count": 545,
+    "vector_size": 768,
+    "distance": "COSINE"
+  },
+  "limitations": "Source-derived metric clarification is available for parsed structured tables. PDFs without deterministic table/header extraction retain page/section provenance and are not falsely represented as structured columns."
+}

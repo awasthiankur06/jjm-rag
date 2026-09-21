@@ -1,0 +1,100 @@
+{
+  "artifact_type": "phase7_first_working_end_to_end_rag_smoke",
+  "provider_path": ["PostgreSQL", "Gemini query embedding when semantic route is selected", "local Qdrant collection jjm_rag_semantic_gemini_embedding_001_v1", "xAI Grok"],
+  "semantic_index_points": 89,
+  "smoke_results": [
+    {
+      "question": "What is the filename of the report containing FHTC coverage fields?",
+      "route": "exact",
+      "channels": ["exact", "lexical"],
+      "retrieved_filenames": ["CS1 A. Coverage.xls", "Habitation wise FHTC Coverage( Reported Till 23_08.xls", "State wise PWS and FHTC Coverage.xls", "Format D5- List of Sanction Order.xls"],
+      "evidence_count": 10,
+      "answer": "The evidence shows FHTC/FHTCs fields in CS1 A. Coverage.xls, Habitation wise FHTC Coverage( Reported Till 23_08.xls, and State wise PWS and FHTC Coverage.xls.",
+      "citations": ["CS1 A. Coverage.xls", "Habitation wise FHTC Coverage( Reported Till 23_08.xls", "State wise PWS and FHTC Coverage.xls"],
+      "grounded": true,
+      "supported": true
+    },
+    {
+      "question": "Which report defines the CS1(A) coverage fields?",
+      "route": "exact",
+      "channels": ["exact", "lexical"],
+      "retrieved_filenames": ["CS1 A. Coverage.xls", "Format D5- List of Sanction Order.xls"],
+      "evidence_count": 10,
+      "answer": "I could not find sufficient evidence in the available JJM corpus to answer this reliably.",
+      "citations": [],
+      "grounded": false,
+      "supported": false
+    },
+    {
+      "question": "What are the coverage values for Assam in CS1(A)?",
+      "route": "structured",
+      "channels": ["exact", "lexical", "structured"],
+      "retrieved_filenames": ["AssamDistrict wise number of Rural Population as on (01.xls", "CS1 B(i). Water Quality.xls", "Progress at district level.xls", "Format D5- List of Sanction Order.xls"],
+      "evidence_count": 10,
+      "answer": "I could not find sufficient evidence in the available JJM corpus to answer this reliably.",
+      "citations": [],
+      "grounded": false,
+      "supported": false
+    },
+    {
+      "question": "What guidance applies to operation and maintenance of rural water supply schemes?",
+      "route": "semantic",
+      "channels": ["exact", "lexical", "semantic"],
+      "retrieved_filenames": ["JJM_Operational_Guidelines.pdf", "AssamDistrict wise number of Rural Population as on (01.xls", "Operational-Guidelines-JJM-2.pdf"],
+      "evidence_count": 10,
+      "answer": "Guidance on operation and maintenance centres on daily operational discipline, community involvement, asset records, and state-level cost/tariff planning, including SOPs for pump operation, chlorination, valve control, water quality testing, and grievances.",
+      "citations": ["JJM_Operational_Guidelines.pdf", "Operational-Guidelines-JJM-2.pdf"],
+      "grounded": true,
+      "supported": true
+    },
+    {
+      "question": "Which source files contain FHTC coverage data?",
+      "route": "exact",
+      "channels": ["exact", "lexical"],
+      "retrieved_filenames": ["CS1 A. Coverage.xls", "Habitation wise FHTC Coverage( Reported Till 23_08.xls", "State wise PWS and FHTC Coverage.xls", "Format D5- List of Sanction Order.xls"],
+      "evidence_count": 10,
+      "answer": "The source files containing FHTC coverage data are CS1 A. Coverage.xls, Habitation wise FHTC Coverage( Reported Till 23_08.xls, and State wise PWS and FHTC Coverage.xls; sanction-order coverage-fund snippets are distinguished.",
+      "citations": ["CS1 A. Coverage.xls", "Habitation wise FHTC Coverage( Reported Till 23_08.xls", "State wise PWS and FHTC Coverage.xls"],
+      "grounded": true,
+      "supported": true
+    },
+    {
+      "question": "What is the total FHTC coverage in the CS1(A) report?",
+      "route": "structured",
+      "channels": ["exact", "lexical", "structured"],
+      "retrieved_filenames": ["Progress at district level.xls", "CS1 A. Coverage.xls", "Habitation wise FHTC Coverage( Reported Till 23_08.xls", "AssamDistrict wise number of Rural Population as on (01.xls", "CS1 B (ii). Robust chlorination system_ Disinfecti.xls"],
+      "evidence_count": 10,
+      "answer": "I could not find sufficient evidence in the available JJM corpus to answer this reliably.",
+      "citations": [],
+      "grounded": false,
+      "supported": false
+    },
+    {
+      "question": "How does the JJM operational guidance describe Har Ghar Jal and FHTC implementation?",
+      "route": "semantic",
+      "channels": ["exact", "lexical", "semantic"],
+      "retrieved_filenames": ["Operational-Guidelines-JJM-2.pdf", "JJM_Operational_Guidelines.pdf", "CS1 A. Coverage.xls"],
+      "evidence_count": 10,
+      "answer": "JJM guidance describes Har Ghar Jal/FHTC implementation as a time-bound mission-mode programme providing rural households functional tap connections, with implementation through State Action Plans and village assessment.",
+      "citations": ["Operational-Guidelines-JJM-2.pdf", "JJM_Operational_Guidelines.pdf"],
+      "grounded": true,
+      "supported": true
+    },
+    {
+      "question": "What is the population of Mars according to the JJM corpus?",
+      "route": "structured",
+      "channels": ["exact", "lexical", "structured"],
+      "retrieved_filenames": ["JJM Benchmark - Status of Scheme Planning and Cost.xls", "AssamDistrict wise number of Rural Population as on (01.xls", "District wise number of Rural Population as on (01 (1).xls", "District wise number of Rural Population as on (01.xls"],
+      "evidence_count": 10,
+      "answer": "I could not find sufficient evidence in the available JJM corpus to answer this reliably.",
+      "citations": [],
+      "grounded": false,
+      "supported": false
+    }
+  ],
+  "notes": [
+    "Answers and citations are from real provider-backed executions, not fabricated test output.",
+    "The 89-point semantic subset was used as-is; no full-index retry or Q016-Q040 diagnosis was performed.",
+    "Unsupported or noisy questions abstained rather than receiving invented answers."
+  ]
+}

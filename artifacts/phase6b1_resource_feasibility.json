@@ -1,0 +1,33 @@
+{
+  "artifact_type": "phase6b1_resource_feasibility",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "status": "INFERRED_WITH_OBSERVED_HARDWARE",
+  "hardware": {
+    "ram_gib": 7.73,
+    "logical_cpus": 12,
+    "gpu": "Intel UHD Graphics 630",
+    "cuda": false,
+    "disk_free_gib": 890.5
+  },
+  "models": {
+    "bge-m3": {
+      "approximate_weight_size": "~2.3 GB class, inferred from public model configuration/weight footprint",
+      "cpu_compatibility": "Expected CPU execution through supported PyTorch/FlagEmbedding runtime",
+      "ram_feasibility": "CONSTRAINED; sequential execution only, no co-loading",
+      "download_decision": "NOT_ATTEMPTED_BEFORE_RUNTIME_INSTALLATION"
+    },
+    "multilingual-e5-large": {
+      "approximate_weight_size": "~2.2 GB class, inferred from public model configuration/weight footprint",
+      "cpu_compatibility": "Expected CPU execution through supported PyTorch/sentence-transformers runtime",
+      "ram_feasibility": "CONSTRAINED; sequential execution only, no co-loading",
+      "download_decision": "NOT_ATTEMPTED_BEFORE_RUNTIME_INSTALLATION"
+    }
+  },
+  "method": {
+    "quantization": false,
+    "model_modification": false,
+    "parallel_model_loading": false,
+    "benchmark_order": "sequential"
+  },
+  "decision": "A minimal CPU runtime may be enabled, but full model execution must be controlled and sequential. No model selection is made by this artifact."
+}

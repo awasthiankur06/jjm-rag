@@ -1,0 +1,774 @@
+{
+  "artifact_type": "live_numeric_acceptance_result",
+  "timestamp": "2026-09-18T05:31:58.859747+00:00",
+  "input_dataset": "artifacts\\numeric_acceptance_cases_v1.json",
+  "case_count": 8,
+  "passed": 8,
+  "failed": 0,
+  "numeric_accuracy": 1.0,
+  "strict_threshold": 1.0,
+  "gate": "PASS",
+  "cases": [
+    {
+      "id": "N001",
+      "kind": "direct_fact",
+      "query": "How many NABL-accredited district or regional laboratories are reported for Maharashtra?",
+      "pass": true,
+      "matched_fact_count": 1,
+      "actual_facts": [
+        {
+          "source_id": "record-0168a55ec6464b1af048b5cae89d9168",
+          "filename": "CS1 B(i). Water Quality.xls",
+          "location": {
+            "content_unit_id": "record-0168a55ec6464b1af048b5cae89d9168",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 21,
+            "column": 4,
+            "cell": "R22C5"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Maharashtra: No. of NABL accredited District/ Regional level labs: 34",
+          "metadata": {
+            "provenance_id": "prov-0168a55ec6464b1af048b5cae89d9168",
+            "record_id": "record-0168a55ec6464b1af048b5cae89d9168",
+            "document_id": "doc-93d35e40e8de0235a3082dcc0d50e10a",
+            "metric_name": "No. of NABL accredited District/ Regional level labs",
+            "header_path": "[\"Water Testing Laboratory\", \"No. of NABL accredited District/ Regional level labs\"]",
+            "extracted_document_title": "CS1 B(i). Water Quality",
+            "format_code": "CS1 (B)(i)",
+            "relevance_score": 60,
+            "value_raw": "34",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": null,
+            "reporting_period": null,
+            "financial_year": null,
+            "value_numeric": 34,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-845f168d0a2e67ccfcd5b8fa6e7ec66e",
+          "filename": "CS1 B(i). Water Quality.xls",
+          "location": {
+            "content_unit_id": "record-845f168d0a2e67ccfcd5b8fa6e7ec66e",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 21,
+            "column": 5,
+            "cell": "R22C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Maharashtra: No. of districts with access to NABL accredited lab: 34",
+          "metadata": {
+            "provenance_id": "prov-845f168d0a2e67ccfcd5b8fa6e7ec66e",
+            "record_id": "record-845f168d0a2e67ccfcd5b8fa6e7ec66e",
+            "document_id": "doc-93d35e40e8de0235a3082dcc0d50e10a",
+            "metric_name": "No. of districts with access to NABL accredited lab",
+            "header_path": "[\"Water Testing Laboratory\", \"No. of districts with access to NABL accredited lab\"]",
+            "extracted_document_title": "CS1 B(i). Water Quality",
+            "format_code": "CS1 (B)(i)",
+            "relevance_score": 45,
+            "value_raw": "34",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": null,
+            "reporting_period": null,
+            "financial_year": null,
+            "value_numeric": 34,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-05da47faae65672dfec1d2803be42002",
+          "filename": "CS1 B(i). Water Quality.xls",
+          "location": {
+            "content_unit_id": "record-05da47faae65672dfec1d2803be42002",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 21,
+            "column": 10,
+            "cell": "R22C11"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Maharashtra: No. of WTP without in-house lab linked to NABL accredited labs: 43",
+          "metadata": {
+            "provenance_id": "prov-05da47faae65672dfec1d2803be42002",
+            "record_id": "record-05da47faae65672dfec1d2803be42002",
+            "document_id": "doc-93d35e40e8de0235a3082dcc0d50e10a",
+            "metric_name": "No. of WTP without in-house lab linked to NABL accredited labs",
+            "header_path": "[\"Water Treatment Plant (WTP)\", \"No. of WTP without in-house lab linked to NABL accredited labs\"]",
+            "extracted_document_title": "CS1 B(i). Water Quality",
+            "format_code": "CS1 (B)(i)",
+            "relevance_score": 30,
+            "value_raw": "43",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": null,
+            "reporting_period": null,
+            "financial_year": null,
+            "value_numeric": 43,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-be13f728dec8ea9aa7a9c4fc56860105",
+          "filename": "CS1 B(i). Water Quality.xls",
+          "location": {
+            "content_unit_id": "record-be13f728dec8ea9aa7a9c4fc56860105",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 21,
+            "column": 3,
+            "cell": "R22C4"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Maharashtra: No. of NABL accredited State Referral Lab: 0",
+          "metadata": {
+            "provenance_id": "prov-be13f728dec8ea9aa7a9c4fc56860105",
+            "record_id": "record-be13f728dec8ea9aa7a9c4fc56860105",
+            "document_id": "doc-93d35e40e8de0235a3082dcc0d50e10a",
+            "metric_name": "No. of NABL accredited State Referral Lab",
+            "header_path": "[\"Water Testing Laboratory\", \"No. of NABL accredited State Referral Lab\"]",
+            "extracted_document_title": "CS1 B(i). Water Quality",
+            "format_code": "CS1 (B)(i)",
+            "relevance_score": 30,
+            "value_raw": "0",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": null,
+            "reporting_period": null,
+            "financial_year": null,
+            "value_numeric": 0,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-938fd83689c62af1e222da757219952f",
+          "filename": "CS1 B(i). Water Quality.xls",
+          "location": {
+            "content_unit_id": "record-938fd83689c62af1e222da757219952f",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 21,
+            "column": 9,
+            "cell": "R22C10"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Maharashtra: No. of WTP with in-house NABL recognised labs: 0",
+          "metadata": {
+            "provenance_id": "prov-938fd83689c62af1e222da757219952f",
+            "record_id": "record-938fd83689c62af1e222da757219952f",
+            "document_id": "doc-93d35e40e8de0235a3082dcc0d50e10a",
+            "metric_name": "No. of WTP with in-house NABL recognised labs",
+            "header_path": "[\"Water Treatment Plant (WTP)\", \"No. of WTP with in-house NABL recognised labs\"]",
+            "extracted_document_title": "CS1 B(i). Water Quality",
+            "format_code": "CS1 (B)(i)",
+            "relevance_score": 15,
+            "value_raw": "0",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": null,
+            "reporting_period": null,
+            "financial_year": null,
+            "value_numeric": 0,
+            "unit": null,
+            "source_type": "structured"
+          }
+        }
+      ],
+      "reason": "PASS"
+    },
+    {
+      "id": "N002",
+      "kind": "direct_fact",
+      "query": "What is the rural population total for Assam on 01/04/2026?",
+      "pass": true,
+      "matched_fact_count": 1,
+      "actual_facts": [
+        {
+          "source_id": "record-d35ef41c467b9e6a96e8cdbf9bb10e49",
+          "filename": "State wise number of Rural Population as on (01_04.xls",
+          "location": {
+            "content_unit_id": "record-d35ef41c467b9e6a96e8cdbf9bb10e49",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 6,
+            "column": 5,
+            "cell": "R7C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 32866045",
+          "metadata": {
+            "provenance_id": "prov-d35ef41c467b9e6a96e8cdbf9bb10e49",
+            "record_id": "record-d35ef41c467b9e6a96e8cdbf9bb10e49",
+            "document_id": "doc-33ee66706826f71db0c5e25569ec98a8",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "State wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "32866045",
+            "state": "Assam",
+            "district": null,
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026) Sr. No. State Number of Population SC ST GEN TOTAL Total 175721330 112418047 668611235 956750612 1 Andaman & Nicobar Islands 0 24539 227665 252204 2 Andhra Pradesh 7146426 2708384 28054557 37909367 3 Arunachal Pradesh 4226 1109068 213880 1327174 4 Assam 2352118 5140227 25373700 32866045 5 Bihar 16494241 1652491 77572460 95719192 6 Chhattisgarh 2922820 8498400 11212012 22633232 7 Dadra & Nagar Haveli And Daman & Diu 7735 178065 234618 420418 8 Goa 18110 110172 1008943 1137225 9 Gujarat 2906821 10649706 30186495 43743022 10 Haryana 4002335 3003 13777539 17782877 11 Himachal Pradesh 1990310 447014 5121313 7558637 12 Jammu & Kashmir 956273 1579688 8822564 11358525 13 Jharkhand 4283368 9770024 17613536 31666928 14 Karnataka 9006591 4116367 31456669 44579627 15 Kerala 2747072 487505 25661054 28895631 16 Ladakh 157 242067 5377 247601 17 Lakshadweep 0 70604 4036 74640 18 Madhya Pradesh 9905967 16089891 34201291 60197149 19 Maharashtra 8613342 10164317 49944423 68722082 20 Manipur 47123 1276528 1100952 2424603 21 Meghalaya 12795 3368777 200034 3581606 22 Mizoram 151 661940 3793 665884 23 Nagaland 189 1793270 87161 1880620 24 Odisha 6840740 9587805 21979391 38407936 25 Puducherry 131078 1 430948 562027 26 Punjab 7074333 105 11160151 18234589 27 Rajasthan 10842632 9649106 37800958 58292696 28 Sikkim 40034 209605 304838 554477 29 Tamil Nadu 12057416 787660 36439139 49284215 30 Telangana 3897757 2962545 13836605 20696907 31 Tripura 614088 1348363 1332172 3294623 32 Uttar Pradesh 38230635 1210344 127145943 166586922 33 Uttarakhand 1501634 283935 5352967 7138536 34 West Bengal 21072813 6236531 50744051 78053395 Total 175721330 112418047 668611235 956750612 Note: This data has been uploaded by the respective states after calculating the population based on census 2011 and the decadal growth rate.",
+            "value_numeric": 32866045,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-0d9934e1984a68d2d9028d22cf0302fc",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-0d9934e1984a68d2d9028d22cf0302fc",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 11,
+            "column": 5,
+            "cell": "R12C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 1036022",
+          "metadata": {
+            "provenance_id": "prov-0d9934e1984a68d2d9028d22cf0302fc",
+            "record_id": "record-0d9934e1984a68d2d9028d22cf0302fc",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "1036022",
+            "state": "Assam",
+            "district": "Darrang",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 1036022,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-129213184c18806647c692e4202ecd2d",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-129213184c18806647c692e4202ecd2d",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 31,
+            "column": 5,
+            "cell": "R32C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 878829",
+          "metadata": {
+            "provenance_id": "prov-129213184c18806647c692e4202ecd2d",
+            "record_id": "record-129213184c18806647c692e4202ecd2d",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "878829",
+            "state": "Assam",
+            "district": "Sivasagar",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 878829,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-1815717e78584be0588dd0f1448fd744",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-1815717e78584be0588dd0f1448fd744",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 24,
+            "column": 5,
+            "cell": "R25C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 1278617",
+          "metadata": {
+            "provenance_id": "prov-1815717e78584be0588dd0f1448fd744",
+            "record_id": "record-1815717e78584be0588dd0f1448fd744",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "1278617",
+            "state": "Assam",
+            "district": "Karimganj",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 1278617,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-1b800a1b4cd33b95f9ed0dadce38f520",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-1b800a1b4cd33b95f9ed0dadce38f520",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 30,
+            "column": 5,
+            "cell": "R31C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 859851",
+          "metadata": {
+            "provenance_id": "prov-1b800a1b4cd33b95f9ed0dadce38f520",
+            "record_id": "record-1b800a1b4cd33b95f9ed0dadce38f520",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "859851",
+            "state": "Assam",
+            "district": "Nalbari",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 859851,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-26eb6f16531a8c08d2a357bb55529311",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-26eb6f16531a8c08d2a357bb55529311",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 15,
+            "column": 5,
+            "cell": "R16C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 206736",
+          "metadata": {
+            "provenance_id": "prov-26eb6f16531a8c08d2a357bb55529311",
+            "record_id": "record-26eb6f16531a8c08d2a357bb55529311",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "206736",
+            "state": "Assam",
+            "district": "Dima Hasao",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 206736,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-284e6996c6f11d1816efc890025b8493",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-284e6996c6f11d1816efc890025b8493",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 21,
+            "column": 5,
+            "cell": "R22C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 1772029",
+          "metadata": {
+            "provenance_id": "prov-284e6996c6f11d1816efc890025b8493",
+            "record_id": "record-284e6996c6f11d1816efc890025b8493",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "1772029",
+            "state": "Assam",
+            "district": "Kamrup",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 1772029,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-2901a136cab5f3950ffad8a1961ada59",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-2901a136cab5f3950ffad8a1961ada59",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 7,
+            "column": 5,
+            "cell": "R8C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 750736",
+          "metadata": {
+            "provenance_id": "prov-2901a136cab5f3950ffad8a1961ada59",
+            "record_id": "record-2901a136cab5f3950ffad8a1961ada59",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "750736",
+            "state": "Assam",
+            "district": "Bongaigaon",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 750736,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-2927cf935b547b60adafe3c31d6521ac",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-2927cf935b547b60adafe3c31d6521ac",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 3,
+            "column": 5,
+            "cell": "R4C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 283339",
+          "metadata": {
+            "provenance_id": "prov-2927cf935b547b60adafe3c31d6521ac",
+            "record_id": "record-2927cf935b547b60adafe3c31d6521ac",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "283339",
+            "state": "Assam",
+            "district": "Bajali",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 283339,
+            "unit": null,
+            "source_type": "structured"
+          }
+        },
+        {
+          "source_id": "record-2957fd6003d7987ac5e31c185d039fa3",
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "location": {
+            "content_unit_id": "record-2957fd6003d7987ac5e31c185d039fa3",
+            "table": "Table 1",
+            "page": null,
+            "sheet": null,
+            "row": 25,
+            "column": 5,
+            "cell": "R26C6"
+          },
+          "retrieval_method": "structured",
+          "relevance": 0.95,
+          "evidence": "Assam: TOTAL: 1047385",
+          "metadata": {
+            "provenance_id": "prov-2957fd6003d7987ac5e31c185d039fa3",
+            "record_id": "record-2957fd6003d7987ac5e31c185d039fa3",
+            "document_id": "doc-02c68bbd5824a363dca1fc89f91eaa3c",
+            "metric_name": "TOTAL",
+            "header_path": "[\"Number of Population\", \"TOTAL\"]",
+            "extracted_document_title": "District wise number of Rural Population as on (01/04/2026)",
+            "format_code": "B11",
+            "relevance_score": 58,
+            "value_raw": "1047385",
+            "state": "Assam",
+            "district": "Kokrajhar",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "financial_year": "As on (01/04/2026)",
+            "value_numeric": 1047385,
+            "unit": null,
+            "source_type": "structured"
+          }
+        }
+      ],
+      "reason": "PASS"
+    },
+    {
+      "id": "N003",
+      "kind": "calculation",
+      "query": "What is the difference between rural population totals for Assam and Maharashtra on 01/04/2026?",
+      "pass": true,
+      "calculation": {
+        "operation": "difference",
+        "result": 35856037,
+        "result_unit": null,
+        "formula": "difference",
+        "validation_status": "VALIDATED",
+        "inputs": [
+          {
+            "content_unit_id": "record-d35ef41c467b9e6a96e8cdbf9bb10e49",
+            "value": 32866045,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Assam",
+            "district": null,
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-d35ef41c467b9e6a96e8cdbf9bb10e49"
+          },
+          {
+            "content_unit_id": "record-0abbac86d19b63b6f5750fe4ec7fd76a",
+            "value": 68722082,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-0abbac86d19b63b6f5750fe4ec7fd76a"
+          }
+        ]
+      },
+      "actual_scopes": [
+        {
+          "state": "Assam",
+          "district": null
+        },
+        {
+          "state": "Maharashtra",
+          "district": null
+        }
+      ],
+      "reason": "PASS"
+    },
+    {
+      "id": "N004",
+      "kind": "calculation",
+      "query": "What is the combined rural population total for Assam and Maharashtra on 01/04/2026?",
+      "pass": true,
+      "calculation": {
+        "operation": "sum",
+        "result": 101588127,
+        "result_unit": null,
+        "formula": "sum",
+        "validation_status": "VALIDATED",
+        "inputs": [
+          {
+            "content_unit_id": "record-d35ef41c467b9e6a96e8cdbf9bb10e49",
+            "value": 32866045,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Assam",
+            "district": null,
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-d35ef41c467b9e6a96e8cdbf9bb10e49"
+          },
+          {
+            "content_unit_id": "record-0abbac86d19b63b6f5750fe4ec7fd76a",
+            "value": 68722082,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-0abbac86d19b63b6f5750fe4ec7fd76a"
+          }
+        ]
+      },
+      "actual_scopes": [
+        {
+          "state": "Assam",
+          "district": null
+        },
+        {
+          "state": "Maharashtra",
+          "district": null
+        }
+      ],
+      "reason": "PASS"
+    },
+    {
+      "id": "N005",
+      "kind": "calculation",
+      "query": "What percentage of the combined rural population total is Assam compared with Maharashtra on 01/04/2026?",
+      "pass": true,
+      "calculation": {
+        "operation": "percentage_of_total",
+        "result": 32.35225,
+        "result_unit": "%",
+        "formula": "percentage_of_total",
+        "validation_status": "VALIDATED",
+        "inputs": [
+          {
+            "content_unit_id": "record-d35ef41c467b9e6a96e8cdbf9bb10e49",
+            "value": 32866045,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Assam",
+            "district": null,
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-d35ef41c467b9e6a96e8cdbf9bb10e49"
+          },
+          {
+            "content_unit_id": "record-0abbac86d19b63b6f5750fe4ec7fd76a",
+            "value": 68722082,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Maharashtra",
+            "district": null,
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-0abbac86d19b63b6f5750fe4ec7fd76a"
+          }
+        ]
+      },
+      "actual_scopes": [
+        {
+          "state": "Assam",
+          "district": null
+        },
+        {
+          "state": "Maharashtra",
+          "district": null
+        }
+      ],
+      "reason": "PASS"
+    },
+    {
+      "id": "N006",
+      "kind": "calculation",
+      "query": "What is the difference between rural population totals for Ahmednagar and Yavatmal in Maharashtra on 01/04/2026?",
+      "pass": true,
+      "calculation": {
+        "operation": "difference",
+        "result": 1761559,
+        "result_unit": null,
+        "formula": "difference",
+        "validation_status": "VALIDATED",
+        "inputs": [
+          {
+            "content_unit_id": "record-091ecde3947529c3c76383e57512dd8a",
+            "value": 2186309,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Maharashtra",
+            "district": "Yavatmal",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-091ecde3947529c3c76383e57512dd8a"
+          },
+          {
+            "content_unit_id": "record-771db81c1e395e30fa3492ec5b7d2a5c",
+            "value": 3947868,
+            "unit": null,
+            "metric": "TOTAL",
+            "state": "Maharashtra",
+            "district": "Ahmednagar",
+            "report_date": "01/04/2026",
+            "reporting_period": null,
+            "provenance_id": "prov-771db81c1e395e30fa3492ec5b7d2a5c"
+          }
+        ]
+      },
+      "actual_scopes": [
+        {
+          "state": "Maharashtra",
+          "district": "Yavatmal"
+        },
+        {
+          "state": "Maharashtra",
+          "district": "Ahmednagar"
+        }
+      ],
+      "reason": "PASS"
+    },
+    {
+      "id": "N007",
+      "kind": "abstention",
+      "query": "What is the difference between rural population totals for Ahmednagar and Maharashtra on 01/04/2026?",
+      "pass": true,
+      "answer": "Retrieved validated evidence: [1] Maharashtra: TOTAL: 3947868 [2] District wise number of Rural Population as on (01/04/2026) Format B11 FinYear : As on (01/04/2026) , State : Maharashtra Sr. No. District Number of Population SC ST GEN TOTAL Total 8613342 10164317 49944423 68722082 1 Ahmednagar 464129 373 [3] State wise number of Rural Population as on (01/04/2026) Format B11 FinYear : As on (01/04/2026) Sr. No. State Number of Population SC ST GEN TOTAL Total 175721330 112418047 668611235 956750612 1 Andaman & Nicobar Islands 0 24539 227665 252 [4] District wise number of Rural Population as on (01/04/2026) Format B11 FinYear : As on (01/04/2026) , State : Assam Sr. No. District Number of Population SC ST GEN TOTAL Total 2352118 5140227 25373700 32866045 1 Bajali 22536 11395 249408 28 [5] District wise number of Rural Population as on (01/04/2026) Format B11 FinYear : As on (01/04/2026) , State : Tamil Nadu Sr. No. District Number of Population SC ST GEN TOTAL Total 12057416 787660 36439139 49284215 1 Ariyalur 166392 9742 62 [6] District wise number of Rural Population as on (01/04/2026) Format B11 FinYear : As on (01/04/2026) , State : Uttarakhand Sr. No. District Number of Population SC ST GEN TOTAL Total 1501634 283935 5352967 7138536 1 Almora 144718 1308 474466 [7] Format C17 A- No Of Quality Affected Habitations & Population As On 30/08/2026 State : Maharashtra S.No. District Contamination Wise Number Of Habitations & Population Total Fluoride Arsenic Iron Salinity Nitrate Heavy Metal Habs Covered wi [8] Format C17 A- No Of Quality Affected Habitations & Population As On 30/08/2026 State : Tamil Nadu S.No. District Contamination Wise Number Of Habitations & Population Total Fluoride Arsenic Iron Salinity Nitrate Heavy Metal Habs Covered wit [9] Format C17 A- No Of Quality Affected Habitations & Population As On 30/08/2026 State : Andaman & Nicobar Islands S.No. District Contamination Wise Number Of Habitations & Population Total Fluoride Arsenic Iron Salinity Nitrate Heavy Metal H [10] Format C17 A- No Of Quality Affected Habitations & Population As On 30/08/2026 State : Assam S.No. District Contamination Wise Number Of Habitations & Population Total Fluoride Arsenic Iron Salinity Nitrate Heavy Metal Habs Covered with CWP [11] Format B1- Basic Habitation Information As On 01/04/2026 Finyear - 2026-2027, State - All State, Agency - All Agency, District - All District, Block - All Block, Category - All S.No. State Districts Blocks Panchayats Villages Habitations Ho",
+      "reasons": [
+        "insufficient operands"
+      ],
+      "reason": "PASS"
+    },
+    {
+      "id": "N008",
+      "kind": "abstention",
+      "query": "What is the number of PWS schemes without a source for a named state?",
+      "pass": true,
+      "answer": "Please provide the specific state needed to identify the requested record.",
+      "reasons": [
+        "missing required state",
+        "missing required state for a grounded structured lookup",
+        "no validated evidence was returned"
+      ],
+      "reason": "PASS"
+    }
+  ]
+}

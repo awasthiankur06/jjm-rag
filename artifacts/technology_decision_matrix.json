@@ -1,0 +1,15 @@
+{
+  "artifact_type": "technology_decision_matrix",
+  "validated_gate": "RETRIEVAL_PROTOTYPE_VALIDATED",
+  "columns": ["component", "candidate", "evidence", "advantages", "risks", "cost_complexity", "decision", "readiness"],
+  "rows": [
+    {"component":"LLM","candidate":"xAI Grok 4.6","evidence":["DOCUMENTED","UNKNOWN"],"advantages":"Required target; 500k context; structured outputs; function calling","risks":"Live grounding, citations, abstention, latency, and production reliability untested","cost_complexity":"$2/M input and $6/M output below 200k prompt tokens per current xAI docs; traffic unknown","decision":"SHORTLISTED","readiness":"REQUIRES_BENCHMARK"},
+    {"component":"Structured database","candidate":"PostgreSQL","evidence":["OBSERVED","DOCUMENTED","INFERRED"],"advantages":"Transactions, joins, numeric operations, metadata, provenance, auditability","risks":"Schema and operations still need design","cost_complexity":"Provider and traffic dependent","decision":"SELECTED","readiness":"SELECTED"},
+    {"component":"Vector store","candidate":"PostgreSQL + pgvector","evidence":["DOCUMENTED","INFERRED"],"advantages":"One store for vectors, filters, provenance, and structured records; HNSW/IVFFlat; hybrid FTS","risks":"JJM-specific embedding/index benchmark absent","cost_complexity":"Lower operational surface than a second datastore","decision":"SELECTED","readiness":"REQUIRES_BENCHMARK"},
+    {"component":"Embeddings","candidate":"BAAI/bge-m3","evidence":["DOCUMENTED","INFERRED","UNKNOWN"],"advantages":"1024 dimensions; 8192 tokens; multilingual; dense+sparse+multi-vector","risks":"JJM quality and serving cost unmeasured","cost_complexity":"Self-hosted model; compute unknown","decision":"SHORTLISTED","readiness":"REQUIRES_BENCHMARK"},
+    {"component":"Exact search","candidate":"PostgreSQL B-tree + FTS","evidence":["BENCHMARKED","DOCUMENTED"],"advantages":"Deterministic identifiers and metadata; current exact retrieval accuracy 0.96875","risks":"Future scale/fuzzy-language needs unknown","cost_complexity":"Low incremental complexity","decision":"SELECTED","readiness":"SELECTED"},
+    {"component":"Reranker","candidate":"None initially","evidence":["BENCHMARKED"],"advantages":"Recall@10 1.0; hybrid 1.0; avoids latency","risks":"Recall@1 0.4957; top-1 quality needs product benchmark","cost_complexity":"No added model cost initially","decision":"NOT_JUSTIFIED","readiness":"NOT_REQUIRED"},
+    {"component":"Orchestration","candidate":"Custom Python","evidence":["OBSERVED","BENCHMARKED"],"advantages":"Validated architecture maps directly; low lock-in","risks":"Own operational controls","cost_complexity":"Low framework overhead","decision":"SELECTED","readiness":"SELECTED"},
+    {"component":"API","candidate":"FastAPI","evidence":["INFERRED","UNKNOWN"],"advantages":"Typed Python boundary; OpenAPI; async support","risks":"Deployment/security decisions absent","cost_complexity":"Low code complexity; hosting unknown","decision":"SHORTLISTED","readiness":"REQUIRES_EXTERNAL_DECISION"}
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "artifact_type": "phase5_baseline_identity",
+  "timestamp": "2026-09-08T11:48:49.098817+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "retrieval_gate": "RETRIEVAL_PROTOTYPE_VALIDATED",
+  "technology_gate_before_phase": "PRODUCTION_TECHNOLOGY_SELECTION_PARTIALLY_READY",
+  "files": {
+    "artifacts/retrieval_evaluation_post_remediation.json": {
+      "sha256": "1be406020e988b51b0613303d6d6f8fcd68ebd60eec31c0c61f3f0750e2857bf",
+      "size_bytes": 6575663
+    },
+    "artifacts/post_remediation_regression.json": {
+      "sha256": "eb7d8d23e6a2e77b8eb43fc269897422c037cb72c203fedfb7ac07d278a8560f",
+      "size_bytes": 13602
+    },
+    "artifacts/technology_decision_matrix.json": {
+      "sha256": "5a44744a612c61541528f5aa03fdec5236e4eb3d1228d80ee440b00d6e2d966e",
+      "size_bytes": 3054
+    },
+    "artifacts/production_requirements.json": {
+      "sha256": "7eb9451072c18092a4b56a1336665a889b2fa7dc7bfa6d5b992819ff922b3af5",
+      "size_bytes": 3382
+    },
+    "artifacts/query_evaluation_cases.json": {
+      "sha256": "eea71106189192336e11749209b27beb827fe9e723f7a737ad963472d1695dd9",
+      "size_bytes": 20304
+    },
+    "artifacts/prototype_manifest.json": {
+      "sha256": "1f6b733cffafcbed53057ab7dc8316b30b54d12379e3cb6935750f52117938f0",
+      "size_bytes": 18209693
+    },
+    "artifacts/retrieval_evaluation_baseline.json": {
+      "sha256": "538b6d94720ae8c5d1f1f21b55bc952a5922b99100e01bb67ba061e91dc4344f",
+      "size_bytes": 6490185
+    }
+  },
+  "corpus": {
+    "physical_files": 45,
+    "production_usable_sources": 44,
+    "excluded_sources": [
+      {
+        "filename": "Status of Pipe Water Supply in School (2).xls",
+        "sha256": "bf4eafc15390dd98688a2f0306f28457a60bc027343e5346a0bc3be2d4009ee3",
+        "reason": "EXCLUDED_CORRUPTED_SOURCE",
+        "indexed": false
+      }
+    ]
+  },
+  "preservation_checks": {
+    "query_cases_40": true,
+    "regression_matrix_40": true,
+    "no_post_regressions": true,
+    "corpus_hashes_match": true,
+    "excluded_source_indexed": false
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "artifact_type": "phase7_rag_architecture",
+  "status": "IMPLEMENTED_FOUNDATION",
+  "cloud_only_ai": true,
+  "authoritative_store": "PostgreSQL canonical corpus",
+  "layers": ["request validation", "deterministic routing", "exact retrieval", "PostgreSQL structured retrieval", "PostgreSQL lexical retrieval", "cloud semantic retrieval", "evidence validation", "context construction", "xAI/Grok generation", "citations", "observability"],
+  "provider_interfaces": ["CloudEmbeddingProvider", "CloudVectorStore", "CloudSemanticRetriever", "XaiLLMProvider"],
+  "local_inference": false,
+  "local_model_weights": false,
+  "fallback_behavior": "semantic and generation paths degrade safely; exact/structured/lexical retrieval remain available",
+  "protected_retrieval_architecture": true,
+  "grok_generation": "environment-configured only",
+  "api_boundary": ["GET /health", "GET /ready", "POST /api/v1/query"]
+}

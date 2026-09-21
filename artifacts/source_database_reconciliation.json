@@ -1,0 +1,59 @@
+{
+  "artifact_type": "source_to_postgresql_reconciliation",
+  "timestamp": "2026-09-16",
+  "input": "artifacts/source_first_review.json",
+  "database": "environment-configured disposable PostgreSQL; credentials omitted",
+  "source_review": {
+    "physical_sources": 45,
+    "production_eligible_sources": 44,
+    "excluded_sources": 1,
+    "reliable_source_titles": 41,
+    "low_or_unknown_title_sources": 3,
+    "source_hash_mismatches": 0
+  },
+  "pre_rebuild_finding": {
+    "reliable_titles_compared": 41,
+    "filename_derived_or_wrong_stored_titles": 27,
+    "decision": "FULL_CLEAN_REINGESTION_REQUIRED"
+  },
+  "rebuild": {
+    "target": "jjm_rag_phase6a_test",
+    "target_purpose": "disposable generated canonical database",
+    "original_sources_modified": false,
+    "manifest_or_forensic_artifacts_modified": false,
+    "logical_counts": {
+      "documents": 44,
+      "document_versions": 44,
+      "structured_records": 34370,
+      "observations": 34370,
+      "canonical_content": 3563,
+      "provenance_records": 37933,
+      "geography_dimensions": 2039,
+      "reporting_dimensions": 43
+    },
+    "reliable_title_round_trip_mismatches": 0,
+    "excluded_document_count": 0,
+    "title_confidence": {
+      "source_derived_high_or_medium": 41,
+      "low_or_unknown_not_promoted_to_logical_title": 3
+    },
+    "operational_note": "A command-timeout overlap created three duplicate SUCCESS audit events, but no duplicate logical documents, versions, records, observations, content units, or provenance rows. Audit rows are execution history, not logical entities."
+  },
+  "canonical_database_decision": "RETAIN_SCHEMA_WITH_TITLE_MIGRATION_AND_REBUILD",
+  "parser_and_retrieval_findings": [
+    "HTML-exported XLS inputs are parsed as HTML tables, preserving grid/cell provenance.",
+    "Three PDFs have insufficient reliable internal title evidence; their filenames remain physical identity only.",
+    "The live deterministic retrieval evaluation before rebuild had Recall@10 0.45299145299145294 and provenance accuracy 0.975.",
+    "A complete post-rebuild 40-case measurement was not returned before the environment command limit; no after metric is claimed."
+  ],
+  "embedding_decision": {
+    "decision": "DEFER",
+    "reason": "Measured deterministic retrieval failures include source identification, structured retrieval, cross-document acquisition, and version handling. Embeddings cannot safely correct source-title, metadata, or structured-query defects and must not be used to mask them.",
+    "required_before_enablement": [
+      "Complete post-rebuild deterministic evaluation with verified answer/source ground truth.",
+      "Repair generic PostgreSQL retrieval and metadata contracts from measured misses.",
+      "Evaluate semantic retrieval independently against the same source-verified cases."
+    ]
+  },
+  "final_gate": "RAG_PARTIALLY_VALIDATED"
+}

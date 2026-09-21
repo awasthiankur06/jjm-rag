@@ -1,0 +1,123 @@
+{
+  "artifact_type": "phase5b_environment_probe",
+  "timestamp": "2026-09-08T11:52:10.930540+00:00",
+  "python": {
+    "executable": "d:\\jjm-rag\\.venv\\Scripts\\python.exe",
+    "version": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]"
+  },
+  "os": {
+    "system": "Windows",
+    "release": "10",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 165 Stepping 3, GenuineIntel"
+  },
+  "cpu": {
+    "logical_count": 12
+  },
+  "memory": {
+    "total_bytes": 8301809664,
+    "available_bytes": 1706082304
+  },
+  "disk": {
+    "workspace": {
+      "total_bytes": 1000186310656,
+      "free_bytes": 956160831488,
+      "used_bytes": 44025479168
+    },
+    "temp": {
+      "total_bytes": 254918594560,
+      "free_bytes": 87081410560,
+      "used_bytes": 167837184000
+    }
+  },
+  "gpu": {
+    "nvidia_smi": {
+      "available": false,
+      "path": null,
+      "version": null
+    },
+    "cuda_visible_devices": null
+  },
+  "docker": {
+    "docker": {
+      "available": false,
+      "path": null,
+      "version": null
+    },
+    "compose": {
+      "available": false,
+      "path": null
+    }
+  },
+  "postgresql": {
+    "psql": {
+      "available": false,
+      "path": null,
+      "version": null
+    },
+    "pg_ctl": {
+      "available": false,
+      "path": null,
+      "version": null
+    }
+  },
+  "network": {
+    "dns_api_x_ai": true
+  },
+  "package_managers": {
+    "pip": {
+      "available": false,
+      "path": null,
+      "version": null
+    },
+    "uv": {
+      "available": true,
+      "path": "C:\\Users\\Ankur Awasthi\\.local\\bin\\uv.EXE",
+      "version": "uv 0.12.10 (3c979abda 2026-09-04 x86_64-pc-windows-msvc)"
+    },
+    "conda": {
+      "available": false,
+      "path": null,
+      "version": null
+    },
+    "npm": {
+      "available": true,
+      "path": "C:\\Program Files\\nodejs\\npm.CMD",
+      "version": "ERROR: FileNotFoundError"
+    }
+  },
+  "installed_python_packages": {
+    "torch": false,
+    "transformers": false,
+    "sentence_transformers": false,
+    "FlagEmbedding": false,
+    "psycopg": false,
+    "pgvector": false,
+    "langchain": false,
+    "langgraph": false,
+    "llama_index": false,
+    "xai_sdk": false,
+    "openai": false,
+    "fastapi": false,
+    "cross_encoder": false
+  },
+  "credentials": {
+    "xai_api_key_present": false
+  },
+  "baseline_checks": {
+    "artifacts/retrieval_evaluation_post_remediation.json": true,
+    "artifacts/post_remediation_regression.json": true,
+    "artifacts/technology_decision_matrix.json": true,
+    "artifacts/production_requirements.json": true,
+    "artifacts/query_evaluation_cases.json": true,
+    "artifacts/prototype_manifest.json": true,
+    "artifacts/retrieval_evaluation_baseline.json": true,
+    "post_40_executed": true,
+    "validated_metrics": true,
+    "zero_regressions": true,
+    "query_cases_unchanged": true,
+    "corpus_hashes": true,
+    "excluded_not_indexed": true
+  }
+}

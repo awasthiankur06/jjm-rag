@@ -1,0 +1,22 @@
+{
+  "artifact_type": "grok_generation_benchmark_runtime",
+  "status": "BLOCKED_BY_MISSING_XAI_API_KEY",
+  "timestamp": "2026-09-08T11:56:01.623829+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "xai_key_present": false,
+    "external_endpoint": "https://api.x.ai/v1"
+  },
+  "error": "XAI_API_KEY is not present; no external request was made.",
+  "cases": [
+    "Q002",
+    "Q003",
+    "Q009",
+    "Q036",
+    "Q021",
+    "Q014",
+    "Q039"
+  ],
+  "data_sent": "none"
+}

@@ -1,0 +1,108 @@
+{
+  "artifact_type": "source_coverage_canonical_recheck",
+  "timestamp": "2026-09-18T10:33:54.459102+00:00",
+  "per_source_target": 5,
+  "documents": 44,
+  "cases": [
+    {
+      "id": "doc-73782f83b739140f48373c53157aa9f4-p1",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: State/ UT Total households  Householdswith tap water supply  Householdswith tap water supply (%)  Meghalaya 6,50,854?",
+      "document_id": "doc-73782f83b739140f48373c53157aa9f4",
+      "filename": "FHTCDataTable.pdf",
+      "content_id": "content-82ff1ec0d448933fbb2cfdd243f6ca41",
+      "provenance_id": "prov-82ff1ec0d448933fbb2cfdd243f6ca41"
+    },
+    {
+      "id": "doc-73782f83b739140f48373c53157aa9f4-p2",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: Jal Jeevan MissionHar Ghar Jal Status of households with tap water connection (as on date) State/ UT ?",
+      "document_id": "doc-73782f83b739140f48373c53157aa9f4",
+      "filename": "FHTCDataTable.pdf",
+      "content_id": "content-bef79e3fe90dde77d95eee4f51a4b596",
+      "provenance_id": "prov-bef79e3fe90dde77d95eee4f51a4b596"
+    },
+    {
+      "id": "doc-d49401e7b22ca8c4230e17ceac9531d5-p2",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: 71Externally Aided Projects 14CHAPTER xternally Aided Projects (EAPs) are an Eimportant source of additional funding available to the?",
+      "document_id": "doc-d49401e7b22ca8c4230e17ceac9531d5",
+      "filename": "JJM_Operational_Guidelines.pdf",
+      "content_id": "content-02bf07f241afaf3e93fd0acecf07952e",
+      "provenance_id": "prov-02bf07f241afaf3e93fd0acecf07952e"
+    },
+    {
+      "id": "doc-d49401e7b22ca8c4230e17ceac9531d5-p3",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: 29Mission Director will be assisted by an Executive Committee consisting of 5-10 members. Engineer-in- Chief/ Chief Engineer in?",
+      "document_id": "doc-d49401e7b22ca8c4230e17ceac9531d5",
+      "filename": "JJM_Operational_Guidelines.pdf",
+      "content_id": "content-039d523676e4472fe9e34f6130d4532f",
+      "provenance_id": "prov-039d523676e4472fe9e34f6130d4532f"
+    },
+    {
+      "id": "doc-d49401e7b22ca8c4230e17ceac9531d5-p4",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: 38sub-c ommit tee, i.e. VWSC/ Paani Samiti/ User Group, etc. PHED/ RWS Departmen t would award the work?",
+      "document_id": "doc-d49401e7b22ca8c4230e17ceac9531d5",
+      "filename": "JJM_Operational_Guidelines.pdf",
+      "content_id": "content-045b4ee8fd428470c09ad53b224dbba5",
+      "provenance_id": "prov-045b4ee8fd428470c09ad53b224dbba5"
+    },
+    {
+      "id": "doc-d49401e7b22ca8c4230e17ceac9531d5-p5",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: 7ater is one of the most essential Wrequirements of life. Assured availability of potable water is vital for?",
+      "document_id": "doc-d49401e7b22ca8c4230e17ceac9531d5",
+      "filename": "JJM_Operational_Guidelines.pdf",
+      "content_id": "content-07b8eba0075ff7cc13b88318795f9ce9",
+      "provenance_id": "prov-07b8eba0075ff7cc13b88318795f9ce9"
+    },
+    {
+      "id": "doc-46cd41e34ee038b52e2aefbc007e0062-p1",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: -) e p = + a st ionan Beton adopted in the case of funding of Central share?",
+      "document_id": "doc-46cd41e34ee038b52e2aefbc007e0062",
+      "filename": "Operational-Guidelines-JJM-2.pdf",
+      "content_id": "content-004e43f0129629796a4d2aeae8bd1f2e",
+      "provenance_id": "prov-004e43f0129629796a4d2aeae8bd1f2e"
+    },
+    {
+      "id": "doc-46cd41e34ee038b52e2aefbc007e0062-p2",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: Har Ghar Jal Jal Jeevan Mission Building Partnership Changing Lives ae ++4 /, ' 4 — « |?",
+      "document_id": "doc-46cd41e34ee038b52e2aefbc007e0062",
+      "filename": "Operational-Guidelines-JJM-2.pdf",
+      "content_id": "content-0089e3e82eba316d27501fe23021f9f9",
+      "provenance_id": "prov-0089e3e82eba316d27501fe23021f9f9"
+    },
+    {
+      "id": "doc-46cd41e34ee038b52e2aefbc007e0062-p3",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: $ Har Ghar Jal dad Jowvan Mission Functional Key | Competency (Capacity | Expected Role Stakeholders Required Building?",
+      "document_id": "doc-46cd41e34ee038b52e2aefbc007e0062",
+      "filename": "Operational-Guidelines-JJM-2.pdf",
+      "content_id": "content-009942c44c66097048a589c5b4cb5b45",
+      "provenance_id": "prov-009942c44c66097048a589c5b4cb5b45"
+    },
+    {
+      "id": "doc-46cd41e34ee038b52e2aefbc007e0062-p4",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: -) ss eon Mision S.No. | ener Meeanr ay Evidence & Broad Timeline | Indicator by NJJM 2.5.2?",
+      "document_id": "doc-46cd41e34ee038b52e2aefbc007e0062",
+      "filename": "Operational-Guidelines-JJM-2.pdf",
+      "content_id": "content-00dd4fb8bbfc6736ce361350d305a43d",
+      "provenance_id": "prov-00dd4fb8bbfc6736ce361350d305a43d"
+    },
+    {
+      "id": "doc-46cd41e34ee038b52e2aefbc007e0062-p5",
+      "kind": "canonical",
+      "query": "What does the JJM material say about: Har Ghar fall Jed Jeevan Mission CHAPTER 2.4 Establishing Citizen-centric Water Quality Governance State/ UT must establish year-wise?",
+      "document_id": "doc-46cd41e34ee038b52e2aefbc007e0062",
+      "filename": "Operational-Guidelines-JJM-2.pdf",
+      "content_id": "content-016b09d25616c119cbf59c4d049b2629",
+      "provenance_id": "prov-016b09d25616c119cbf59c4d049b2629"
+    }
+  ],
+  "recheck_of": "source_coverage_results_source_optional_post_header_path.json"
+}

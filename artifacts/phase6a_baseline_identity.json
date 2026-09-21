@@ -1,0 +1,41 @@
+{
+  "artifact_type": "phase6a_baseline_identity",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "preserved_gate": "RETRIEVAL_PROTOTYPE_VALIDATED",
+  "baseline_files": {
+    "artifacts/phase5_baseline_identity.json": {
+      "sha256": "e1d5a5d5b1fdc5e72d22d0c8a97fc0c18f04b6240b0f2954c9c242f6a01d2250",
+      "status": "preserved",
+      "note": "This file should not be modified by Phase 6A."
+    },
+    "artifacts/retrieval_evaluation_post_remediation.json": {
+      "sha256": "1be406020e988b51b0613303d6d6f8fcd68ebd60eec31c0c61f3f0750e2857bf",
+      "status": "preserved"
+    },
+    "artifacts/post_remediation_regression.json": {
+      "sha256": "eb7d8d23e6a2e77b8eb43fc269897422c037cb72c203fedfb7ac07d278a8560f",
+      "status": "preserved"
+    },
+    "artifacts/query_evaluation_cases.json": {
+      "sha256": "eea71106189192336e11749209b27beb827fe9e723f7a737ad963472d1695dd9",
+      "status": "preserved"
+    },
+    "artifacts/corpus_manifest_final.json": {
+      "sha256": "not_calculated_in_this_stub",
+      "status": "preserved",
+      "note": "Full manifest hash validation remains a runtime preservation check, not an editable artifact."
+    }
+  },
+  "preservation_checks": {
+    "corpus_physical_files": 45,
+    "production_usable_sources": 44,
+    "excluded_corrupted_source": "Status of Pipe Water Supply in School (2).xls",
+    "excluded_source_indexed": false,
+    "retrieval_cases": 40,
+    "recall_at_10": 1.0,
+    "cross_document_accuracy": 1.0,
+    "provenance_accuracy": 1.0,
+    "zero_regressions": true,
+    "pytest_baseline_green": true
+  }
+}

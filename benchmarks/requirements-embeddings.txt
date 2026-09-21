@@ -1,0 +1,10 @@
+# Isolated environment only; do not install into the validated project environment.
+# NumPy is used for the in-memory cosine-similarity benchmark.
+numpy>=1.26,<3
+# BGE-M3 runtime and model loader.
+torch>=2.2,<3
+transformers>=4.40,<5
+FlagEmbedding>=1.3,<2
+# multilingual-e5-large runtime.
+sentence-transformers>=3.0,<6
+safetensors>=0.4,<1

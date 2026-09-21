@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-09-08T11:49:31.342929+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "installed_frameworks": [],
+    "validated_custom_tests": "23 passed"
+  },
+  "corpus": {
+    "documents": 44,
+    "rows": 3042,
+    "pages": 334,
+    "semantic_units": 378
+  },
+  "artifact_type": "framework_benchmark",
+  "status": "CUSTOM_PREFERRED_WITH_UNEXECUTED_FRAMEWORK_SPIKE",
+  "workflows": [
+    "semantic retrieval",
+    "exact retrieval",
+    "structured retrieval",
+    "hybrid retrieval",
+    "cross-document retrieval",
+    "evidence/provenance propagation"
+  ],
+  "candidates": [
+    {
+      "name": "custom Python",
+      "status": "OBSERVED_BASELINE",
+      "integration_effort": "already implemented and tested",
+      "provenance": "native typed evidence and source metadata",
+      "testability": "23 existing tests pass",
+      "complexity": "existing project dependencies only"
+    },
+    {
+      "name": "LangChain",
+      "status": "BLOCKED_PACKAGE_UNAVAILABLE",
+      "integration_effort": null,
+      "measured_value": null,
+      "reason": "langchain is not installed; no rewrite or installation performed",
+      "decision": "NOT_SELECTED"
+    },
+    {
+      "name": "LangGraph",
+      "status": "BLOCKED_PACKAGE_UNAVAILABLE",
+      "integration_effort": null,
+      "measured_value": null,
+      "reason": "langgraph is not installed and no stateful workflow requirement is demonstrated",
+      "decision": "NOT_SELECTED"
+    },
+    {
+      "name": "LlamaIndex",
+      "status": "BLOCKED_PACKAGE_UNAVAILABLE",
+      "integration_effort": null,
+      "measured_value": null,
+      "reason": "llama_index is not installed; structured/provenance value remains unproven",
+      "decision": "NOT_SELECTED"
+    }
+  ],
+  "decision": "CUSTOM_PREFERRED",
+  "limitation": "This is not a runtime framework performance benchmark; it is a controlled availability and integration-value assessment."
+}

@@ -1,0 +1,28 @@
+{
+  "artifact_type": "phase6b_embedding_benchmark",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "dataset": "artifacts/semantic_benchmark_dataset.json",
+  "dataset_case_count": 4,
+  "candidate_manifest": "artifacts/phase6b_semantic_candidate_manifest.json",
+  "candidate_count": 635,
+  "models": [
+    {
+      "model": "bge-m3",
+      "status": "BLOCKED",
+      "reason": "Model path is not local; FlagEmbedding/model runtime is unavailable. No download attempted.",
+      "metrics": null
+    },
+    {
+      "model": "multilingual-e5-large",
+      "status": "BLOCKED",
+      "reason": "Model path is not local; sentence-transformers/model runtime is unavailable. No download attempted.",
+      "metrics": null
+    }
+  ],
+  "reproducibility": {
+    "same_candidate_corpus_required": true,
+    "benchmark_measurements_completed": false,
+    "fabricated_results": false
+  },
+  "status": "ENVIRONMENT_BLOCKED"
+}

@@ -1,0 +1,5 @@
+# Isolated benchmark environment/database only.
+# PostgreSQL client with binary wheels for local execution.
+psycopg[binary]>=3.2,<4
+pgvector>=0.3,<1
+numpy>=1.26,<3

@@ -1,0 +1,14 @@
+{
+  "artifact_type": "phase7_index_manifest",
+  "status": "CONFIGURED_NOT_EXECUTED",
+  "canonical_identity": "content_unit_id",
+  "candidate_manifest": "artifacts/phase6b_semantic_candidate_manifest.json",
+  "candidate_count": 635,
+  "excluded_source_candidate_count": 0,
+  "embedding_provider": "environment-configured cloud provider",
+  "vector_provider": "environment-configured cloud vector service",
+  "model_weights_local": false,
+  "full_index_build": "NOT_EXECUTED",
+  "dry_run_supported": false,
+  "reason": "Cloud credentials and provider endpoints are not configured in this validation environment; no semantic results are fabricated."
+}

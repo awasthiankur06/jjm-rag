@@ -1,0 +1,145 @@
+{
+  "artifact_type": "phase6a2_real_parser_canonical_postgresql_ingestion",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "execution_ids": [
+    "55cad341-a953-4a7c-bcbd-6566298bc0c9",
+    "5c1b844b-ab95-4c82-bd69-b7675484485e"
+  ],
+  "repository_revision": null,
+  "database": {
+    "type": "disposable_local_postgresql",
+    "name": "jjm_rag_phase6a_test",
+    "postgresql_version": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+    "credentials_recorded": false,
+    "production_database": false
+  },
+  "source_reconciliation": {
+    "physical_sources": 45,
+    "eligible_sources": 44,
+    "excluded_sources": 1,
+    "successful_first_run": 44,
+    "failed_first_run": 0,
+    "already_ingested_second_run": 44,
+    "newly_ingested_second_run": 0,
+    "excluded_filename": "Status of Pipe Water Supply in School (2).xls"
+  },
+  "parser_and_canonical_flow": {
+    "flow": "source -> validation -> parser -> canonicalization -> document/version -> table/section -> record/observation -> geography/reporting -> content -> provenance -> PostgreSQL",
+    "html_xls_parser": "html_table_parser",
+    "pdf_parser": "pdf_parser",
+    "ocr_pdf_source_supported": true,
+    "nul_text_sanitization": true,
+    "header_rows_preserved_as_content": true,
+    "cell_level_provenance": true
+  },
+  "counts": {
+    "documents": 44,
+    "document_versions": 44,
+    "structured_records": 34310,
+    "observations": 34310,
+    "canonical_content_units": 3557,
+    "provenance_records": 37867,
+    "geography_dimensions": 2700,
+    "reporting_dimensions": 43,
+    "ingestion_audit_rows": 88
+  },
+  "audit": {
+    "SUCCESS": 44,
+    "ALREADY_INGESTED": 44,
+    "FAILED": 0,
+    "EXCLUDED": 0,
+    "parser_statuses_observed": ["html_table_parser", "pdf_parser"]
+  },
+  "family_counts": {
+    "policy": 3,
+    "report": 22,
+    "sanction": 1,
+    "template": 8,
+    "unknown": 10
+  },
+  "representative_provenance": {
+    "html_xls": {
+      "filename": "CS1 A. Coverage.xls",
+      "source_format": "html_table",
+      "table": "Table 1",
+      "row_index": 1,
+      "column_index": 2,
+      "cell_reference": "R2C3"
+    },
+    "normal_pdf": {
+      "filename": "FHTCDataTable.pdf",
+      "source_format": "pdf",
+      "page_provenance": "persisted through PDF page sections"
+    },
+    "ocr_pdf": {
+      "filename": "Operational-Guidelines-JJM-2.pdf",
+      "source_format": "pdf",
+      "ocr_artifact_source_hash_verified": true,
+      "page_provenance": "persisted through OCR page sections"
+    }
+  },
+  "sanity_checks": {
+    "distinct_states": 152,
+    "distinct_districts": 796,
+    "numeric_observations": 28437,
+    "percentage_observations": 1090,
+    "date_observations": 138,
+    "observations_without_geography": 569,
+    "observations_without_reporting_period": 0
+  },
+  "idempotency": {
+    "result": "PASS",
+    "first_run_counts_equal_second_run_counts": true,
+    "logical_identity_strategy": [
+      "documents.sha256",
+      "document_id",
+      "version_id",
+      "record_id",
+      "observation_id",
+      "content_id",
+      "provenance_id"
+    ],
+    "audit_rows_are_operationally_additive": true
+  },
+  "excluded_source": {
+    "result": "PASS",
+    "physically_present": true,
+    "production_document_count": 0,
+    "production_content_count": 0,
+    "production_observation_count": 0,
+    "indexed": false
+  },
+  "tests": {
+    "targeted_phase6a2": "2 passed, 1 warning",
+    "full_pytest": "29 passed, 1 warning",
+    "failed": 0,
+    "skipped": 0
+  },
+  "preservation": {
+    "protected_artifacts_modified": false,
+    "corpus_hashes": "MATCH",
+    "physical_corpus_files": 45,
+    "production_usable_sources": 44,
+    "retrieval_cases": 40,
+    "recall_at_10": 1.0,
+    "cross_document_accuracy": 1.0,
+    "provenance_accuracy": 1.0,
+    "zero_regressions": true,
+    "embeddings_added": false,
+    "pgvector_added": false,
+    "grok_calls_added": false
+  },
+  "security": {
+    "plaintext_password_in_project": false,
+    "credential_bearing_dsn_in_artifacts": false,
+    "secret_scan": "PASS",
+    "package_json_password_removed": true
+  },
+  "remaining_limitations": [
+    "No formal performance benchmark was performed.",
+    "Geography and reporting counts reflect source-observed values only; NULL/absent values remain unobserved rather than fabricated.",
+    "Repository has no Git HEAD available for a revision identifier."
+  ],
+  "final_gate": "PHASE_6A_PARTIALLY_VALIDATED",
+  "gate_reason": "All 44 eligible sources completed the real parser-to-canonical-to-PostgreSQL flow with structured observations, geography, reporting, provenance, audit rows, and idempotent re-ingestion. The gate remains partial because this phase validates the ingestion foundation and current parser coverage, not a complete production semantic/search system."
+}

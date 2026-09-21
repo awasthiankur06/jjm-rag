@@ -1,0 +1,28 @@
+{
+  "artifact_type": "phase7_2_retrieval_remediation",
+  "status": "REMEDIATION_VALIDATED_BOUNDED_Q001_Q015",
+  "confirmed_root_causes": [
+    "PostgreSQL exact and lexical retrieval previously treated the entire query as one substring, causing broad misses.",
+    "Structured retrieval previously filtered geography only and returned arbitrary record rows when query constraints were absent.",
+    "Router vocabulary did not cover corpus terms such as highest, planned, installed, geotagged, population, and report identity patterns.",
+    "Fusion compared incompatible raw relevance scores across retrieval channels, allowing generic structured rows to dominate semantic evidence."
+  ],
+  "fixes_implemented": [
+    "Token-aware parameterized exact retrieval across filename, format code, and canonical content.",
+    "Token-aware lexical retrieval across canonical content and document metadata.",
+    "Structured retrieval query-term coverage across document, record, and canonical fields.",
+    "Expanded deterministic routing vocabulary.",
+    "Rank-normalized fusion across exact, structured, lexical, and semantic channels.",
+    "Qdrant client 1.19 query_points compatibility and canonical content_unit_id mapping."
+  ],
+  "before_q001_q015_expected_hits": ["Q005", "Q015"],
+  "after_q001_q015_expected_hits": ["Q003", "Q004", "Q006", "Q008"],
+  "after_q001_q015_misses": ["Q001", "Q002", "Q005", "Q007", "Q009", "Q010", "Q011", "Q012", "Q013", "Q014", "Q015"],
+  "remaining_issue": "Production PostgreSQL field/source coverage and fusion still fail to preserve expected evidence for most cases; Q015 regressed after rank-normalized fusion. Further changes require dedicated diagnosis, not score tuning.",
+  "focused_tests": "4 passed, 1 warning",
+  "bounded_rerun": {"cases": 15, "gemini_calls": 15, "qdrant_searches": 15, "document_embeddings": 0, "qdrant_writes": 0, "expected_hit_cases": ["Q003", "Q004", "Q006", "Q008"], "remaining_misses": ["Q001", "Q002", "Q005", "Q007", "Q009", "Q010", "Q011", "Q012", "Q013", "Q014", "Q015"]},
+  "benchmark_modified": false,
+  "qdrant_writes": 0,
+  "document_embeddings": 0,
+  "final_gate": "PHASE_7_2_GEMINI_PARTIALLY_READY"
+}

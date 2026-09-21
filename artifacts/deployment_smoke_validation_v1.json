@@ -1,0 +1,33 @@
+{
+  "artifact_type": "separate_disposable_postgres_deployment_smoke",
+  "timestamp": "2026-09-18T05:20:20.071409+00:00",
+  "database_configuration_type": "local_disposable_postgresql",
+  "database_name": "jjm_rag_deployment_smoke",
+  "postgres_version": "18.6",
+  "migration_and_ingestion": {
+    "documents": 44,
+    "structured_records": 30934,
+    "observations": 30934,
+    "canonical_content": 3466,
+    "provenance_records": 34400,
+    "excluded_source_documents": 0,
+    "second_ingestion": "44 ALREADY_INGESTED"
+  },
+  "qdrant": {
+    "collection_validation": "545 expected/545 points; 0 missing, stale, text mismatch, or excluded points",
+    "reembedded": false
+  },
+  "queries": {
+    "direct_numeric": "Maharashtra NABL district/regional labs = 34",
+    "calculation": "Assam/Maharashtra rural-population difference = 35856037",
+    "policy": "Operational Guidelines PDF exact evidence includes page provenance",
+    "missing_entity": "abstained",
+    "mixed_scope": "abstained"
+  },
+  "transaction_rollback": {
+    "before": 0,
+    "after": 0,
+    "passed": true
+  },
+  "gate": "PASS"
+}

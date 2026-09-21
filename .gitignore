@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+
+# Recreated locally from package manifests or operational commands.
+node_modules/
+tmp/
+
+# Raw corpus files are retained locally and referenced by manifests; they are
+# not application source and should use the controlled corpus distribution.
+knowlade base files/

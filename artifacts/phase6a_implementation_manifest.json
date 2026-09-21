@@ -1,0 +1,53 @@
+{
+  "artifact_type": "phase6a_implementation_manifest",
+  "timestamp": "2026-09-08T00:00:00Z",
+  "repository_revision": "phase6a_foundation",
+  "migration_version": "001_initial_schema.sql",
+  "files_added": [
+    "db/migrations/001_initial_schema.sql",
+    "jjm_rag/persistence/__init__.py",
+    "jjm_rag/persistence/database.py",
+    "jjm_rag/persistence/repositories/__init__.py",
+    "jjm_rag/persistence/repositories/documents.py",
+    "jjm_rag/persistence/repositories/versions.py",
+    "jjm_rag/persistence/repositories/provenance.py",
+    "jjm_rag/persistence/repositories/records.py",
+    "jjm_rag/persistence/repositories/observations.py",
+    "jjm_rag/persistence/repositories/content.py",
+    "jjm_rag/ingestion/factory.py",
+    "jjm_rag/ingestion/cli.py",
+    "artifacts/phase6a_baseline_identity.json",
+    "artifacts/phase6a_implementation_manifest.json",
+    "docs/PHASE_6A_PRODUCTION_FOUNDATION.md",
+    "docs/DATABASE_SCHEMA.md",
+    "docs/INGESTION_PIPELINE.md",
+    "tests/test_phase6a_foundation.py"
+  ],
+  "files_changed": [
+    "jjm_rag/__init__.py"
+  ],
+  "configuration": {
+    "database_url_env": "JJM_DATABASE_URL",
+    "sqlite_env": "JJM_SQLITE_PATH",
+    "postgresql_required": false,
+    "vector_support": "deferred"
+  },
+  "test_results": {
+    "pytest_targeted": "passed",
+    "status": "phase6a_foundation_tests_green"
+  },
+  "database_availability": "NOT_VERIFIED_FOR_POSTGRESQL",
+  "ingestion_execution_status": "DRY_RUN_ONLY",
+  "record_counts": {
+    "ingested": null,
+    "observations": null,
+    "content_units": null
+  },
+  "excluded_source_status": {
+    "filename": "Status of Pipe Water Supply in School (2).xls",
+    "status": "EXCLUDED_CORRUPTED_SOURCE",
+    "not_indexed": true,
+    "not_persisted_as_production_content": true
+  },
+  "baseline_preservation_status": "validated_before_phase6a"
+}

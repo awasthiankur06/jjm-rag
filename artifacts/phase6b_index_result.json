@@ -1,0 +1,34 @@
+{
+  "artifact_type": "phase6b_semantic_index_result",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "candidate_manifest": "artifacts/phase6b_semantic_candidate_manifest.json",
+  "candidate_count": 635,
+  "prototype": {
+    "contract": "jjm_rag.semantic.contracts",
+    "in_memory_index": "jjm_rag.semantic.index.InMemorySemanticIndex",
+    "model_partitioned": true,
+    "deterministic_identity": true,
+    "idempotent_upsert_test": "PASS",
+    "metadata_filter_contract": true,
+    "provenance_preservation_contract": true
+  },
+  "embedding_index": {
+    "status": "NOT_EXECUTED",
+    "reason": "No shortlisted embedding model is locally available and pgvector is unavailable.",
+    "canonical_data_modified": false,
+    "duplicate_logical_records": null
+  },
+  "excluded_source_candidate_count": 0,
+  "retrieval_regression": {
+    "result": "PASS_PRESERVED",
+    "executed_cases": 40,
+    "recall_at_10": 1.0,
+    "exact_retrieval_accuracy": 0.96875,
+    "structured_retrieval_accuracy": 0.92,
+    "hybrid_retrieval_accuracy": 1.0,
+    "cross_document_accuracy": 1.0,
+    "provenance_accuracy": 1.0,
+    "metrics_match_protected_post_remediation": true
+  },
+  "status": "FOUNDATION_ONLY_ENVIRONMENT_BLOCKED"
+}

@@ -1,0 +1,4 @@
+# Isolated xAI benchmark environment.
+# Uses the official OpenAI-compatible client endpoint documented by xAI.
+openai>=1.60,<2
+pydantic>=2.7,<3

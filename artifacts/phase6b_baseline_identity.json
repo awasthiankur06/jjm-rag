@@ -1,0 +1,37 @@
+{
+  "artifact_type": "phase6b_baseline_identity",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "protected_phase5_hashes": {
+    "artifacts/phase5_baseline_identity.json": "b26db5198ca6415ecc1c4b7dd16654836c16a2c0ec27ef57e9bd5a8d002f3ddb",
+    "artifacts/retrieval_evaluation_post_remediation.json": "1be406020e988b51b0613303d6d6f8fcd68ebd60eec31c0c61f3f0750e2857bf",
+    "artifacts/post_remediation_regression.json": "eb7d8d23e6a2e77b8eb43fc269897422c037cb72c203fedfb7ac07d278a8560f",
+    "artifacts/query_evaluation_cases.json": "eea71106189192336e11749209b27beb827fe9e723f7a737ad963472d1695dd9",
+    "artifacts/corpus_manifest_final.json": "7970cf0a31d6b1fad97c2116e008290f926f40ba851d4872d6c900c98b502a59"
+  },
+  "phase6a2_corpus_identity": {
+    "physical_files": 45,
+    "eligible_sources": 44,
+    "excluded_sources": 1,
+    "structured_records": 34310,
+    "observations": 34310,
+    "canonical_content_units": 3557,
+    "provenance_records": 37867,
+    "geography_dimensions": 2700,
+    "reporting_dimensions": 43,
+    "excluded_source_indexed": false
+  },
+  "retrieval_baseline": {
+    "cases": 40,
+    "recall_at_10": 1.0,
+    "cross_document_accuracy": 1.0,
+    "provenance_accuracy": 1.0,
+    "zero_regressions": true
+  },
+  "phase6b_changes": [
+    "semantic candidate policy and manifest",
+    "embedding/provider contracts",
+    "model-partitioned in-memory semantic index prototype",
+    "benchmark and pgvector blocker artifacts"
+  ],
+  "protected_artifacts_modified": false
+}

@@ -1,0 +1,39 @@
+{
+  "artifact_type": "grok_generation_benchmark",
+  "status": "BLOCKED_BY_MISSING_XAI_API_KEY",
+  "timestamp": "2026-09-08",
+  "environment": {
+    "python": "3.11.6",
+    "xai_api_key_present": false,
+    "external_request_made": false,
+    "complete_corpus_uploaded": false
+  },
+  "model_candidate": "grok-4.6",
+  "endpoint": "https://api.x.ai/v1",
+  "security_status": "No source data or credentials were sent. Data-transfer approval remains required.",
+  "required_cases": [
+    {"id":"Q002","class":"policy"},
+    {"id":"Q003","class":"exact_lookup"},
+    {"id":"Q009","class":"structured_numeric"},
+    {"id":"Q036","class":"cross_document"},
+    {"id":"Q021","class":"version_sensitive"},
+    {"id":"INSUFFICIENT_SYNTHETIC","class":"insufficient_evidence"},
+    {"id":"Q014","class":"provenance_citation"},
+    {"id":"Q039","class":"multi_part_hybrid"}
+  ],
+  "measurements": {
+    "grounding": null,
+    "numeric_fidelity": null,
+    "scope_fidelity": null,
+    "abstention": null,
+    "citation_fidelity": null,
+    "structured_output": null,
+    "unsupported_fact_rate": null,
+    "latency_ms": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "cost_usd": null
+  },
+  "decision": "REQUIRES_BENCHMARK",
+  "next_step": "Run only after XAI_API_KEY, data-transfer approval, model/version, timeout, token budget, and retention policy are confirmed. Send minimum retrieved evidence only; never send the complete corpus."
+}

@@ -1,0 +1,18 @@
+{
+  "case_count": 40,
+  "routing_accuracy": 0.85,
+  "recall_at_1": 0.48717948717948717,
+  "recall_at_3": 0.8141025641025641,
+  "recall_at_5": 0.8782051282051282,
+  "recall_at_10": 0.9444444444444445,
+  "exact_match_accuracy": 0.96875,
+  "structured_source_accuracy": 0.92,
+  "provenance_accuracy": 0.975,
+  "semantic_source_hit_rate": 0.5,
+  "hybrid_source_hit_rate": 1.0,
+  "failure_categories": {
+    "EXACT_RETRIEVAL": 1,
+    "VERSION_HANDLING": 2,
+    "CROSS_DOCUMENT_ALIGNMENT": 1
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "artifact_type": "phase7_1b_qdrant_diagnostic",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "configuration": {
+    "loaded_through": "jjm_rag.config.settings plus repository .env path",
+    "qdrant_configured": true,
+    "qdrant_url_configured": true,
+    "qdrant_api_key_configured": true,
+    "collection": "jjm_rag_semantic_v1"
+  },
+  "client": {
+    "qdrant_client_version": "1.19.0",
+    "python_version": "3.11.6"
+  },
+  "network": {
+    "dns": "PASS",
+    "tcp_443": "PASS",
+    "tls": "PASS"
+  },
+  "qdrant_api": {
+    "connectivity": "FAIL",
+    "http_status": null,
+    "response_status": null,
+    "exception_class": "ResponseHandlingException",
+    "failure_class": "TCP_CONNECTION_TIMEOUT",
+    "bounded_timeout_seconds": 15,
+    "collection_exists": "UNKNOWN"
+  },
+  "writes": {
+    "qdrant_writes": 0,
+    "collection_mutations": 0,
+    "vector_upserts": 0
+  },
+  "collection_validation": "NOT_EXECUTED_AFTER_READ_TIMEOUT",
+  "code_change": "NONE",
+  "pytest": "39 passed, 1 warning",
+  "preservation": {
+    "protected_artifacts": "UNCHANGED",
+    "corpus_hashes": "MATCH",
+    "excluded_source": "UNCHANGED_AND_UNINDEXED"
+  },
+  "security": {
+    "credentials_printed": false,
+    "credentials_stored": false,
+    "env_ignored": true,
+    "env_example_placeholder_only": true,
+    "local_model_weights": false
+  },
+  "final_gate": "PHASE_7_1B_QDRANT_BLOCKED",
+  "blocker": "Qdrant Cloud read-only collection inspection timed out after DNS, TCP 443, and TLS all passed. No collection configuration could be safely verified."
+}

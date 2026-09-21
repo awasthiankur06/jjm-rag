@@ -1,0 +1,28 @@
+{
+  "artifact_type": "phase7_provider_validation",
+  "status": "UNAVAILABLE_NOT_CONFIGURED",
+  "embedding_provider": {
+    "implementation": "CloudEmbeddingProvider",
+    "configured": false,
+    "local_inference": false,
+    "api_key_recorded": false
+  },
+  "vector_store": {
+    "implementation": "CloudVectorStore",
+    "configured": false,
+    "api_key_recorded": false
+  },
+  "llm_provider": {
+    "implementation": "XaiLLMProvider",
+    "configured": false,
+    "api_key_recorded": false
+  },
+  "api_boundary": {
+    "implementation": "FastAPI",
+    "configured_dependency": true,
+    "installed_in_current_environment": false,
+    "import_validation": "BLOCKED_BY_MISSING_FASTAPI_RUNTIME"
+  },
+  "cloud_calls_executed": false,
+  "reason": "No provider credentials or endpoints are configured; paid cloud calls were not attempted."
+}

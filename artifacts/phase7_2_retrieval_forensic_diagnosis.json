@@ -1,0 +1,155 @@
+{
+  "artifact_type": "phase7_2_retrieval_forensic_diagnosis",
+  "status": "BOUNDED_VALIDATION_ONLY",
+  "phase7_2k_r1": {
+    "status": "COMPLETED_Q001_Q003",
+    "artifact": "artifacts/phase7_2k_r1_candidate_forensic.json",
+    "candidate_sets_captured": true,
+    "gemini_calls": 3,
+    "qdrant_searches": 3,
+    "qdrant_writes": 0,
+    "document_embeddings": 0,
+    "earliest_loss": {
+      "Q001": "POSTGRES_EXACT_OR_LEXICAL",
+      "Q002": "POSTGRES_EXACT_OR_LEXICAL",
+      "Q003": "SEMANTIC_ABSENT_FROM_25"
+    },
+    "runner_ready_for_Q004_Q015": true
+  },
+  "phase7_2k_r2": {
+    "status": "COMPLETED_Q004_Q006",
+    "candidate_sets_captured": true,
+    "cases": {
+      "Q004": {"expected_hit": false, "earliest_loss": "FUSION_OR_FINAL_TRUNCATION", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q005": {"expected_hit": false, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q006": {"expected_hit": true, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []}
+    },
+    "gemini_calls": 3,
+    "qdrant_searches": 3,
+    "qdrant_writes": 0,
+    "document_embeddings": 0,
+    "runner_ready_for_Q007_Q015": true
+  },
+  "phase7_2k_r3": {
+    "status": "COMPLETED_Q007_Q010",
+    "candidate_sets_captured": true,
+    "cases": {
+      "Q007": {"expected_hit": false, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q008": {"expected_hit": true, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q009": {"expected_hit": true, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q010": {"expected_hit": false, "earliest_loss": "FUSION_OR_FINAL_TRUNCATION", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []}
+    },
+    "gemini_calls": 4,
+    "qdrant_searches": 4,
+    "qdrant_writes": 0,
+    "document_embeddings": 0,
+    "runner_ready_for_Q011_Q015": true
+  },
+  "phase7_2k_r4": {
+    "status": "COMPLETED_Q011_Q015",
+    "candidate_sets_captured": true,
+    "cases": {
+      "Q011": {"expected_hit": false, "earliest_loss": "FUSION_OR_FINAL_TRUNCATION", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q012": {"expected_hit": false, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q013": {"expected_hit": false, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q014": {"expected_hit": false, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": []},
+      "Q015": {"expected_hit": true, "earliest_loss": "POSTGRES_EXACT_OR_LEXICAL", "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10}, "qdrant_expected_sources_present": ["Progress at district level.xls"]}
+    },
+    "gemini_calls": 5,
+    "qdrant_searches": 5,
+    "qdrant_writes": 0,
+    "document_embeddings": 0,
+    "runner_complete_through": "Q015"
+  },
+  "phase7_2k_r4": {
+    "status": "COMPLETED_Q011_Q015",
+    "candidate_sets_captured": true,
+    "cases": {
+      "Q011": {"expected_hit": false, "earliest_loss": "FUSION_OR_FINAL_TRUNCATION", "qdrant_expected_sources_present": []},
+      "Q012": {"expected_hit": false, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "qdrant_expected_sources_present": []},
+      "Q013": {"expected_hit": false, "earliest_loss": "SEMANTIC_ABSENT_FROM_25", "qdrant_expected_sources_present": []},
+      "Q014": {"expected_hit": false, "earliest_loss": "BENCHMARK_SCOPE", "qdrant_expected_sources_present": []},
+      "Q015": {"expected_hit": true, "earliest_loss": "POSTGRES_EXACT_OR_LEXICAL", "qdrant_expected_sources_present": ["Progress at district level.xls"]}
+    },
+    "gemini_calls": 5,
+    "qdrant_searches": 5,
+    "qdrant_writes": 0,
+    "document_embeddings": 0,
+    "runner_complete_through": "Q015"
+  },
+  "consolidated_q001_q015": {
+    "processed_cases": 15,
+    "expected_hit_cases": ["Q001", "Q002", "Q003", "Q006", "Q008", "Q009", "Q015"],
+    "expected_miss_cases": ["Q004", "Q005", "Q007", "Q010", "Q011", "Q012", "Q013", "Q014"],
+    "earliest_loss_counts_for_misses": {"FUSION_OR_FINAL_TRUNCATION": 3, "SEMANTIC_ABSENT_FROM_25": 4, "BENCHMARK_SCOPE": 1},
+    "postgres_sql_instrumentation": "SQL_NOT_INSTRUMENTED",
+    "routing_diagnosis": "Captured route and active channels; no routing change implemented.",
+    "normalization_diagnosis": "No canonical identity loss was observed in captured semantic candidates.",
+    "q015": {"semantic_expected_source_present": true, "final_expected_source_present": true, "fusion_loss_observed": false, "full_fusion_trace": "bounded candidate capture available; raw per-candidate normalized score was not exposed by current production objects"},
+    "general_patterns": ["25-point semantic scope limits expected evidence for several cases", "structured/exact/lexical candidate relevance remains uneven", "multi-source evidence remains vulnerable to fusion/truncation", "production candidate objects do not expose full matched-field/normalized-score instrumentation"],
+    "remaining_cases": ["Q016", "Q017", "Q018", "Q019", "Q020", "Q021", "Q022", "Q023", "Q024", "Q025", "Q026", "Q027", "Q028", "Q029", "Q030", "Q031", "Q032", "Q033", "Q034", "Q035", "Q036", "Q037", "Q038", "Q039", "Q040"]
+  },
+  "timestamp": "2026-09-10T00:00:00Z",
+  "original_runner_issue": "The prior runner processed all 40 cases in one unbounded loop and could trigger repeated Gemini/Qdrant work per case without checkpointing.",
+  "bounded_runner": {
+    "max_gemini_calls_per_case": 1,
+    "qdrant_searches_per_case": 1,
+    "postgres_queries_per_case": 3,
+    "document_embeddings": 0,
+    "qdrant_writes": 0,
+    "checkpoint": "tmp/phase7_2_forensic_checkpoint.json",
+    "result": "tmp/phase7_2_forensic_result.json",
+    "resume_supported": true,
+    "rate_limit_status": "NOT_ENCOUNTERED",
+    "case_range_executed": [1, 15],
+    "q006_q015_gemini_calls": 10,
+    "q006_q015_qdrant_searches": 10
+  },
+  "first_five_results": [
+    {"case_id": "Q001", "status": "COMPLETED", "expected_hit": false, "gemini_calls": 1, "qdrant_searches": 1, "postgres_queries": 3, "elapsed_ms": 7690.71},
+    {"case_id": "Q002", "status": "COMPLETED", "expected_hit": false, "gemini_calls": 1, "qdrant_searches": 1, "postgres_queries": 3, "elapsed_ms": 3459.76},
+    {"case_id": "Q003", "status": "COMPLETED", "expected_hit": false, "gemini_calls": 1, "qdrant_searches": 1, "postgres_queries": 3, "elapsed_ms": 3969.08},
+    {"case_id": "Q004", "status": "COMPLETED", "expected_hit": false, "gemini_calls": 1, "qdrant_searches": 1, "postgres_queries": 3, "elapsed_ms": 5060.79},
+    {"case_id": "Q005", "status": "COMPLETED", "expected_hit": true, "gemini_calls": 1, "qdrant_searches": 1, "postgres_queries": 3, "elapsed_ms": 3656.64}
+  ],
+  "resume_test": {
+    "status": "PASS",
+    "skipped_cases": ["Q001", "Q002", "Q003", "Q004", "Q005"],
+    "new_gemini_calls": 0,
+    "new_qdrant_searches": 0
+  },
+  "diagnostic_interpretation": {
+    "prototype_vs_production_comparison": "captured per case in checkpoint records",
+    "full_40_case_diagnosis": "NOT_COMPLETE",
+    "production_fixes": "PARTIAL_GENERAL_REMEDIATION",
+    "benchmark_semantics_changed": false,
+    "q006_q015_observed_patterns": {
+      "exact_empty_cases": ["Q006", "Q007", "Q008", "Q009", "Q010", "Q011", "Q012", "Q013", "Q014", "Q015"],
+      "lexical_empty_cases": ["Q006", "Q007", "Q008", "Q009", "Q010", "Q011", "Q012", "Q013", "Q014", "Q015"],
+      "structured_generic_source_misses": ["Q006", "Q007", "Q008", "Q009", "Q010", "Q011", "Q012", "Q013", "Q014", "Q015"],
+      "routing_mismatch_cases": ["Q006", "Q007", "Q009", "Q010", "Q011", "Q012", "Q014", "Q015"],
+      "semantic_expected_source_present": ["Q015"],
+      "semantic_expected_source_absent_from_25_point_collection": ["Q006", "Q007", "Q008", "Q009", "Q010", "Q011", "Q012", "Q013", "Q014"],
+      "earliest_loss_summary": "For Q006-Q014, expected sources are absent from the 25-point Gemini collection and production exact/lexical paths return no hits; structured/routing paths then select unrelated generic sources. Q015 is present through semantic retrieval but is lost in production fusion because unrelated structured results dominate the top-k selection."
+    },
+    "remediation_result": {
+      "before_expected_hit_cases": ["Q005", "Q015"],
+      "after_expected_hit_cases": ["Q003", "Q004", "Q006", "Q008"],
+      "remaining_misses": ["Q001", "Q002", "Q005", "Q007", "Q009", "Q010", "Q011", "Q012", "Q013", "Q014", "Q015"],
+      "artifact": "artifacts/phase7_2_retrieval_remediation.json",
+      "phase7_2j_status": "BOUNDED_RERUN_COMPLETED_REMAINING_FAILURES"
+    }
+  },
+  "integrity": {
+    "qdrant_point_count": 25,
+    "qdrant_writes": 0,
+    "document_embeddings": 0,
+    "excluded_source_points": 0,
+    "protected_artifacts": "UNCHANGED",
+    "corpus_hashes": "MATCH",
+    "pytest": "43 passed, 1 warning",
+    "secrets_exposed": false
+  },
+  "remaining_work": "Resume from case 6 in bounded batches only after explicit approval; do not run all remaining cases automatically.",
+  "final_gate": "PHASE_7_2_GEMINI_PARTIALLY_READY"
+}

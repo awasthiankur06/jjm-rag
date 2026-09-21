@@ -1,0 +1,47 @@
+{
+  "artifact_type": "phase7_2k_r1_bounded_candidate_forensic",
+  "status": "BOUNDED_VALIDATION_ONLY",
+  "cases": ["Q001", "Q002", "Q003"],
+  "completed": [
+    {
+      "case_id": "Q001",
+      "expected_hit": true,
+      "earliest_loss": "POSTGRES_EXACT_OR_LEXICAL",
+      "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10},
+      "active_channels": ["exact", "structured", "lexical", "semantic"],
+      "qdrant_expected_sources_present": ["JJM_Operational_Guidelines.pdf", "Operational-Guidelines-JJM-2.pdf"],
+      "gemini_calls": 1,
+      "qdrant_searches": 1,
+      "postgres_queries": 3
+    },
+    {
+      "case_id": "Q002",
+      "expected_hit": true,
+      "earliest_loss": "POSTGRES_EXACT_OR_LEXICAL",
+      "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10},
+      "active_channels": ["exact", "structured", "lexical", "semantic"],
+      "qdrant_expected_sources_present": ["JJM_Operational_Guidelines.pdf", "Operational-Guidelines-JJM-2.pdf"],
+      "gemini_calls": 1,
+      "qdrant_searches": 1,
+      "postgres_queries": 3
+    },
+    {
+      "case_id": "Q003",
+      "expected_hit": true,
+      "earliest_loss": "SEMANTIC_ABSENT_FROM_25",
+      "candidate_counts": {"exact": 10, "structured": 10, "lexical": 10, "semantic": 10},
+      "active_channels": ["exact", "structured", "lexical", "semantic"],
+      "qdrant_expected_sources_present": [],
+      "gemini_calls": 1,
+      "qdrant_searches": 1,
+      "postgres_queries": 3
+    }
+  ],
+  "document_embeddings": 0,
+  "qdrant_writes": 0,
+  "resume": "READY_FOR_FURTHER_BOUNDED_RANGES",
+  "secrets_exposed": false,
+  "protected_artifacts_modified": false,
+  "corpus_modified": false,
+  "final_gate": "PHASE_7_2_GEMINI_PARTIALLY_READY"
+}

@@ -1,0 +1,53 @@
+{
+  "artifact_type": "phase6b1_environment_before",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "status": "OBSERVED",
+  "os": "Windows-10-10.0.26200-SP0",
+  "cpu": {
+    "description": "Intel64 Family 6 Model 165 Stepping 3, GenuineIntel",
+    "logical_cpus": 12,
+    "gpu": "Intel(R) UHD Graphics 630",
+    "cuda": false
+  },
+  "memory": {
+    "total_bytes": 8301809664,
+    "total_gib": 7.73,
+    "available_bytes": null,
+    "available_status": "NOT_MEASURED_BY_SELECTED_PYTHON_RUNTIME"
+  },
+  "disk": {
+    "workspace_drive": "D:",
+    "free_bytes": 956143489024,
+    "free_gib": 890.5
+  },
+  "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+  "tooling": {
+    "pip_on_path": false,
+    "python_module_pip": "26.2.1",
+    "uv": "0.12.10",
+    "psql_on_path": false,
+    "postgresql_service": "postgresql-x64-18 Running",
+    "psycopg": "3.3.5"
+  },
+  "packages": {
+    "numpy": "2.4.6",
+    "scipy": null,
+    "torch": null,
+    "transformers": null,
+    "sentence_transformers": null,
+    "FlagEmbedding": null,
+    "pgvector_python": null,
+    "psycopg": "3.3.5"
+  },
+  "postgresql": {
+    "server_version": "PostgreSQL 18.6",
+    "service_running": true,
+    "vector_extension": false
+  },
+  "model_runtime": {
+    "bge_m3": "NOT_AVAILABLE",
+    "multilingual_e5_large": "NOT_AVAILABLE"
+  },
+  "protected_artifacts_modified": false,
+  "credentials_recorded": false
+}

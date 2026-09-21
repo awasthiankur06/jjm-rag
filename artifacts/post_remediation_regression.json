@@ -1,0 +1,487 @@
+{
+  "artifact_type": "post_remediation_regression_comparison",
+  "generated_at": "2026-09-08T11:37:55.533089+00:00",
+  "inputs": {
+    "baseline": {
+      "path": "artifacts/retrieval_evaluation_baseline.json",
+      "sha256": "538b6d94720ae8c5d1f1f21b55bc952a5922b99100e01bb67ba061e91dc4344f"
+    },
+    "pre_remediation": {
+      "path": "artifacts/retrieval_evaluation_results.json",
+      "sha256": "893fc24e55206558a0afb6aba0ecc76356cfe024e387aadb135549b20e3695ff"
+    },
+    "post_remediation": {
+      "path": "artifacts/retrieval_evaluation_post_remediation.json",
+      "sha256": "1be406020e988b51b0613303d6d6f8fcd68ebd60eec31c0c61f3f0750e2857bf"
+    }
+  },
+  "case_count": 40,
+  "improved_case_ids": [
+    "Q014",
+    "Q021",
+    "Q036",
+    "Q040"
+  ],
+  "regressed_case_ids": [],
+  "failure_case_ids_post_remediation": [],
+  "metrics": {
+    "baseline": {
+      "routing_accuracy": 0.85,
+      "recall_at_1": 0.44444444444444453,
+      "recall_at_3": 0.8333333333333334,
+      "recall_at_5": 0.9230769230769231,
+      "recall_at_10": 0.9551282051282052,
+      "exact_match_accuracy": 0.9375,
+      "structured_source_accuracy": 0.92,
+      "numeric_aggregation_accuracy": "NOT_EVALUABLE",
+      "provenance_accuracy": 1.0,
+      "semantic_source_hit_rate": 0.5,
+      "hybrid_source_hit_rate": 1.0
+    },
+    "pre_remediation": {
+      "routing_accuracy": 0.85,
+      "recall_at_1": 0.48717948717948717,
+      "recall_at_3": 0.8141025641025641,
+      "recall_at_5": 0.8782051282051282,
+      "recall_at_10": 0.9444444444444445,
+      "exact_match_accuracy": 0.96875,
+      "structured_source_accuracy": 0.92,
+      "numeric_aggregation_accuracy": "NOT_EVALUABLE",
+      "provenance_accuracy": 0.975,
+      "semantic_source_hit_rate": 0.5,
+      "hybrid_source_hit_rate": 1.0
+    },
+    "post_remediation": {
+      "routing_accuracy": 0.85,
+      "recall_at_1": 0.4957264957264957,
+      "recall_at_3": 0.8653846153846154,
+      "recall_at_5": 0.9423076923076923,
+      "recall_at_10": 1.0,
+      "exact_match_accuracy": 0.96875,
+      "structured_source_accuracy": 0.92,
+      "exact_retrieval_accuracy": 0.96875,
+      "structured_retrieval_accuracy": 0.92,
+      "numeric_aggregation_accuracy": "NOT_EVALUABLE",
+      "provenance_accuracy": 1.0,
+      "semantic_source_hit_rate": 0.5,
+      "semantic_retrieval_accuracy": 0.5,
+      "hybrid_source_hit_rate": 1.0,
+      "hybrid_retrieval_accuracy": 1.0,
+      "cross_document_accuracy": 1.0
+    }
+  },
+  "failure_categories": {
+    "baseline": {
+      "CROSS_DOCUMENT_ALIGNMENT": 2,
+      "EXACT_RETRIEVAL": 1
+    },
+    "pre_remediation": {
+      "EXACT_RETRIEVAL": 1,
+      "VERSION_HANDLING": 2,
+      "CROSS_DOCUMENT_ALIGNMENT": 1
+    },
+    "post_remediation": {}
+  },
+  "matrix": [
+    {
+      "case_id": "Q001",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q002",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q003",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q004",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q005",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q006",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q007",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q008",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q009",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q010",
+      "baseline_status": "FAIL",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q011",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q012",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q013",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q014",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "FAIL",
+      "post_remediation_status": "PASS",
+      "improved": true,
+      "regressed": false,
+      "failure_category": null,
+      "notes": "improved from pre-remediation failure; targeted residual case"
+    },
+    {
+      "case_id": "Q015",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q016",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q017",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q018",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q019",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q020",
+      "baseline_status": "FAIL",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q021",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "FAIL",
+      "post_remediation_status": "PASS",
+      "improved": true,
+      "regressed": false,
+      "failure_category": null,
+      "notes": "improved from pre-remediation failure; targeted residual case"
+    },
+    {
+      "case_id": "Q022",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q023",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q024",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q025",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q026",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q027",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q028",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q029",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q030",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q031",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q032",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q033",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q034",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q035",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q036",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "FAIL",
+      "post_remediation_status": "PASS",
+      "improved": true,
+      "regressed": false,
+      "failure_category": null,
+      "notes": "improved from pre-remediation failure; targeted residual case"
+    },
+    {
+      "case_id": "Q037",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q038",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q039",
+      "baseline_status": "FAIL",
+      "pre_remediation_status": "PASS",
+      "post_remediation_status": "PASS",
+      "improved": false,
+      "regressed": false,
+      "failure_category": null,
+      "notes": ""
+    },
+    {
+      "case_id": "Q040",
+      "baseline_status": "PASS",
+      "pre_remediation_status": "FAIL",
+      "post_remediation_status": "PASS",
+      "improved": true,
+      "regressed": false,
+      "failure_category": null,
+      "notes": "improved from pre-remediation failure; targeted residual case"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-09-08T11:49:31.342929+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "cross_encoder_package_available": false
+  },
+  "corpus": {
+    "documents": 44,
+    "rows": 3042,
+    "pages": 334,
+    "semantic_units": 378
+  },
+  "artifact_type": "reranker_benchmark",
+  "status": "NO_RERANKER_RUN",
+  "baseline": {
+    "name": "validated hybrid retrieval without reranker",
+    "metrics": {
+      "recall_at_1": 0.4957264957264957,
+      "recall_at_3": 0.8653846153846154,
+      "recall_at_5": 0.9423076923076923,
+      "recall_at_10": 1.0,
+      "hybrid_retrieval_accuracy": 1.0
+    }
+  },
+  "candidate": {
+    "name": "cross-encoder reranker",
+    "status": "NOT_RUN",
+    "reason": "No reranker package/model is installed; no dependency or model download was introduced."
+  },
+  "decision": "NOT_JUSTIFIED",
+  "rationale": "Recall@10 and hybrid retrieval are 1.0. Recall@1 is 0.4957, so a later top-1 quality experiment may be useful, but no material benefit versus latency/complexity was measured."
+}

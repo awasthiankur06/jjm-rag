@@ -1,0 +1,92 @@
+{
+  "artifact_type": "final_release_readiness",
+  "timestamp": "2026-09-18T11:04:11+05:30",
+  "repository_revision": "NOT_AVAILABLE: workspace is not a Git repository",
+  "environment": {
+    "canonical_store": "local disposable PostgreSQL",
+    "semantic_store": "local Qdrant",
+    "qdrant_collection": "jjm_rag_semantic_gemini_embedding_001_v2_header_repair",
+    "qdrant_vector_configuration": {
+      "dimension": 768,
+      "distance": "COSINE",
+      "point_count": 545
+    },
+    "credentials_recorded": false
+  },
+  "canonical_corpus": {
+    "production_documents": 44,
+    "excluded_corrupted_sources": 1,
+    "excluded_filename": "Status of Pipe Water Supply in School (2).xls",
+    "qdrant_alignment": {
+      "expected_candidates": 545,
+      "points": 545,
+      "missing": 0,
+      "stale": 0,
+      "text_mismatches": 0,
+      "excluded_points": 0
+    }
+  },
+  "release_evaluation": {
+    "artifact": "artifacts/final_live_postgres_qdrant_release_validation.json",
+    "completed_cases": 40,
+    "routing_accuracy": 1.0,
+    "source_identification_accuracy": 1.0,
+    "exact_retrieval_accuracy": 1.0,
+    "lexical_retrieval_accuracy": 1.0,
+    "structured_retrieval_accuracy": 0.8,
+    "provenance_accuracy": 1.0,
+    "cross_document_accuracy": 1.0,
+    "recall_at_1": 0.688034188034188,
+    "recall_at_5": 0.967948717948718,
+    "recall_at_10": 1.0,
+    "excluded_source_safety": true,
+    "numeric_aggregation_accuracy": "NOT_EVALUABLE in the historical 40-case contract; measured separately below",
+    "regression_count": "NOT_EVALUABLE: no compatible complete current-baseline comparison contract"
+  },
+  "structured_subsignal_review": {
+    "non_answerable_as_phrased": [
+      "Q015: district ranking lacks a bounded geography/time selection",
+      "Q019: Maharashtra division is unnamed",
+      "Q024: financial-year request lacks a source/report selection",
+      "Q025: state or scheme record is unnamed",
+      "Q039: mixed policy and district numeric request lacks a named district"
+    ],
+    "action": "No retrieval change. The service preserves evidence or abstains rather than fabricating a structured value.",
+    "end_to_end_case_failures": 0
+  },
+  "numeric_acceptance": {
+    "artifact": "artifacts/numeric_acceptance_release_result_v1.json",
+    "cases": 8,
+    "passed": 8,
+    "failed": 0,
+    "accuracy": 1.0,
+    "strict_gate": "PASS"
+  },
+  "test_results": {
+    "pytest_total": 114,
+    "passed": 114,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 2,
+    "warnings_are": [
+      "Starlette BlockingPortal deprecation",
+      "PyPDF2 deprecation"
+    ]
+  },
+  "deployment_smoke": {
+    "artifact": "artifacts/deployment_smoke_validation_v1.json",
+    "result": "PASS",
+    "disposable_smoke_database_destroyed_after_validation": true
+  },
+  "preservation": {
+    "phase5_baseline_identity_sha256_prefix": "B26DB5198CA6415E",
+    "retrieval_evaluation_post_remediation_sha256_prefix": "1BE406020E988B51",
+    "post_remediation_regression_sha256_prefix": "EB7D8D23E6A2E77B",
+    "query_evaluation_cases_sha256_prefix": "EEA7110618919233",
+    "prototype_manifest_sha256_prefix": "1F6B733CFFAFCBED",
+    "corpus_manifest_final_sha256_prefix": "7970CF0A31D6B1FA",
+    "result": "UNCHANGED"
+  },
+  "operational_controls": "docs/PRODUCTION_OPERATIONS.md",
+  "final_gate": "RAG_PRODUCTION_READY"
+}

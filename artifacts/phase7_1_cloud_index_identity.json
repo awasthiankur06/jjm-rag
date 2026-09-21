@@ -1,0 +1,15 @@
+{
+  "artifact_type": "phase7_1_cloud_index_identity",
+  "canonical_identity": "content_unit_id",
+  "qdrant_point_identity": "uuid5(NAMESPACE_URL, 'jjm-rag:' + content_unit_id)",
+  "candidate_selection_version": "phase6b_numeric_dominant_row_policy",
+  "candidate_count": 635,
+  "corpus_version": "phase6a2_canonical_postgresql_corpus",
+  "provider": "voyageai_cloud_http",
+  "model": "voyage-4-large",
+  "dimension": 1024,
+  "distance": "COSINE",
+  "collection": "environment_configured",
+  "canonical_database_modified": false,
+  "excluded_source_indexed": false
+}

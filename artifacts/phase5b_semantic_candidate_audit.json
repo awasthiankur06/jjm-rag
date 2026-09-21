@@ -1,0 +1,75 @@
+{
+  "artifact_type": "phase5b_semantic_candidate_audit",
+  "timestamp": "2026-09-08T11:59:08.285355+00:00",
+  "candidate_count": 375,
+  "unique_unit_id_count": 375,
+  "empty_text_count": 4,
+  "duplicate_count": 4,
+  "excluded_source_count": 0,
+  "invalid_provenance_count": 0,
+  "corpus_hash_mismatch_count": 0,
+  "unit_type_counts": {
+    "pdf_page": 134,
+    "pdf_page_ocr": 200,
+    "report_description_metadata": 41
+  },
+  "problematic_units": [
+    {
+      "unit_id": "JJM_Operational_Guidelines.pdf::page::10",
+      "issue": "empty_text"
+    },
+    {
+      "unit_id": "JJM_Operational_Guidelines.pdf::page::131",
+      "issue": "empty_text"
+    },
+    {
+      "unit_id": "Operational-Guidelines-JJM-2.pdf::page::149",
+      "issue": "empty_text"
+    },
+    {
+      "unit_id": "Operational-Guidelines-JJM-2.pdf::page::199",
+      "issue": "empty_text"
+    },
+    {
+      "unit_id": "AssamDistrict wise number of Rural Population as on (01.xls::description",
+      "issue": "possible_raw_numeric_row_text"
+    },
+    {
+      "unit_id": "District wise number of Rural Population as on (01 (1).xls::description",
+      "issue": "possible_raw_numeric_row_text"
+    },
+    {
+      "unit_id": "District wise number of Rural Population as on (01 (2).xls::description",
+      "issue": "possible_raw_numeric_row_text"
+    },
+    {
+      "unit_id": "District wise number of Rural Population as on (01.xls::description",
+      "issue": "possible_raw_numeric_row_text"
+    },
+    {
+      "unit_id": "Format - F27 Status of Pipe Water Supply in Ashram.xls::description",
+      "issue": "possible_raw_numeric_row_text"
+    },
+    {
+      "unit_id": "State wise number of Rural Population as on (01_04.xls::description",
+      "issue": "possible_raw_numeric_row_text"
+    }
+  ],
+  "duplicate_groups": {
+    "129fbbf81ef1144e41845ef19d425ab97b5eb9ca3973a164308ad278c3451fc9": [
+      "JJM_Operational_Guidelines.pdf::page::10",
+      "JJM_Operational_Guidelines.pdf::page::131"
+    ],
+    "8a0ed5be02a5bbfdde9ee22669c1f4126c5dbf554b6d0a4ef85e24ee60c244ba": [
+      "Operational-Guidelines-JJM-2.pdf::page::149",
+      "Operational-Guidelines-JJM-2.pdf::page::199"
+    ],
+    "481a76ee1b2e2c27524fc39a856d20110acd7e6a4c64595c29b344223d1276a2": [
+      "Operational-Guidelines-JJM-2.pdf::page::196",
+      "Operational-Guidelines-JJM-2.pdf::page::197",
+      "Operational-Guidelines-JJM-2.pdf::page::198"
+    ]
+  },
+  "source_exclusion_rule": "Candidate pool built only from corpus pages and HTML document metadata; raw rows and excluded sources are excluded.",
+  "raw_numeric_rows_introduced": false
+}

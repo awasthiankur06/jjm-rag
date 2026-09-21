@@ -1,0 +1,69 @@
+{
+  "artifact_type": "phase7_1c_local_qdrant_validation",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "qdrant": {
+    "status": "LOCAL_QDRANT_REACHABLE",
+    "endpoint_type": "LOCAL",
+    "server_version": "1.18.2",
+    "client_version": "1.19.0",
+    "collection": "jjm_rag_semantic_v1",
+    "vector_dimension": 1024,
+    "distance": "COSINE",
+    "point_count_after_stage": 5,
+    "writes_performed": 5,
+    "collection_mutations": "created_or_verified_only",
+    "existing_collections_modified": false
+  },
+  "voyage": {
+    "provider": "Voyage AI",
+    "model": "voyage-4-large",
+    "dimension": 1024,
+    "document_embeddings": {"status": "PASS", "count": 5, "finite": true},
+    "query_embeddings": {"status": "FAILED_RATE_LIMIT", "error_class": "HTTP_429", "cases_attempted": 1},
+    "local_inference": false
+  },
+  "five_record_stage": {
+    "status": "PARTIAL_PASS",
+    "approved_candidates": 5,
+    "vectors_validated": 5,
+    "points_read_back": 5,
+    "deterministic_ids": true,
+    "metadata_present": true,
+    "provenance_payload_present": true,
+    "excluded_source_points": 0
+  },
+  "idempotency": {
+    "status": "PASS",
+    "second_upsert_completed": true,
+    "point_count_after_second_upsert": 5,
+    "duplicate_logical_points": 0
+  },
+  "semantic_retrieval": {
+    "status": "BLOCKED_BY_VOYAGE_RATE_LIMIT",
+    "benchmark_cases": ["Q001", "Q002", "Q031", "Q039"],
+    "executed": false
+  },
+  "hybrid_retrieval": "NOT_EXECUTED",
+  "postgresql_provenance_resolution": "NOT_EXECUTED_IN_THIS_LOCAL_QDRANT_STAGE",
+  "excluded_source": {
+    "filename": "Status of Pipe Water Supply in School (2).xls",
+    "semantic_candidates": 0,
+    "embeddings": 0,
+    "qdrant_points": 0,
+    "retrieval_eligible": false
+  },
+  "security": {
+    "credentials_printed": false,
+    "credentials_stored": false,
+    "local_model_inference": false,
+    "model_weights_present": false,
+    "env_ignored": true,
+    "env_example_placeholder_only": true
+  },
+  "tests": "39 passed, 1 warning",
+  "protected_artifacts": "UNCHANGED",
+  "corpus_hashes": "MATCH",
+  "cloud_status": "NOT_CALLED_IN_THIS_PHASE",
+  "final_gate": "PHASE_7_1C_LOCAL_QDRANT_PARTIALLY_READY",
+  "blocker": "Voyage query embedding hit HTTP 429 rate limiting after the five document embeddings and prevented semantic retrieval benchmark execution. No later indexing stages were attempted."
+}

@@ -1,0 +1,16 @@
+{
+  "artifact_type": "pre_remediation_eval_identity",
+  "evaluation_artifact": "artifacts/retrieval_evaluation_results.json",
+  "evaluation_artifact_sha256": "893fc24e55206558a0afb6aba0ecc76356cfe024e387aadb135549b20e3695ff",
+  "query_cases": "artifacts/query_evaluation_cases.json",
+  "query_cases_sha256": "eea71106189192336e11749209b27beb827fe9e723f7a737ad963472d1695dd9",
+  "prototype_manifest": "artifacts/prototype_manifest.json",
+  "prototype_manifest_sha256": "1f6b733cffafcbed53057ab7dc8316b30b54d12379e3cb6935750f52117938f0",
+  "timestamp": "2026-09-08T11:24:05.906865+00:00",
+  "residual_case_ids": [
+    "Q014",
+    "Q021",
+    "Q036",
+    "Q040"
+  ]
+}

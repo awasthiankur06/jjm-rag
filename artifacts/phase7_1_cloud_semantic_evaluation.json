@@ -1,0 +1,18 @@
+{
+  "artifact_type": "phase7_1_cloud_semantic_evaluation",
+  "status": "NOT_EXECUTED_QDRANT_BLOCKED",
+  "provider": "Voyage AI",
+  "model": "voyage-4-large",
+  "dimension": 1024,
+  "benchmark_cases": ["Q001", "Q002", "Q031", "Q039"],
+  "candidate_count": 635,
+  "recall_at_1": null,
+  "recall_at_3": null,
+  "recall_at_5": null,
+  "recall_at_10": null,
+  "mrr": null,
+  "query_filters": "NOT_EXECUTED",
+  "provenance_verification": "NOT_EXECUTED",
+  "hybrid_regression": "PRESERVED_FROM_PHASE_7_BASELINE",
+  "reason": "Voyage smoke passed, but Qdrant collection inspection failed; the required staged stop prevented 5-record and benchmark indexing."
+}

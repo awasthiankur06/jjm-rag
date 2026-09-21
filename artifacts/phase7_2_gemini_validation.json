@@ -1,0 +1,131 @@
+{
+  "artifact_type": "phase7_2_gemini_validation",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "provider": "Google Gemini",
+  "model": "gemini-embedding-001",
+  "configured_dimension": 768,
+  "actual_dimension": 768,
+  "sdk_version": "2.22.0",
+  "batch_size": 32,
+  "qdrant": {
+    "server": "local_on_prem",
+    "client_version": "1.19.0",
+    "collection": "jjm_rag_semantic_gemini_embedding_001_v1",
+    "vector_dimension": 768,
+    "distance": "COSINE",
+    "previous_point_count": 5,
+    "point_count": 25,
+    "existing_collections_touched": false
+  },
+  "smoke": {
+    "status": "PASS",
+    "synthetic_vector_count": 1,
+    "synthetic_dimension": 768,
+    "finite": true,
+    "latency_ms": 2727.57
+  },
+  "five_candidate_stage": {
+    "candidate_count": 5,
+    "embedding_count": 5,
+    "document_embedding_latency_ms": 893.37,
+    "first_upsert_count": 5,
+    "read_back_count": 5,
+    "second_upsert_count": 5,
+    "excluded_source_points": 0
+  },
+  "twenty_five_candidate_stage": {
+    "status": "PASS",
+    "selected_count": 25,
+    "previous_count": 5,
+    "missing_candidates_embedded": 20,
+    "first_upsert_count": 20,
+    "second_upsert_count": 20,
+    "first_point_count": 25,
+    "second_point_count": 25,
+    "resolved_provenance": "25/25",
+    "excluded_source_points": 0,
+    "document_embedding_calls": 1,
+    "query_embedding_calls": 4
+  },
+  "idempotency": {
+    "status": "PASS",
+    "first_point_count": 25,
+    "second_point_count": 25,
+    "duplicate_logical_content_units": 0,
+    "deterministic_ids": true
+  },
+  "semantic_queries": {
+    "collection": "jjm_rag_semantic_gemini_embedding_001_v1",
+    "Q001": {"status": "PASS_AUTHORITATIVE_EVIDENCE", "returned_results": 10, "expected_source_present": true, "provenance_resolved": true},
+    "Q002": {"status": "PASS_AUTHORITATIVE_EVIDENCE", "returned_results": 10, "expected_source_present": true, "provenance_resolved": true},
+    "Q031": {"status": "PASS_AUTHORITATIVE_EVIDENCE", "returned_results": 10, "expected_source_present": true, "provenance_resolved": true},
+    "Q039": {"status": "PASS_AUTHORITATIVE_EVIDENCE", "returned_results": 10, "expected_sources_present": true, "provenance_resolved": true}
+  },
+  "semantic_metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "reason": "The 25-point controlled collection supports all four expected source identities, but no aggregate Recall@k score was calculated by this controlled runner."
+  },
+  "hybrid": {
+    "status": "EXECUTED_CONTROLLED_FOUR_CASES",
+    "Q001": "PASS_AUTHORITATIVE_SEMANTIC_AND_LEXICAL_EVIDENCE",
+    "Q002": "PASS_AUTHORITATIVE_SEMANTIC_AND_LEXICAL_EVIDENCE",
+    "Q031": "INSUFFICIENT_FUSED_EXPECTED_EVIDENCE",
+    "Q039": "INSUFFICIENT_FUSED_EXPECTED_EVIDENCE",
+    "qdrant_writes": 0,
+    "document_embedding_calls": 0
+  },
+  "regression_40_case": {
+    "status": "EXECUTED_PRODUCTION_ADAPTER",
+    "cases": 40,
+    "routing_accuracy": 0.45,
+    "recall_at_1": 0.02564102564102564,
+    "recall_at_3": 0.05128205128205128,
+    "recall_at_5": 0.11538461538461539,
+    "recall_at_10": 0.1794871794871795,
+    "exact_retrieval_accuracy": 0.0,
+    "structured_retrieval_accuracy": 0.16,
+    "semantic_retrieval_accuracy": 1.0,
+    "hybrid_retrieval_accuracy": 0.08333333333333333,
+    "cross_document_accuracy": 0.0,
+    "provenance_accuracy": 0.975,
+    "numeric_aggregation_accuracy": "NOT_EVALUABLE",
+    "failure_categories": {"SEMANTIC_RETRIEVAL": 2, "EXACT_RETRIEVAL": 14, "STRUCTURED_RETRIEVAL": 13, "CROSS_DOCUMENT_ALIGNMENT": 4, "VERSION_HANDLING": 2},
+    "protected_baseline_modified": false,
+    "diagnosis": "The adapter contract worked, but production PostgreSQL exact/structured/lexical retrieval coverage and routing differ materially from the prototype evaluator paths. No tuning or benchmark changes were made."
+  },
+  "provenance": {
+    "qdrant_payload_provenance": "PRESENT",
+    "postgresql_resolution": "PASS",
+    "configured_dsn_target": "jjm_rag_phase6a_test",
+    "configured_target_exists": true,
+    "validated_existing_target": "jjm_rag_phase6a_test",
+    "resolved_points": 25,
+    "required_tables": 8,
+    "postgresql_version_prefix": "PostgreSQL 18.6 on x86_64-windows",
+    "production_included_all": true,
+    "provenance_identity_all": true,
+    "authoritative_evidence_status": "ESTABLISHED_ON_EXISTING_VALIDATED_DATABASE"
+  },
+  "excluded_source": {
+    "filename": "Status of Pipe Water Supply in School (2).xls",
+    "candidate_count": 0,
+    "embedding_count": 0,
+    "qdrant_point_count": 0
+  },
+  "security": {
+    "credentials_printed": false,
+    "credentials_stored": false,
+    "local_model_inference": false,
+    "model_weights_added": false,
+    "temporary_runner_removed": true
+  },
+  "pytest": "42 passed, 1 warning",
+  "protected_artifacts": "UNCHANGED",
+  "corpus_hashes": "MATCH",
+  "comparison_to_voyage": "INSUFFICIENT_EVIDENCE",
+  "final_gate": "PHASE_7_2_GEMINI_PARTIALLY_READY",
+  "next_step": "Do not scale beyond 25 until a dedicated regression run is approved; no 100/635 indexing was performed."
+}

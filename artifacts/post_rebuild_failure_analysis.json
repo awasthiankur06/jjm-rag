@@ -1,0 +1,42 @@
+{
+  "artifact_type": "post_rebuild_postgresql_failure_analysis",
+  "evaluation_artifacts": [
+    "artifacts/post_rebuild_postgres_evaluation.json",
+    "artifacts/post_rebuild_postgres_evaluation_after_title_search.json"
+  ],
+  "complete_cases": 40,
+  "before_title_search": {
+    "recall_at_1": 0.09615384615384616,
+    "recall_at_5": 0.45299145299145294,
+    "recall_at_10": 0.45299145299145294,
+    "source_identification_accuracy": 0.35,
+    "exact_retrieval_accuracy": 0.125,
+    "lexical_retrieval_accuracy": 0.3333333333333333,
+    "structured_retrieval_accuracy": 0.2,
+    "provenance_accuracy": 0.975,
+    "cross_document_accuracy": 0.25
+  },
+  "after_title_search": {
+    "recall_at_1": 0.12179487179487179,
+    "recall_at_5": 0.45299145299145294,
+    "recall_at_10": 0.45299145299145294,
+    "source_identification_accuracy": 0.35,
+    "exact_retrieval_accuracy": 0.09375,
+    "lexical_retrieval_accuracy": 0.28205128205128205,
+    "structured_retrieval_accuracy": 0.2,
+    "provenance_accuracy": 0.975,
+    "cross_document_accuracy": 0.25
+  },
+  "root_cause_classification": {
+    "metadata": "Source-derived titles were absent before rebuild and are now correct; title search alone did not resolve expected-source acquisition.",
+    "routing": "Routing accuracy is 0.65; at least Q039 has a route mismatch despite retrieving both expected documents.",
+    "sql_join_filter": "Structured retrieval returns provenance-rich rows but frequently misses expected report families; its broad joins and term constraints require family-level diagnosis.",
+    "structured_extraction": "No new source-to-database record-count defect was proven by this evaluation; structured retrieval failure is not evidence of source extraction failure.",
+    "version_handling": "Version-family queries require explicit content-evidence grouping; filename suffixes remain inadmissible chronology evidence.",
+    "lexical_ranking": "Current OR-term lexical ranking admits generic corpus rows and fails expected report-family acquisition.",
+    "cross_document_logic": "Cross-document accuracy is 0.25 because fusion preserves only candidates already acquired; it does not acquire all required source families.",
+    "invalid_evaluation_expectation": "Q014 expects a corrupted excluded source to be retrieved as production evidence. The live database correctly excludes it; any audit-only expectation must be evaluated through the forensic artifact, not production retrieval."
+  },
+  "decision": "Do not enable embeddings or semantic search to conceal these deterministic contract failures. Retain the rebuilt corpus and repair retrieval through generic metadata, family discovery, and version-evidence contracts.",
+  "final_gate": "RAG_PARTIALLY_VALIDATED"
+}

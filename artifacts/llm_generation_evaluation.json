@@ -1,0 +1,28 @@
+{
+  "artifact_type": "llm_generation_evaluation",
+  "status": "NOT_EXECUTED",
+  "reason": "No XAI_API_KEY was present in the evaluation environment; no external generation call was made.",
+  "target_provider": "xAI",
+  "preferred_model_candidate": "grok-4.6",
+  "representative_cases": [
+    {"id":"Q002","class":"policy"},
+    {"id":"Q003","class":"exact_lookup"},
+    {"id":"Q009","class":"structured_numeric"},
+    {"id":"Q036","class":"cross_document_comparison"},
+    {"id":"Q014","class":"provenance_and_excluded_source"},
+    {"id":"INSUFFICIENT_SYNTHETIC","class":"insufficient_evidence","query":"unrelated fabricated topic with no corpus evidence"}
+  ],
+  "required_assertions": [
+    "answer only from supplied evidence",
+    "preserve numeric values and units",
+    "respect state/district/report filters",
+    "distinguish report snapshots and avoid suffix-only ordering",
+    "abstain when evidence is insufficient",
+    "preserve source filename/hash/table/row/column/page provenance",
+    "conform to a strict structured output schema",
+    "measure unsupported-fact rate"
+  ],
+  "result": null,
+  "non_claims": ["This artifact does not claim RAG accuracy or live xAI model quality.", "Retrieval benchmark scores are not generation scores."],
+  "next_benchmark": {"required":true,"inputs":"XAI_API_KEY, approved data-transfer policy, token budget, latency budget","outputs":"raw responses, parsed schema results, citation validation, numeric preservation, abstention, latency, token usage, estimated cost"}
+}

@@ -1,0 +1,53 @@
+{
+  "artifact_type": "phase7_1d_voyage_context_4_validation",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "configuration": {
+    "loaded_through": "centralized repository .env loader",
+    "provider": "Voyage AI",
+    "model": "voyage-context-4",
+    "embedding_provider_configured": true,
+    "qdrant_endpoint_type": "local_on_prem",
+    "qdrant_collection_target": "jjm_rag_semantic_voyage_context_4_v1"
+  },
+  "voyage_smoke": {
+    "status": "FAILED",
+    "request_count": 1,
+    "input_type": "document",
+    "synthetic_text": true,
+    "vector_count": 0,
+    "dimension": null,
+    "error_class": "ProviderError",
+    "safe_error": "Voyage embedding request failed",
+    "retry_hammering": false
+  },
+  "qdrant": {
+    "endpoint": "LOCAL_ONLY",
+    "collection": "jjm_rag_semantic_voyage_context_4_v1",
+    "collection_inspection": "NOT_EXECUTED_VOYAGE_SMOKE_FAILED",
+    "points_written": 0,
+    "existing_collections_modified": false,
+    "cloud_called": false
+  },
+  "five_record_stage": "NOT_EXECUTED",
+  "idempotency": "NOT_EXECUTED",
+  "semantic_benchmark": "NOT_EXECUTED",
+  "hybrid_validation": "NOT_EXECUTED",
+  "excluded_source": {
+    "filename": "Status of Pipe Water Supply in School (2).xls",
+    "candidates": 0,
+    "embeddings": 0,
+    "qdrant_points": 0
+  },
+  "security": {
+    "credentials_printed": false,
+    "credentials_stored": false,
+    "local_model_inference": false,
+    "model_weights_added": false,
+    "temporary_runner_removed": true
+  },
+  "pytest": "39 passed, 1 warning",
+  "protected_artifacts": "UNCHANGED",
+  "corpus_hashes": "MATCH",
+  "final_gate": "PHASE_7_1D_VOYAGE_CONTEXT_4_PARTIALLY_READY",
+  "blocker": "The single bounded voyage-context-4 synthetic document embedding request failed before vector dimension could be observed. No retry or Qdrant mutation was attempted."
+}

@@ -1,0 +1,80 @@
+{
+  "artifact_type": "provenance_backed_numeric_acceptance_cases",
+  "schema_version": "1.0",
+  "created_at": "2026-09-17",
+  "source_of_truth": "live disposable PostgreSQL canonical corpus; each expected operand is a structured record with a provenance_id",
+  "case_count": 8,
+  "cases": [
+    {
+      "id": "N001",
+      "kind": "direct_fact",
+      "query": "How many NABL-accredited district or regional laboratories are reported for Maharashtra?",
+      "expected_value_raw": "34",
+      "expected_value_numeric": 34,
+      "expected_metric": "No. of NABL accredited District/ Regional level labs",
+      "expected_scope": {"state": "Maharashtra", "district": null},
+      "expected_filename": "CS1 B(i). Water Quality.xls",
+      "expected_provenance_id": "prov-0168a55ec6464b1af048b5cae89d9168"
+    },
+    {
+      "id": "N002",
+      "kind": "direct_fact",
+      "query": "What is the rural population total for Assam on 01/04/2026?",
+      "expected_value_raw": "32866045",
+      "expected_value_numeric": 32866045,
+      "expected_metric": "TOTAL",
+      "expected_scope": {"state": "Assam", "district": null},
+      "expected_filename": "State wise number of Rural Population as on (01_04.xls",
+      "expected_provenance_id": "prov-d35ef41c467b9e6a96e8cdbf9bb10e49"
+    },
+    {
+      "id": "N003",
+      "kind": "calculation",
+      "query": "What is the difference between rural population totals for Assam and Maharashtra on 01/04/2026?",
+      "expected_operation": "difference",
+      "expected_result": 35856037,
+      "expected_scopes": [{"state": "Assam", "district": null}, {"state": "Maharashtra", "district": null}],
+      "expected_provenance_ids": ["prov-d35ef41c467b9e6a96e8cdbf9bb10e49", "prov-0abbac86d19b63b6f5750fe4ec7fd76a"]
+    },
+    {
+      "id": "N004",
+      "kind": "calculation",
+      "query": "What is the combined rural population total for Assam and Maharashtra on 01/04/2026?",
+      "expected_operation": "sum",
+      "expected_result": 101588127,
+      "expected_scopes": [{"state": "Assam", "district": null}, {"state": "Maharashtra", "district": null}],
+      "expected_provenance_ids": ["prov-d35ef41c467b9e6a96e8cdbf9bb10e49", "prov-0abbac86d19b63b6f5750fe4ec7fd76a"]
+    },
+    {
+      "id": "N005",
+      "kind": "calculation",
+      "query": "What percentage of the combined rural population total is Assam compared with Maharashtra on 01/04/2026?",
+      "expected_operation": "percentage_of_total",
+      "expected_result": 32.35225,
+      "expected_unit": "%",
+      "expected_scopes": [{"state": "Assam", "district": null}, {"state": "Maharashtra", "district": null}],
+      "expected_provenance_ids": ["prov-d35ef41c467b9e6a96e8cdbf9bb10e49", "prov-0abbac86d19b63b6f5750fe4ec7fd76a"]
+    },
+    {
+      "id": "N006",
+      "kind": "calculation",
+      "query": "What is the difference between rural population totals for Ahmednagar and Yavatmal in Maharashtra on 01/04/2026?",
+      "expected_operation": "difference",
+      "expected_result": 1761559,
+      "expected_scopes": [{"state": "Maharashtra", "district": "Ahmednagar"}, {"state": "Maharashtra", "district": "Yavatmal"}],
+      "expected_provenance_ids": ["prov-771db81c1e395e30fa3492ec5b7d2a5c", "prov-091ecde3947529c3c76383e57512dd8a"]
+    },
+    {
+      "id": "N007",
+      "kind": "abstention",
+      "query": "What is the difference between rural population totals for Ahmednagar and Maharashtra on 01/04/2026?",
+      "expected_rejection_reason": "insufficient operands"
+    },
+    {
+      "id": "N008",
+      "kind": "abstention",
+      "query": "What is the number of PWS schemes without a source for a named state?",
+      "expected_rejection_reason": "missing required state"
+    }
+  ]
+}

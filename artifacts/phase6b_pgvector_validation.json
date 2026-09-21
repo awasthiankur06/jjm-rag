@@ -1,0 +1,15 @@
+{
+  "artifact_type": "phase6b_pgvector_validation",
+  "timestamp": "2026-09-09T00:00:00Z",
+  "database": "jjm_rag_phase6a_test",
+  "postgresql_version": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+  "extension": "vector",
+  "available": false,
+  "observed_extensions": [],
+  "installation_attempted": false,
+  "installation_reason": "This phase does not install or alter PostgreSQL extensions; the existing disposable database remains unchanged.",
+  "semantic_vector_storage": "NOT_EXECUTED",
+  "similarity_search": "NOT_EXECUTED",
+  "status": "ENVIRONMENT_BLOCKED",
+  "credentials_recorded": false
+}

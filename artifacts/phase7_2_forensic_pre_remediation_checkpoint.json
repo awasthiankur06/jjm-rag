@@ -1,0 +1,5 @@
+{
+  "source": "tmp/phase7_2_forensic_checkpoint.json",
+  "status": "PRESERVED_BEFORE_REMEDIATION",
+  "note": "Snapshot of the bounded Q001-Q015 forensic checkpoint before production retrieval remediation. No benchmark or corpus data changed."
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JJM RAG Console</title>
+  <link rel="stylesheet" href="/static/styles.css?v=20260918-multiheader">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Jal Jeevan Mission</p>
+        <h1>Corpus question console</h1>
+      </div>
+      <div class="status-cluster" aria-live="polite">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-label">Checking service</span>
+      </div>
+    </header>
+
+    <section class="conversation" aria-label="Conversation">
+      <div class="welcome" id="welcome">
+        <span class="welcome-mark">JJM</span>
+        <h2>Ask the corpus a question.</h2>
+        <p>Answers are generated from retrieved JJM evidence. Sources and grounding details stay visible alongside every response.</p>
+      </div>
+      <div class="messages" id="messages" aria-live="polite"></div>
+    </section>
+
+    <section class="composer-wrap">
+      <form class="composer" id="query-form">
+        <label class="sr-only" for="query-input">Ask a question</label>
+        <textarea id="query-input" rows="2" maxlength="8000" placeholder="Ask about JJM reports, coverage, guidelines, or sources..." required></textarea>
+        <div class="composer-footer">
+          <span class="hint">Enter to send · Shift+Enter for a new line</span>
+          <div class="composer-actions">
+            <button type="button" class="button button-quiet" id="clear-button" title="Start a new conversation">Clear</button>
+            <button type="submit" class="button button-primary" id="send-button"><span id="send-label">Send question</span><span class="spinner" id="spinner" hidden></span></button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="/static/app.js?v=20260918-multiheader"></script>
+</body>
+</html>

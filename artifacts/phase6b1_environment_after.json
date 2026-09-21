@@ -1,0 +1,24 @@
+{
+  "artifact_type": "phase6b1_environment_after",
+  "status": "OBSERVED",
+  "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "torch": "2.14.0",
+    "transformers": "5.16.1",
+    "sentence-transformers": "6.0.1",
+    "FlagEmbedding": "1.4.2",
+    "pgvector": null,
+    "psycopg": "3.3.5"
+  },
+  "torch": {
+    "version": "2.14.0+cpu",
+    "cuda_available": false,
+    "cuda_version": null,
+    "device_count": 0
+  },
+  "postgresql_extension": "NOT_CHECKED_IN_THIS_STEP",
+  "credentials_recorded": false
+}

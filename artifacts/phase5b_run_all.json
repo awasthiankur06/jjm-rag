@@ -1,0 +1,68 @@
+{
+  "artifact_type": "phase5b_run_all",
+  "status": "EXECUTED_WITH_BLOCKERS",
+  "timestamp": "2026-09-08T11:56:03.346000+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "results": [
+    {
+      "name": "embedding",
+      "status": "BLOCKED",
+      "returncode": 2,
+      "stdout": "{\n  \"status\": \"BLOCKED_BY_MISSING_EMBEDDING_RUNTIME\",\n  \"output\": \"D:\\\\jjm-rag\\\\artifacts\\\\embedding_benchmark_runtime.json\",\n  \"errors\": [\n    {\n      \"model\": \"bge-m3\",\n      \"error\": \"RuntimeError: Model path is not local: BAAI/bge-m3; pass --allow-download only in an approved environment\"\n    },\n    {\n      \"model\": \"multilingual-e5-large\",\n      \"error\": \"RuntimeError: Model path is not local: intfloat/multilingual-e5-large; pass --allow-download only in an approved environment\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "pgvector",
+      "status": "BLOCKED",
+      "returncode": 2,
+      "stdout": "{\n  \"status\": \"BLOCKED_BY_MISSING_POSTGRESQL\",\n  \"output\": \"D:\\\\jjm-rag\\\\artifacts\\\\pgvector_benchmark_runtime.json\",\n  \"error\": \"Set PGVECTOR_DSN or pass --dsn; no DSN was supplied.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "grok",
+      "status": "BLOCKED",
+      "returncode": 2,
+      "stdout": "{\n  \"status\": \"BLOCKED_BY_MISSING_XAI_API_KEY\",\n  \"output\": \"D:\\\\jjm-rag\\\\artifacts\\\\grok_generation_benchmark_runtime.json\",\n  \"error\": \"XAI_API_KEY is not present; no external request was made.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "reranker",
+      "status": "BLOCKED",
+      "returncode": 2,
+      "stdout": "{\n  \"status\": \"BLOCKED_BY_MISSING_RERANKER_RUNTIME\",\n  \"output\": \"D:\\\\jjm-rag\\\\artifacts\\\\reranker_benchmark_runtime.json\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "custom_python_example",
+      "status": "EXECUTED",
+      "returncode": 0,
+      "stdout": "{'route': 'POLICY', 'sources': ['JJM_Operational_Guidelines.pdf', 'Operational-Guidelines-JJM-2.pdf', 'Format B15 _ Piped water supply schemes.xls', 'Format WQ1. PWS Infra and Delivery Point (Water Supply Scheme Source).xls', 'Status of Pipe Water Supply in School (1).xls'], 'provenance_preserved': True}\n",
+      "stderr": ""
+    },
+    {
+      "name": "langchain_example",
+      "status": "BLOCKED",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "BLOCKED_BY_MISSING_LANGCHAIN: No module named 'langchain_core'\n"
+    },
+    {
+      "name": "langgraph_example",
+      "status": "BLOCKED",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "BLOCKED_BY_MISSING_LANGGRAPH: No module named 'langgraph'\n"
+    },
+    {
+      "name": "llamaindex_example",
+      "status": "BLOCKED",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "BLOCKED_BY_MISSING_LLAMAINDEX: No module named 'llama_index'\n"
+    }
+  ],
+  "note": "Blocked benchmarks are never converted into passing results."
+}

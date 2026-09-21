@@ -1,0 +1,20 @@
+{
+  "artifact_type": "phase7_1_cloud_index_result",
+  "status": "STOPPED_AFTER_QDRANT_STAGE_FAILURE",
+  "candidate_manifest": "artifacts/phase6b_semantic_candidate_manifest.json",
+  "candidate_count": 635,
+  "dry_run": {
+    "voyage_calls": 0,
+    "qdrant_writes": 0,
+    "embedded_count": 0,
+    "upserted_count": 0,
+    "failed_count": 0
+  },
+  "cloud_smoke": {"voyage": "PASS", "qdrant": "FAILED_COLLECTION_INSPECTION", "grok": "PASS"},
+  "full_indexing": "NOT_EXECUTED",
+  "qdrant_points": null,
+  "idempotency": "NOT_EXECUTED",
+  "metadata_filters": "NOT_EXECUTED",
+  "excluded_source_points": 0,
+  "reason": "Required stop condition: Qdrant collection inspection failed before Stage 1 indexing. No points were written and no later stages were attempted."
+}

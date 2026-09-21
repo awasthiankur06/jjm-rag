@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-09-08T11:49:31.342929+00:00",
+  "environment": {
+    "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "corpus": {
+    "documents": 44,
+    "rows": 3042,
+    "pages": 334,
+    "semantic_units": 378
+  },
+  "artifact_type": "embedding_benchmark",
+  "status": "BENCHMARK_INCONCLUSIVE",
+  "benchmark_dataset": "artifacts/semantic_benchmark_dataset.json",
+  "models": [
+    {
+      "name": "BAAI/bge-m3",
+      "status": "BLOCKED",
+      "reason": "torch, transformers, FlagEmbedding, and sentence-transformers are not installed in the selected Python 3.11.6 environment; no model download or external inference was attempted.",
+      "dimensions": 1024,
+      "max_tokens": 8192,
+      "metrics": null
+    },
+    {
+      "name": "intfloat/multilingual-e5-large",
+      "status": "BLOCKED",
+      "reason": "torch, transformers, and sentence-transformers are not installed in the selected Python 3.11.6 environment; no model download or external inference was attempted.",
+      "dimensions": 1024,
+      "max_tokens": 512,
+      "metrics": null
+    }
+  ],
+  "dataset_summary": {
+    "case_count": 4,
+    "categories": [
+      "policy text",
+      "OCR-derived policy text",
+      "report descriptions",
+      "format and government terminology",
+      "state/district-related metadata"
+    ],
+    "raw_numeric_rows_included": false
+  },
+  "existing_retrieval_reference": {
+    "source": "artifacts/retrieval_evaluation_post_remediation.json",
+    "semantic_source_hit_rate": 0.5,
+    "note": "This is the validated lexical semantic proxy reference, not a BGE-M3 or E5 model result."
+  },
+  "decision": "BENCHMARK_INCONCLUSIVE",
+  "next_step": "Run both models in an approved environment with pinned revisions and measure Recall@1/3/5/10, MRR, latency, throughput, memory, and reproducibility."
+}

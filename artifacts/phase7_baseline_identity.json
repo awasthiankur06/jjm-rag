@@ -1,0 +1,12 @@
+{
+  "artifact_type": "phase7_baseline_identity",
+  "protected_artifacts_modified": false,
+  "corpus_modified": false,
+  "excluded_source_indexed": false,
+  "local_model_inference_added": false,
+  "cloud_credentials_recorded": false,
+  "architecture": "cloud-only AI over PostgreSQL canonical truth",
+  "phase6b_candidate_count": 635,
+  "retrieval_baseline": "preserved; see protected Phase 5 artifacts",
+  "phase7_status": "PARTIALLY_READY_PENDING_EXTERNAL_PROVIDER_VALIDATION"
+}

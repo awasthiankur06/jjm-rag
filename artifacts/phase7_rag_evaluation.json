@@ -1,0 +1,14 @@
+{
+  "artifact_type": "phase7_rag_evaluation",
+  "status": "PARTIAL_LOCAL_VALIDATION",
+  "retrieval_regression": {
+    "cases": 40,
+    "protected_metrics_preserved": true,
+    "semantic_layer_connected": false,
+    "cloud_semantic_measurements": "NOT_EXECUTED"
+  },
+  "generation_evaluation": "NOT_EXECUTED_NO_CLOUD_CREDENTIALS",
+  "local_tests": "35 passed, 1 warning",
+  "production_core_tests": "PASS_WITH_MOCKED_PROVIDER_BOUNDARIES",
+  "claims": "No production quality or cloud-provider performance claim is made."
+}

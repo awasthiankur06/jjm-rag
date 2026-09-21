@@ -1,0 +1,213 @@
+{
+  "artifact_type": "phase6a1_postgres_integration",
+  "timestamp": "2026-09-09T14:22:00Z",
+  "repository_revision": null,
+  "database_configuration": {
+    "type": "disposable_local_postgresql",
+    "database_name": "jjm_rag_phase6a_test",
+    "host": "localhost",
+    "port": 5432,
+    "credentials_recorded": false,
+    "production_database_used": false
+  },
+  "postgresql": {
+    "availability": "EXECUTED",
+    "version": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+    "driver": "psycopg",
+    "connection_result": "PASS"
+  },
+  "migration": {
+    "file": "db/migrations/001_initial_schema.sql",
+    "result": "EXECUTED",
+    "duration_ms": 11.97,
+    "schema_inspected": true,
+    "expected_tables_verified": true,
+    "tables": [
+      "canonical_content",
+      "document_versions",
+      "documents",
+      "geography_dimensions",
+      "ingestion_audit",
+      "observations",
+      "provenance_records",
+      "reporting_dimensions",
+      "structured_records"
+    ],
+    "indexes_verified": true,
+    "index_count": 22,
+    "foreign_key_count": 14,
+    "unique_constraint_count": 1,
+    "not_null_column_count": 37,
+    "jsonb_fields_verified": true,
+    "numeric_fields_verified": true,
+    "defaults_verified": true,
+    "nullable_fields_verified": true
+  },
+  "repository_checks": {
+    "result": "EXECUTED",
+    "documents": "PASS",
+    "versions": "PASS",
+    "provenance": "PASS",
+    "structured_records": "PASS",
+    "observations": "PASS",
+    "content": "PASS",
+    "create_read_update": "PASS",
+    "duplicate_sha_behavior": "PASS",
+    "foreign_key_behavior": "PASS"
+  },
+  "version_result": {
+    "result": "PASS",
+    "same_sha_same_version_identity": "NO_DUPLICATE",
+    "different_sha_distinct_snapshot": "REPRESENTABLE",
+    "filename_suffix_ordering_invented": false,
+    "insufficient_version_evidence_preserved": true
+  },
+  "provenance_result": {
+    "result": "PASS",
+    "html_exported_xls": true,
+    "pdf": true,
+    "ocr_pdf": true,
+    "fields_round_tripped": [
+      "document_id",
+      "page_number",
+      "sheet_name",
+      "table_name",
+      "section_name",
+      "row_index",
+      "column_index",
+      "cell_reference",
+      "source_row_index",
+      "source_col_index",
+      "origin_cell_id"
+    ]
+  },
+  "numeric_safety": {
+    "result": "PASS",
+    "raw_value_preserved": true,
+    "numeric_value_preserved": true,
+    "ambiguous_value_left_raw": true,
+    "percentage_value_preserved": true,
+    "large_numeric_overflow_observed": false,
+    "business_aggregation_performed": false
+  },
+  "transaction_failure": {
+    "result": "PASS",
+    "controlled_foreign_key_failure": true,
+    "rollback_executed": true,
+    "partial_logical_data_remaining": false
+  },
+  "idempotency": {
+    "result": "PASS",
+    "identity_strategy": [
+      "documents.sha256 unique constraint",
+      "document_id primary key",
+      "version_id primary key",
+      "provenance_id primary key",
+      "record_id primary key",
+      "observation_id primary key",
+      "content_id primary key"
+    ],
+    "first_run_counts": {
+      "documents": 44,
+      "document_versions": 44,
+      "structured_records": 44,
+      "observations": 44,
+      "canonical_content": 44,
+      "provenance_records": 44,
+      "geography_dimensions": 0,
+      "reporting_dimensions": 0,
+      "ingestion_audit": 0
+    },
+    "second_run_counts": {
+      "documents": 44,
+      "document_versions": 44,
+      "structured_records": 44,
+      "observations": 44,
+      "canonical_content": 44,
+      "provenance_records": 44,
+      "geography_dimensions": 0,
+      "reporting_dimensions": 0,
+      "ingestion_audit": 0
+    },
+    "counts_equal": true,
+    "second_run_already_ingested": 44,
+    "second_run_newly_ingested": 0
+  },
+  "excluded_source": {
+    "filename": "Status of Pipe Water Supply in School (2).xls",
+    "result": "PASS",
+    "physical_manifest_record": true,
+    "production_document_count": 0,
+    "production_structured_record_count": 0,
+    "production_observation_count": 0,
+    "production_content_count": 0,
+    "indexed": false
+  },
+  "full_corpus": {
+    "result": "EXECUTED_MANIFEST_LEVEL_CANONICAL_PERSISTENCE",
+    "parser_derived_ingestion": "NOT_EXECUTED_BY_CURRENT_CLI",
+    "physical_sources": 45,
+    "eligible_sources": 44,
+    "excluded_sources": 1,
+    "successfully_ingested_first_run": 44,
+    "already_ingested_second_run": 44,
+    "failed": 0,
+    "documents": 44,
+    "versions": 44,
+    "structured_records": 44,
+    "observations": 44,
+    "content_units": 44,
+    "provenance_records": 44,
+    "geography_dimensions": 0,
+    "reporting_dimensions": 0,
+    "ingestion_audit": 0,
+    "first_duration_ms": 577.24,
+    "second_duration_ms": 294.29
+  },
+  "tests": {
+    "command": "python -m pytest -q",
+    "total": 27,
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 1,
+    "result": "PASS"
+  },
+  "preservation": {
+    "protected_artifacts_modified": false,
+    "protected_hashes": {
+      "artifacts/phase5_baseline_identity.json": "b26db5198ca6415ecc1c4b7dd16654836c16a2c0ec27ef57e9bd5a8d002f3ddb",
+      "artifacts/retrieval_evaluation_post_remediation.json": "1be406020e988b51b0613303d6d6f8fcd68ebd60eec31c0c61f3f0750e2857bf",
+      "artifacts/post_remediation_regression.json": "eb7d8d23e6a2e77b8eb43fc269897422c037cb72c203fedfb7ac07d278a8560f",
+      "artifacts/query_evaluation_cases.json": "eea71106189192336e11749209b27beb827fe9e723f7a737ad963472d1695dd9",
+      "artifacts/corpus_manifest_final.json": "7970cf0a31d6b1fad97c2116e008290f926f40ba851d4872d6c900c98b502a59"
+    },
+    "corpus_hashes": "MATCH",
+    "physical_corpus_files": 45,
+    "production_usable_sources": 44,
+    "excluded_source_indexed": false,
+    "retrieval_cases": 40,
+    "recall_at_10": 1.0,
+    "cross_document_accuracy": 1.0,
+    "provenance_accuracy": 1.0,
+    "zero_regressions": true
+  },
+  "security": {
+    "password_stored": false,
+    "credential_bearing_dsn_stored": false,
+    "password_removed_from_package_metadata": true
+  },
+  "defects_found_fixed": [
+    "PostgreSQL placeholder and conflict syntax compatibility in the existing database abstraction",
+    "CLI repository-root path resolution for migration and manifest defaults",
+    "CLI re-ingestion accounting and content-unit count reporting",
+    "Validation harness numeric and datetime serialization"
+  ],
+  "remaining_limitations": [
+    "Current CLI persists one manifest-level canonical row per eligible source rather than parser-derived table, geography, and reporting records.",
+    "Current CLI does not write ingestion_audit rows.",
+    "No formal performance benchmark was performed."
+  ],
+  "final_gate": "PHASE_6A_PARTIALLY_VALIDATED",
+  "gate_reason": "The real PostgreSQL foundation and repository integration passed, including migration, CRUD, provenance, numeric safety, rollback, exclusion, idempotency, and full test preservation. The gate remains partial because the current CLI's full-corpus run is manifest-level persistence, not complete parser-derived production ingestion."
+}

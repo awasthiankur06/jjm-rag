@@ -1,0 +1,42 @@
+{
+  "artifact_type": "production_technology_phase_baseline_identity",
+  "captured_at": "2026-09-08",
+  "validated_retrieval_gate": "RETRIEVAL_PROTOTYPE_VALIDATED",
+  "preservation_basis": "Hashes were preserved in artifacts/post_remediation_regression.json and reverified after technology-evaluation artifact creation.",
+  "important_artifacts": {
+    "artifacts/retrieval_evaluation_baseline.json": {
+      "sha256": "538b6d94720ae8c5d1f1f21b55bc952a5922b99100e01bb67ba061e91dc4344f",
+      "status": "verified_unchanged"
+    },
+    "artifacts/retrieval_evaluation_post_remediation.json": {
+      "sha256": "1be406020e988b51b0613303d6d6f8fcd68ebd60eec31c0c61f3f0750e2857bf",
+      "status": "verified_unchanged"
+    },
+    "artifacts/post_remediation_regression.json": {
+      "sha256": "eb7d8d23e6a2e77b8eb43fc269897422c037cb72c203fedfb7ac07d278a8560f",
+      "status": "verified_unchanged"
+    },
+    "artifacts/query_evaluation_cases.json": {
+      "sha256": "eea71106189192336e11749209b27beb827fe9e723f7a737ad963472d1695dd9",
+      "status": "verified_unchanged"
+    },
+    "artifacts/prototype_manifest.json": {
+      "sha256": "1f6b733cffafcbed53057ab7dc8316b30b54d12379e3cb6935750f52117938f0",
+      "status": "verified_unchanged"
+    }
+  },
+  "corpus_integrity": {
+    "physical_files": 45,
+    "production_usable_sources": 44,
+    "excluded_sources": 1,
+    "excluded_source_hash": "bf4eafc15390dd98688a2f0306f28457a60bc027343e5346a0bc3be2d4009ee3",
+    "excluded_source_index_status": false
+  },
+  "technology_phase_changes": [
+    "technology evaluation documentation",
+    "technology decision matrix",
+    "production requirements",
+    "LLM generation evaluation plan/status",
+    "security and operations requirements"
+  ]
+}
