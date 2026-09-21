@@ -29,9 +29,11 @@ The audit returns one of these decisions:
 
 Filename suffixes such as `(1)`, `(2)`, and `(3)` are never version evidence.
 
-## V1 live PostgreSQL result
+## V1 live PostgreSQL result after selected-state repair
 
-`artifacts/source_family_reconciliation_v1.json` records the live audit.
+`artifacts/source_family_reconciliation_v2_pm4_repaired.json` records the
+latest live audit. The original V1 artifact is retained as the pre-repair
+baseline.
 
 | Repeated-title family | Decision | Reason |
 | --- | --- | --- |
@@ -39,7 +41,7 @@ Filename suffixes such as `(1)`, `(2)`, and `(3)` are never version evidence.
 | Quality-affected habitations and population (C17) | Logical consolidation | Compatible schema; members are non-overlapping district partitions. |
 | Status of pipe water supply in school (F26) | Logical consolidation | Compatible schema; members are non-overlapping district partitions. |
 | Beneficiary verification (J6) | Logical consolidation | Compatible schema; members are non-overlapping district partitions. |
-| Progress tracker of verification schemes (PM4) | Keep separate pending review | Canonical rows do not provide sufficient geographic keys for safe automatic consolidation. |
+| Progress tracker of verification schemes (PM4) | Logical consolidation | The source-derived `State:` parameter is now attached to every division row; members are non-overlapping state partitions. |
 
 These decisions consolidate the query view only. They do not claim that one
 physical file supersedes another.
@@ -54,4 +56,7 @@ fall back to SQLite or an unspecified database:
   --output artifacts/source_family_reconciliation_v1.json
 ```
 
-Review the generated artifact before changing any source-retention policy.
+Review the generated artifact before changing any source-retention policy. The
+ingestion CLI additionally blocks an eligible duplicate SHA-256 before writing
+to the database and retains same-title variants for this reconciliation rather
+than silently combining them.

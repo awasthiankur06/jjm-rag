@@ -38,6 +38,34 @@ def _source_title_records() -> dict[str, dict]:
     return {record["original_filename"]: record for record in review.get("records", [])}
 
 
+def _manifest_consolidation_guard(files: list[dict], title_records: dict[str, dict]) -> dict:
+    """Block only unsafe automatic consolidation before any write occurs.
+
+    Same-title inputs are deliberately *not* collapsed here: they may be
+    geographic partitions or conflicting snapshots.  A byte-identical source,
+    however, has no independent content identity and must be reviewed before a
+    new production ingestion run can proceed.
+    """
+    eligible = [item for item in files if item.get("production_decision") != "EXCLUDED_CORRUPTED_SOURCE"]
+    hashes: dict[str, list[str]] = {}
+    titles: dict[str, list[str]] = {}
+    for item in eligible:
+        filename = str(item.get("filename") or "")
+        digest = str(item.get("sha256") or "")
+        if digest:
+            hashes.setdefault(digest, []).append(filename)
+        title = str(title_records.get(filename, {}).get("extracted_document_title") or "").strip()
+        if title:
+            titles.setdefault(title, []).append(filename)
+    exact_duplicates = {digest: sorted(names) for digest, names in hashes.items() if len(names) > 1}
+    repeated_titles = {title: sorted(names) for title, names in titles.items() if len(names) > 1}
+    return {
+        "exact_duplicate_hashes": exact_duplicates,
+        "repeated_title_families_retained_for_reconciliation": repeated_titles,
+        "automatic_logical_consolidation": "PROHIBITED_UNLESS_LIVE_RECONCILIATION_ALLOWLISTS_COMPLEMENTARY_PARTITIONS",
+    }
+
+
 def _build_summary(result: dict) -> dict:
     return {
         "files_discovered": result.get("files_discovered", 0),
@@ -61,6 +89,11 @@ def _process_manifest(manifest_path: Path, *, dry_run: bool = False):
     manifest = _load_manifest(manifest_path)
     title_records = _source_title_records()
     files = manifest.get("files", [])
+    guard = _manifest_consolidation_guard(files, title_records)
+    if guard["exact_duplicate_hashes"]:
+        raise ValueError(
+            "Duplicate source SHA-256 values block ingestion; retain the sources for audit and resolve the duplication before retrying."
+        )
     eligible = [entry for entry in files if entry.get("production_decision") != "EXCLUDED_CORRUPTED_SOURCE"]
     excluded = [entry for entry in files if entry.get("production_decision") == "EXCLUDED_CORRUPTED_SOURCE"]
     result = {
@@ -80,7 +113,7 @@ def _process_manifest(manifest_path: Path, *, dry_run: bool = False):
         "audit_counts": 0,
     }
     if dry_run:
-        return {"mode": "dry-run", "summary": _build_summary(result), "eligible_files": [entry["filename"] for entry in eligible]}
+        return {"mode": "dry-run", "summary": _build_summary(result), "eligible_files": [entry["filename"] for entry in eligible], "consolidation_guard": guard}
     conn = (
         get_database_session()
         if os.getenv("JJM_DATABASE_URL")
@@ -117,7 +150,7 @@ def _process_manifest(manifest_path: Path, *, dry_run: bool = False):
             per_source.append({"filename": filename, "status": "FAILED", "error": repr(error)})
     result["record_counts"] = result["structured_record_counts"]
     conn.close()
-    return {"mode": "ingest", "execution_id": execution_id, "summary": _build_summary(result), "excluded": [entry["filename"] for entry in excluded], "per_source": per_source}
+    return {"mode": "ingest", "execution_id": execution_id, "summary": _build_summary(result), "excluded": [entry["filename"] for entry in excluded], "per_source": per_source, "consolidation_guard": guard}
 
 
 def main() -> int:

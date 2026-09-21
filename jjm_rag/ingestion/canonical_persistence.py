@@ -63,6 +63,18 @@ def _metadata(text: str, filename: str, entry: dict[str, Any]) -> dict[str, Any]
     format_match = _FORMAT.search(text)
     date_match = re.search(r"\b(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}[/-]\d{1,2}[/-]\d{1,2})\b", text)
     year_match = re.search(r"\b(?:FinYear|Financial Year|Sanction Year|Fin Year)\s*[:=-]\s*([^,\n]+)", text, re.I)
+    # Web-exported tables often place the selected state above the table,
+    # rather than repeating it in every Division/District row.  This is
+    # source text, not filename inference.  Stop before the first table
+    # dimension/header so "State: Maharashtra S. No." stays Maharashtra.
+    state_match = re.search(
+        r"\bState\s*:\s*([A-Za-z][A-Za-z .&()'\-]*?)(?=\s*,|\s+(?:S(?:r)?\.?\s*No\.?|Division|District|Block|Category|Format|School)\b|$)",
+        text,
+        re.I,
+    )
+    source_state = state_match.group(1).strip() if state_match else None
+    if source_state and source_state.casefold() in {"all state", "all states"}:
+        source_state = None
     return {
         # A filename is physical identity, not source metadata. Only an audited,
         # sufficiently reliable internal title may become the logical title.
@@ -70,7 +82,7 @@ def _metadata(text: str, filename: str, entry: dict[str, Any]) -> dict[str, Any]
         "format_code": entry.get("format_code") or (format_match.group(1).strip() if format_match else None),
         "report_date": entry.get("date") or (date_match.group(0) if date_match else None),
         "financial_year": entry.get("financial_year") or (year_match.group(1).strip() if year_match else None),
-        "state": entry.get("state"),
+        "state": entry.get("state") or source_state,
         "district": entry.get("district"),
         "division": entry.get("division"),
         "family": _family_from_source_text(text),
@@ -248,7 +260,10 @@ def _persist_canonical_source(conn, document: Document, entry: dict[str, Any], e
         IngestionAuditRepository(conn).create({"audit_id": _stable("audit", execution_id, document_hash), "document_id": existing["document_id"], "source_filename": document.source_metadata.filename, "source_sha256": document_hash, "status": "ALREADY_INGESTED", "reason": "Logical document identity already exists", "details": {"execution_id": execution_id, "parser": document.source_metadata.parser_name}})
         return {"status": "ALREADY_INGESTED", "document_id": existing["document_id"], "records": 0, "observations": 0, "content": 0, "provenance": 0, "geography": 0, "reporting": 0}
 
-    all_text = "\n".join(document.text_chunks)
+    # HTML report parameters (for example ``State: Maharashtra``) are often
+    # retained in the parsed section text rather than `text_chunks`.  Include
+    # both source-derived representations before extracting metadata.
+    all_text = "\n".join(document.text_chunks + [section.text for section in document.sections])
     metadata = _metadata(all_text, document.source_metadata.filename, entry)
     document_repo.create({
         "document_id": document_id,

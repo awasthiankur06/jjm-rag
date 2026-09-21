@@ -1,0 +1,686 @@
+{
+  "artifact_type": "source_family_reconciliation",
+  "generated_at": "2026-09-21T12:09:53.536839+00:00",
+  "scope": "production_included canonical PostgreSQL documents sharing source-derived titles",
+  "raw_source_policy": "No source files are deleted, merged, renamed, or flattened by this audit.",
+  "families": [
+    {
+      "title": "District wise number of Rural Population as on (01/04/2026)",
+      "member_count": 4,
+      "members": [
+        {
+          "filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "sha256": "a3219a4d0c3e29012499193e0d918d823bcba352c637a2f066748c1ca208137b",
+          "format_code": "B11",
+          "structured_record_count": 222,
+          "geography_count": 35,
+          "geography_sample": [
+            "bajali",
+            "baksa",
+            "barpeta",
+            "biswanath",
+            "bongaigaon",
+            "cachar",
+            "charaideo",
+            "chirang"
+          ],
+          "header_count": 6
+        },
+        {
+          "filename": "District wise number of Rural Population as on (01 (1).xls",
+          "sha256": "0eadf762d2bf7c292b0b9244e8a62c3203050ab1cb7674756687d75a0677c083",
+          "format_code": "B11",
+          "structured_record_count": 216,
+          "geography_count": 34,
+          "geography_sample": [
+            "ahmednagar",
+            "akola",
+            "amravati",
+            "beed",
+            "bhandara",
+            "buldhana",
+            "chandrapur",
+            "chhatrapati sambhajinagar"
+          ],
+          "header_count": 6
+        },
+        {
+          "filename": "District wise number of Rural Population as on (01 (2).xls",
+          "sha256": "39c5e529a68e223702fb06a0c42bda825cff31f586b987c5a2c6b2bd07e60da9",
+          "format_code": "B11",
+          "structured_record_count": 234,
+          "geography_count": 37,
+          "geography_sample": [
+            "ariyalur",
+            "chengalpattu",
+            "coimbatore",
+            "cuddalore",
+            "dharmapuri",
+            "dindigul",
+            "erode",
+            "kallakurichi"
+          ],
+          "header_count": 6
+        },
+        {
+          "filename": "District wise number of Rural Population as on (01.xls",
+          "sha256": "83f682b7640eebd6b49955c40f07af261b857c720c87ccc83f4b44c07b4cbd99",
+          "format_code": "B11",
+          "structured_record_count": 90,
+          "geography_count": 13,
+          "geography_sample": [
+            "almora",
+            "bageshwar",
+            "chamoli",
+            "champawat",
+            "dehradun",
+            "haridwar",
+            "nainital",
+            "pauri garhwal"
+          ],
+          "header_count": 6
+        }
+      ],
+      "pairwise_comparisons": [
+        {
+          "left_filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "right_filename": "District wise number of Rural Population as on (01 (1).xls",
+          "same_header_schema": true,
+          "shared_header_count": 6,
+          "left_header_count": 6,
+          "right_header_count": 6,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "right_filename": "District wise number of Rural Population as on (01 (2).xls",
+          "same_header_schema": true,
+          "shared_header_count": 6,
+          "left_header_count": 6,
+          "right_header_count": 6,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "AssamDistrict wise number of Rural Population as on (01.xls",
+          "right_filename": "District wise number of Rural Population as on (01.xls",
+          "same_header_schema": true,
+          "shared_header_count": 6,
+          "left_header_count": 6,
+          "right_header_count": 6,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "District wise number of Rural Population as on (01 (1).xls",
+          "right_filename": "District wise number of Rural Population as on (01 (2).xls",
+          "same_header_schema": true,
+          "shared_header_count": 6,
+          "left_header_count": 6,
+          "right_header_count": 6,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "District wise number of Rural Population as on (01 (1).xls",
+          "right_filename": "District wise number of Rural Population as on (01.xls",
+          "same_header_schema": true,
+          "shared_header_count": 6,
+          "left_header_count": 6,
+          "right_header_count": 6,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "District wise number of Rural Population as on (01 (2).xls",
+          "right_filename": "District wise number of Rural Population as on (01.xls",
+          "same_header_schema": true,
+          "shared_header_count": 6,
+          "left_header_count": 6,
+          "right_header_count": 6,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        }
+      ],
+      "consolidation_decision": "LOGICALLY_CONSOLIDATE_ROWS_KEEP_RAW_SOURCES",
+      "raw_source_action": "RETAIN_IMMUTABLE"
+    },
+    {
+      "title": "Format C17 A- No Of Quality Affected Habitations & Population As On 30/08/2026",
+      "member_count": 4,
+      "members": [
+        {
+          "filename": "Format C17 A- No Of Quality Affected Habitations & (1).xls",
+          "sha256": "99e71ccbb067ffecd3486f3fb6a404a697b3aad621da65b20bb8abb05129a3ed",
+          "format_code": "C17",
+          "structured_record_count": 540,
+          "geography_count": 34,
+          "geography_sample": [
+            "ahmednagar",
+            "akola",
+            "amravati",
+            "beed",
+            "bhandara",
+            "buldhana",
+            "chandrapur",
+            "chhatrapati sambhajinagar"
+          ],
+          "header_count": 15
+        },
+        {
+          "filename": "Format C17 A- No Of Quality Affected Habitations & (2).xls",
+          "sha256": "68ff4499141ebd2a745cbc8898af5f2b1afe4dec80cbfa3c3ee6ee23a0e3e6f4",
+          "format_code": "C17",
+          "structured_record_count": 585,
+          "geography_count": 37,
+          "geography_sample": [
+            "ariyalur",
+            "chengalpattu",
+            "coimbatore",
+            "cuddalore",
+            "dharmapuri",
+            "dindigul",
+            "erode",
+            "kallakurichi"
+          ],
+          "header_count": 15
+        },
+        {
+          "filename": "Format C17 A- No Of Quality Affected Habitations & (3).xls",
+          "sha256": "96ed038011e795e7403184970a44b4445fbca364d96e3bed165856fc024c83ec",
+          "format_code": "C17",
+          "structured_record_count": 75,
+          "geography_count": 3,
+          "geography_sample": [
+            "nicobars",
+            "north and middle andaman",
+            "south andamans"
+          ],
+          "header_count": 15
+        },
+        {
+          "filename": "Format C17 A- No Of Quality Affected Habitations &.xls",
+          "sha256": "0a2563c8c28f831b2ce19e9ca2d4adc2d8f77efb54cd43c9be94f6893f6a6402",
+          "format_code": "C17",
+          "structured_record_count": 555,
+          "geography_count": 35,
+          "geography_sample": [
+            "bajali",
+            "baksa",
+            "barpeta",
+            "biswanath",
+            "bongaigaon",
+            "cachar",
+            "charaideo",
+            "chirang"
+          ],
+          "header_count": 15
+        }
+      ],
+      "pairwise_comparisons": [
+        {
+          "left_filename": "Format C17 A- No Of Quality Affected Habitations & (1).xls",
+          "right_filename": "Format C17 A- No Of Quality Affected Habitations & (2).xls",
+          "same_header_schema": true,
+          "shared_header_count": 15,
+          "left_header_count": 15,
+          "right_header_count": 15,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Format C17 A- No Of Quality Affected Habitations & (1).xls",
+          "right_filename": "Format C17 A- No Of Quality Affected Habitations & (3).xls",
+          "same_header_schema": true,
+          "shared_header_count": 15,
+          "left_header_count": 15,
+          "right_header_count": 15,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Format C17 A- No Of Quality Affected Habitations & (1).xls",
+          "right_filename": "Format C17 A- No Of Quality Affected Habitations &.xls",
+          "same_header_schema": true,
+          "shared_header_count": 15,
+          "left_header_count": 15,
+          "right_header_count": 15,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Format C17 A- No Of Quality Affected Habitations & (2).xls",
+          "right_filename": "Format C17 A- No Of Quality Affected Habitations & (3).xls",
+          "same_header_schema": true,
+          "shared_header_count": 15,
+          "left_header_count": 15,
+          "right_header_count": 15,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Format C17 A- No Of Quality Affected Habitations & (2).xls",
+          "right_filename": "Format C17 A- No Of Quality Affected Habitations &.xls",
+          "same_header_schema": true,
+          "shared_header_count": 15,
+          "left_header_count": 15,
+          "right_header_count": 15,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Format C17 A- No Of Quality Affected Habitations & (3).xls",
+          "right_filename": "Format C17 A- No Of Quality Affected Habitations &.xls",
+          "same_header_schema": true,
+          "shared_header_count": 15,
+          "left_header_count": 15,
+          "right_header_count": 15,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        }
+      ],
+      "consolidation_decision": "LOGICALLY_CONSOLIDATE_ROWS_KEEP_RAW_SOURCES",
+      "raw_source_action": "RETAIN_IMMUTABLE"
+    },
+    {
+      "title": "Progress tracker of verification of schemes",
+      "member_count": 4,
+      "members": [
+        {
+          "filename": "Progress tracker of verification of schemes (1).xls",
+          "sha256": "192bcd13c524bfe26aaaac882e1fb1fb04b39e84c129509adee6498f6484abae",
+          "format_code": "PM4",
+          "structured_record_count": 1265,
+          "geography_count": 1,
+          "geography_sample": [
+            "maharashtra"
+          ],
+          "header_count": 11
+        },
+        {
+          "filename": "Progress tracker of verification of schemes (2).xls",
+          "sha256": "7457c07e07298797404455038d255e3dfd3f3fac4a6621ba30097596a5b77930",
+          "format_code": "PM4",
+          "structured_record_count": 5643,
+          "geography_count": 1,
+          "geography_sample": [
+            "tamil nadu"
+          ],
+          "header_count": 11
+        },
+        {
+          "filename": "Progress tracker of verification of schemes (3).xls",
+          "sha256": "de151a54a9a774452cef810bd5fb731a2db73bfb0097cb2f79b01424cb20da81",
+          "format_code": "PM4",
+          "structured_record_count": 737,
+          "geography_count": 1,
+          "geography_sample": [
+            "punjab"
+          ],
+          "header_count": 11
+        },
+        {
+          "filename": "Progress tracker of verification of schemes.xls",
+          "sha256": "54fa5875d107fd1c7b46e4df96ed800ddd99701aed19e764ef758a798fe52337",
+          "format_code": "PM4",
+          "structured_record_count": 143,
+          "geography_count": 1,
+          "geography_sample": [
+            "andaman & nicobar islands"
+          ],
+          "header_count": 11
+        }
+      ],
+      "pairwise_comparisons": [
+        {
+          "left_filename": "Progress tracker of verification of schemes (1).xls",
+          "right_filename": "Progress tracker of verification of schemes (2).xls",
+          "same_header_schema": true,
+          "shared_header_count": 11,
+          "left_header_count": 11,
+          "right_header_count": 11,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Progress tracker of verification of schemes (1).xls",
+          "right_filename": "Progress tracker of verification of schemes (3).xls",
+          "same_header_schema": true,
+          "shared_header_count": 11,
+          "left_header_count": 11,
+          "right_header_count": 11,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Progress tracker of verification of schemes (1).xls",
+          "right_filename": "Progress tracker of verification of schemes.xls",
+          "same_header_schema": true,
+          "shared_header_count": 11,
+          "left_header_count": 11,
+          "right_header_count": 11,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Progress tracker of verification of schemes (2).xls",
+          "right_filename": "Progress tracker of verification of schemes (3).xls",
+          "same_header_schema": true,
+          "shared_header_count": 11,
+          "left_header_count": 11,
+          "right_header_count": 11,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Progress tracker of verification of schemes (2).xls",
+          "right_filename": "Progress tracker of verification of schemes.xls",
+          "same_header_schema": true,
+          "shared_header_count": 11,
+          "left_header_count": 11,
+          "right_header_count": 11,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Progress tracker of verification of schemes (3).xls",
+          "right_filename": "Progress tracker of verification of schemes.xls",
+          "same_header_schema": true,
+          "shared_header_count": 11,
+          "left_header_count": 11,
+          "right_header_count": 11,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        }
+      ],
+      "consolidation_decision": "LOGICALLY_CONSOLIDATE_ROWS_KEEP_RAW_SOURCES",
+      "raw_source_action": "RETAIN_IMMUTABLE"
+    },
+    {
+      "title": "Status of Pipe Water Supply in School",
+      "member_count": 3,
+      "members": [
+        {
+          "filename": "Status of Pipe Water Supply in School (1).xls",
+          "sha256": "094717f6803819046c67b8eabefd5cb0223f464a0656dbb6284a1d2b6b7f6286",
+          "format_code": "F26",
+          "structured_record_count": 468,
+          "geography_count": 34,
+          "geography_sample": [
+            "ahmednagar",
+            "akola",
+            "amravati",
+            "beed",
+            "bhandara",
+            "buldhana",
+            "chandrapur",
+            "chhatrapati sambhajinagar"
+          ],
+          "header_count": 13
+        },
+        {
+          "filename": "Status of Pipe Water Supply in School (3).xls",
+          "sha256": "be777a3da924b19da73987c085cf3d1009e7f4b344438ee7cab62e9977813bce",
+          "format_code": "F26",
+          "structured_record_count": 52,
+          "geography_count": 2,
+          "geography_sample": [
+            "karaikal",
+            "pondicherry"
+          ],
+          "header_count": 13
+        },
+        {
+          "filename": "Status of Pipe Water Supply in School.xls",
+          "sha256": "801a06bffb0d7bcd21d3f2656d6959eb8ee715310d4013662d52308e3e642e1b",
+          "format_code": "F26",
+          "structured_record_count": 481,
+          "geography_count": 35,
+          "geography_sample": [
+            "bajali",
+            "baksa",
+            "barpeta",
+            "biswanath",
+            "bongaigaon",
+            "cachar",
+            "charaideo",
+            "chirang"
+          ],
+          "header_count": 13
+        }
+      ],
+      "pairwise_comparisons": [
+        {
+          "left_filename": "Status of Pipe Water Supply in School (1).xls",
+          "right_filename": "Status of Pipe Water Supply in School (3).xls",
+          "same_header_schema": true,
+          "shared_header_count": 13,
+          "left_header_count": 13,
+          "right_header_count": 13,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Status of Pipe Water Supply in School (1).xls",
+          "right_filename": "Status of Pipe Water Supply in School.xls",
+          "same_header_schema": true,
+          "shared_header_count": 13,
+          "left_header_count": 13,
+          "right_header_count": 13,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Status of Pipe Water Supply in School (3).xls",
+          "right_filename": "Status of Pipe Water Supply in School.xls",
+          "same_header_schema": true,
+          "shared_header_count": 13,
+          "left_header_count": 13,
+          "right_header_count": 13,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        }
+      ],
+      "consolidation_decision": "LOGICALLY_CONSOLIDATE_ROWS_KEEP_RAW_SOURCES",
+      "raw_source_action": "RETAIN_IMMUTABLE"
+    },
+    {
+      "title": "Status of verification of beneficiary provided with tap water supply (30/08/2026)",
+      "member_count": 4,
+      "members": [
+        {
+          "filename": "Status of verification of beneficiary provided wit (1).xls",
+          "sha256": "c1d649579cffbaa559197f0291089f3a94a2672584b73318f44428dd3ee167a4",
+          "format_code": "J6",
+          "structured_record_count": 42,
+          "geography_count": 3,
+          "geography_sample": [
+            "nicobars",
+            "north and middle andaman",
+            "south andamans"
+          ],
+          "header_count": 7
+        },
+        {
+          "filename": "Status of verification of beneficiary provided wit (2).xls",
+          "sha256": "2e20c252107a634f38829810f72b2c74f39cd02a129ea98a3705c6c761d1416a",
+          "format_code": "J6",
+          "structured_record_count": 280,
+          "geography_count": 37,
+          "geography_sample": [
+            "ariyalur",
+            "chengalpattu",
+            "coimbatore",
+            "cuddalore",
+            "dharmapuri",
+            "dindigul",
+            "erode",
+            "kallakurichi"
+          ],
+          "header_count": 7
+        },
+        {
+          "filename": "Status of verification of beneficiary provided wit (3).xls",
+          "sha256": "5ff8769c89ab5801b42f99d2ca000221b1a7130645cd0e173876e015e797e8da",
+          "format_code": "J6",
+          "structured_record_count": 259,
+          "geography_count": 34,
+          "geography_sample": [
+            "ahmednagar",
+            "akola",
+            "amravati",
+            "beed",
+            "bhandara",
+            "buldhana",
+            "chandrapur",
+            "chhatrapati sambhajinagar"
+          ],
+          "header_count": 7
+        },
+        {
+          "filename": "Status of verification of beneficiary provided wit.xls",
+          "sha256": "a0fac02a16a2044bb0e94ec3d1ad6e780ad3f5dd4434bade9252def7263cf9d9",
+          "format_code": "J6",
+          "structured_record_count": 266,
+          "geography_count": 35,
+          "geography_sample": [
+            "bajali",
+            "baksa",
+            "barpeta",
+            "biswanath",
+            "bongaigaon",
+            "cachar",
+            "charaideo",
+            "chirang"
+          ],
+          "header_count": 7
+        }
+      ],
+      "pairwise_comparisons": [
+        {
+          "left_filename": "Status of verification of beneficiary provided wit (1).xls",
+          "right_filename": "Status of verification of beneficiary provided wit (2).xls",
+          "same_header_schema": true,
+          "shared_header_count": 7,
+          "left_header_count": 7,
+          "right_header_count": 7,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Status of verification of beneficiary provided wit (1).xls",
+          "right_filename": "Status of verification of beneficiary provided wit (3).xls",
+          "same_header_schema": true,
+          "shared_header_count": 7,
+          "left_header_count": 7,
+          "right_header_count": 7,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Status of verification of beneficiary provided wit (1).xls",
+          "right_filename": "Status of verification of beneficiary provided wit.xls",
+          "same_header_schema": true,
+          "shared_header_count": 7,
+          "left_header_count": 7,
+          "right_header_count": 7,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Status of verification of beneficiary provided wit (2).xls",
+          "right_filename": "Status of verification of beneficiary provided wit (3).xls",
+          "same_header_schema": true,
+          "shared_header_count": 7,
+          "left_header_count": 7,
+          "right_header_count": 7,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Status of verification of beneficiary provided wit (2).xls",
+          "right_filename": "Status of verification of beneficiary provided wit.xls",
+          "same_header_schema": true,
+          "shared_header_count": 7,
+          "left_header_count": 7,
+          "right_header_count": 7,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        },
+        {
+          "left_filename": "Status of verification of beneficiary provided wit (3).xls",
+          "right_filename": "Status of verification of beneficiary provided wit.xls",
+          "same_header_schema": true,
+          "shared_header_count": 7,
+          "left_header_count": 7,
+          "right_header_count": 7,
+          "geography_overlap": [],
+          "conflicting_key_count": 0,
+          "conflicting_keys_sample": [],
+          "classification": "COMPLEMENTARY_GEOGRAPHY_PARTITIONS"
+        }
+      ],
+      "consolidation_decision": "LOGICALLY_CONSOLIDATE_ROWS_KEEP_RAW_SOURCES",
+      "raw_source_action": "RETAIN_IMMUTABLE"
+    }
+  ],
+  "summary": {
+    "repeated_title_family_count": 5,
+    "decisions": {
+      "LOGICALLY_CONSOLIDATE_ROWS_KEEP_RAW_SOURCES": 5
+    }
+  }
+}

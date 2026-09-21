@@ -429,6 +429,32 @@ class RagService:
         """
         if re.search(r"\bselected\s+source\s*:", query, re.I):
             return None
+        # A concrete geography can resolve a logical report family when all
+        # retrieved structured rows for that geography originate from one
+        # physical source.  This is common for compatible state/district
+        # partitions of one report.  Do not still ask the user to pick an
+        # arbitrary filename; retain that source in every provenance citation.
+        requested_geographies = {
+            value.casefold()
+            for value in RagService._requested_geographies(query, facts)
+            if value and value.casefold() not in {"total", "all state", "all district"}
+        }
+        if requested_geographies:
+            scoped_documents = {
+                str(fact.get("metadata", {}).get("document_id") or "")
+                for fact in facts
+                if str(fact.get("metadata", {}).get("document_id") or "")
+                and any(
+                    requested in {
+                        str(fact.get("metadata", {}).get("state") or "").casefold(),
+                        str(fact.get("metadata", {}).get("district") or "").casefold(),
+                        str(fact.get("metadata", {}).get("division") or "").casefold(),
+                    }
+                    for requested in requested_geographies
+                )
+            }
+            if len(scoped_documents) == 1:
+                return None
         sources: dict[str, str] = {}
         source_identities: dict[str, str] = {}
         relevant_fact = False

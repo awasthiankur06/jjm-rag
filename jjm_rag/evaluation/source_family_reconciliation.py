@@ -110,6 +110,17 @@ def classify_members(title: str, members: list[dict[str, Any]]) -> dict[str, Any
     }
 
 
+def allows_automatic_logical_consolidation(result: dict[str, Any]) -> bool:
+    """The sole allow-list for a future logical-consolidation operation.
+
+    Ingestion always preserves a new source document.  Any later job that
+    presents a merged report view must call this guard and may do so only for
+    proven complementary partitions.  Potential duplicates, conflicts, and
+    incomplete metadata are intentionally blocked.
+    """
+    return result.get("consolidation_decision") == "LOGICALLY_CONSOLIDATE_ROWS_KEEP_RAW_SOURCES"
+
+
 def reconcile(connection) -> dict[str, Any]:
     rows = connection.execute(
         """
