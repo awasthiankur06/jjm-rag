@@ -20,6 +20,6 @@ install -d -o jjmrag -g jjmrag -m 0750 "$target"
 (cd "$source_dir" && tar --exclude=.git --exclude=.env --exclude=.venv --exclude=artifacts/v2 -cf - .) | (cd "$target" && tar xf -)
 chown -R jjmrag:jjmrag "$target"
 chmod -R go-w "$target"
-runuser -u jjmrag -- /usr/bin/env bash -c "cd '$target' && '$python_cmd' -m venv .venv && .venv/bin/python -m pip install --upgrade pip && .venv/bin/python -m pip install -r requirements.txt"
+runuser -u jjmrag -- /usr/bin/env bash -c "cd '$target' && '$python_cmd' -m venv --system-site-packages .venv && .venv/bin/python -m pip install --upgrade pip && .venv/bin/python -m pip install --only-binary=:all: -r requirements.txt"
 ln -sfn "$target" /opt/jjm-rag/current
 echo "Installed release $release_id at $target"

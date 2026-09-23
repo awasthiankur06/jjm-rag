@@ -24,6 +24,16 @@ sudo bash deployment/rhel7/scripts/40-install-httpd.sh
 
 Use a release ID containing only letters, digits, `.`, `_`, or `-`. Configure real credentials only in `/etc/jjm-rag/jjm-rag.env`; never put them in this repository or command arguments.
 
+### RHEL 7 Python package note
+
+When using the documented micromamba runtime, install compiled `numpy` and `pandas` in that runtime before application installation. The release installer creates a virtual environment with access to those packages and refuses to compile source distributions on RHEL 7's legacy compiler.
+
+```bash
+sudo /root/jjm-micromamba-download/bin/micromamba install -y \
+  --prefix /opt/jjm-runtime --channel conda-forge --strict-channel-priority \
+  numpy pandas
+```
+
 ## Restore PostgreSQL
 
 The DBA must make an empty dedicated database and a least-privilege role. Store its password in a protected `PGPASSFILE`.
