@@ -1,0 +1,88 @@
+;
+; Archive created at 2026-09-23 15:40:33
+;     dbname: jjm_rag_phase6a_test
+;     TOC Entries: 77
+;     Compression: gzip
+;     Dump Version: 1.16-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 18.6
+;     Dumped by pg_dump version: 18.6
+;
+;
+; Selected TOC Entries:
+;
+226; 1259 16535 TABLE public canonical_content postgres
+220; 1259 16407 TABLE public document_versions postgres
+219; 1259 16389 TABLE public documents postgres
+222; 1259 16444 TABLE public geography_dimensions postgres
+227; 1259 16558 TABLE public ingestion_audit postgres
+229; 1259 25590 TABLE public logical_dataset_sources postgres
+228; 1259 25572 TABLE public logical_datasets postgres
+230; 1259 25609 TABLE public logical_facts postgres
+225; 1259 16507 TABLE public observations postgres
+221; 1259 16428 TABLE public provenance_records postgres
+223; 1259 16460 TABLE public reporting_dimensions postgres
+224; 1259 16476 TABLE public structured_records postgres
+231; 1259 25639 VIEW public v2_structured_records postgres
+5137; 0 16535 TABLE DATA public canonical_content postgres
+5131; 0 16407 TABLE DATA public document_versions postgres
+5130; 0 16389 TABLE DATA public documents postgres
+5133; 0 16444 TABLE DATA public geography_dimensions postgres
+5138; 0 16558 TABLE DATA public ingestion_audit postgres
+5140; 0 25590 TABLE DATA public logical_dataset_sources postgres
+5139; 0 25572 TABLE DATA public logical_datasets postgres
+5141; 0 25609 TABLE DATA public logical_facts postgres
+5136; 0 16507 TABLE DATA public observations postgres
+5132; 0 16428 TABLE DATA public provenance_records postgres
+5134; 0 16460 TABLE DATA public reporting_dimensions postgres
+5135; 0 16476 TABLE DATA public structured_records postgres
+4947; 2606 16547 CONSTRAINT public canonical_content canonical_content_pkey postgres
+4929; 2606 16422 CONSTRAINT public document_versions document_versions_pkey postgres
+4920; 2606 16404 CONSTRAINT public documents documents_pkey postgres
+4922; 2606 16406 CONSTRAINT public documents documents_sha256_key postgres
+4935; 2606 16454 CONSTRAINT public geography_dimensions geography_dimensions_pkey postgres
+4950; 2606 16569 CONSTRAINT public ingestion_audit ingestion_audit_pkey postgres
+4956; 2606 25598 CONSTRAINT public logical_dataset_sources logical_dataset_sources_pkey postgres
+4952; 2606 25589 CONSTRAINT public logical_datasets logical_datasets_logical_family_key_key postgres
+4954; 2606 25587 CONSTRAINT public logical_datasets logical_datasets_pkey postgres
+4960; 2606 25621 CONSTRAINT public logical_facts logical_facts_dataset_id_source_record_id_key postgres
+4962; 2606 25619 CONSTRAINT public logical_facts logical_facts_pkey postgres
+4945; 2606 16519 CONSTRAINT public observations observations_pkey postgres
+4933; 2606 16438 CONSTRAINT public provenance_records provenance_records_pkey postgres
+4939; 2606 16470 CONSTRAINT public reporting_dimensions reporting_dimensions_pkey postgres
+4942; 2606 16486 CONSTRAINT public structured_records structured_records_pkey postgres
+4948; 1259 16586 INDEX public idx_content_document_id postgres
+4923; 1259 16576 INDEX public idx_documents_family postgres
+4924; 1259 16578 INDEX public idx_documents_format_code postgres
+4925; 1259 16579 INDEX public idx_documents_ingestion_status postgres
+4926; 1259 16577 INDEX public idx_documents_report_type postgres
+4927; 1259 16575 INDEX public idx_documents_sha256 postgres
+4936; 1259 16582 INDEX public idx_geography_document_id postgres
+4957; 1259 25637 INDEX public idx_logical_facts_dataset postgres
+4958; 1259 25638 INDEX public idx_logical_facts_source_record postgres
+4943; 1259 16585 INDEX public idx_observations_document_id postgres
+4931; 1259 16581 INDEX public idx_provenance_document_id postgres
+4937; 1259 16583 INDEX public idx_reporting_document_id postgres
+4940; 1259 16584 INDEX public idx_structured_document_id postgres
+4930; 1259 16580 INDEX public idx_versions_document_id postgres
+4974; 2606 16548 FK CONSTRAINT public canonical_content canonical_content_document_id_fkey postgres
+4975; 2606 16553 FK CONSTRAINT public canonical_content canonical_content_provenance_id_fkey postgres
+4963; 2606 16423 FK CONSTRAINT public document_versions document_versions_document_id_fkey postgres
+4965; 2606 16455 FK CONSTRAINT public geography_dimensions geography_dimensions_document_id_fkey postgres
+4976; 2606 16570 FK CONSTRAINT public ingestion_audit ingestion_audit_document_id_fkey postgres
+4977; 2606 25599 FK CONSTRAINT public logical_dataset_sources logical_dataset_sources_dataset_id_fkey postgres
+4978; 2606 25604 FK CONSTRAINT public logical_dataset_sources logical_dataset_sources_document_id_fkey postgres
+4979; 2606 25622 FK CONSTRAINT public logical_facts logical_facts_dataset_id_fkey postgres
+4980; 2606 25632 FK CONSTRAINT public logical_facts logical_facts_provenance_id_fkey postgres
+4981; 2606 25627 FK CONSTRAINT public logical_facts logical_facts_source_record_id_fkey postgres
+4971; 2606 16520 FK CONSTRAINT public observations observations_document_id_fkey postgres
+4972; 2606 16530 FK CONSTRAINT public observations observations_provenance_id_fkey postgres
+4973; 2606 16525 FK CONSTRAINT public observations observations_record_id_fkey postgres
+4964; 2606 16439 FK CONSTRAINT public provenance_records provenance_records_document_id_fkey postgres
+4966; 2606 16471 FK CONSTRAINT public reporting_dimensions reporting_dimensions_document_id_fkey postgres
+4967; 2606 16487 FK CONSTRAINT public structured_records structured_records_document_id_fkey postgres
+4968; 2606 16492 FK CONSTRAINT public structured_records structured_records_geography_id_fkey postgres
+4969; 2606 16502 FK CONSTRAINT public structured_records structured_records_provenance_id_fkey postgres
+4970; 2606 16497 FK CONSTRAINT public structured_records structured_records_reporting_id_fkey postgres
