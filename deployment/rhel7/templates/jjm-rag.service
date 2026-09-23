@@ -1,0 +1,25 @@
+[Unit]
+Description=JJM RAG API and browser console
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jjmrag
+Group=jjmrag
+WorkingDirectory=/opt/jjm-rag/current
+EnvironmentFile=/etc/jjm-rag/jjm-rag.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/jjm-rag/current/.venv/bin/python -m uvicorn jjm_rag.production.main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=90
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ReadWritePaths=/var/log/jjm-rag /var/lib/jjm-rag
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

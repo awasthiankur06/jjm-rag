@@ -31,7 +31,9 @@ _NUMBER = re.compile(r"^-?\s*\d[\d,]*(?:\.\d+)?\s*%?$")
 _DATE = re.compile(r"^\d{1,2}[/-]\d{1,2}[/-]\d{2,4}$|^\d{4}[/-]\d{1,2}[/-]\d{1,2}$")
 _FORMAT = re.compile(r"\bFormat\s*[-:]?\s*([A-Z0-9]+(?:\s*\([A-Za-z0-9]+\))*)", re.I)
 _NON_METRIC_HEADER = re.compile(r"^(?:col_\d+|s\.?\s*no\.?|serial(?:\s+no\.?)?)$", re.I)
-_STATE_DIMENSION_HEADERS = {"state", "state name", "state ut", "state union territory"}
+# Keep the source spellings as well as their normalised equivalents.  Legacy
+# HTML/XLS exports use both ``State/ UT`` and ``State/UT``.
+_STATE_DIMENSION_HEADERS = {"state", "state name", "state ut", "state/ ut", "state/ut", "state union territory"}
 
 
 def _stable(prefix: str, *values: object) -> str:
@@ -128,8 +130,17 @@ def _geography_for_row(headers: list[str], row: list[Any], metadata: dict[str, A
         normalized_path = [" ".join(_text(part).lower().replace("/", " ").split()) for part in path if _text(part)]
         dimension_labels = _STATE_DIMENSION_HEADERS | {"district", "district name", "division", "division name"}
         # A nested leaf called "State" may be a metric, not a geography
-        # dimension. Only an exact source dimension heading is authoritative.
-        is_dimension_heading = len(normalized_path) == 1 and normalized_path[0] in dimension_labels
+        # dimension.  ``State/ UT`` is different: it is an unambiguous source
+        # dimension even when the parser retains a report-title parent path.
+        # Accept that exact label, but keep the conservative one-level rule
+        # for a bare nested ``State`` metric.
+        is_flat_dimension = len(normalized_path) == 1 and normalized_path[0] in dimension_labels
+        is_nested_state_ut_dimension = (
+            len(normalized_path) > 1
+            and name in {"state ut", "state name", "state union territory"}
+            and normalized_path[-1] == name
+        )
+        is_dimension_heading = is_flat_dimension or is_nested_state_ut_dimension
         # A dimension is a label, never a serial number, metric value, or
         # aggregate row marker.  Preserve the raw cell separately as a record,
         # but do not corrupt dimension filters with it.
@@ -157,8 +168,9 @@ def backfill_row_geography(conn, document_ids: set[str] | None = None) -> dict[s
     to exact state-dimension headings and valid label values; it never infers a
     state from filenames or values in metric columns.
     """
-    clauses = ["LOWER(sr.metric_name) IN (?, ?, ?, ?)"]
-    params: list[Any] = sorted(_STATE_DIMENSION_HEADERS)
+    state_headers = sorted(_STATE_DIMENSION_HEADERS)
+    clauses = [f"LOWER(sr.metric_name) IN ({', '.join('?' for _ in state_headers)})"]
+    params: list[Any] = state_headers
     if document_ids:
         placeholders = ", ".join("?" for _ in document_ids)
         clauses.append(f"sr.document_id IN ({placeholders})")

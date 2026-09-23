@@ -199,6 +199,13 @@ class PostgresEvidenceStore:
                 metric_hints.extend(patterns)
         metric_hints = list(dict.fromkeys(metric_hints))
         resolved_states = "COALESCE(g.state_name, gd.state_name)"
+        # Respect source-language geographic grain before ranking. A state
+        # summary must not compete with district rows for a district-wise
+        # request, without relying on any report filename.
+        if re.search(r"\bdistrict\s*[- ]?wise\b", query_lower):
+            clauses.append("g.district_name IS NOT NULL")
+        elif re.search(r"\bstate\s*[- ]?wise\b", query_lower):
+            clauses.append("g.district_name IS NULL")
         if matched_states and not matched_districts:
             clauses.append(f"{resolved_states} IN (" + ",".join(["?"] * len(matched_states)) + ")")
             params.extend(matched_states)

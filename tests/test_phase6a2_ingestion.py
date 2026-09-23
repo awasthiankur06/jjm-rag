@@ -124,6 +124,29 @@ def test_metric_names_containing_state_or_district_do_not_overwrite_geography(tm
     assert states == ["Bihar"]
 
 
+def test_nested_state_ut_dimension_is_preserved_as_geography(tmp_path):
+    """A report-title parent path must not turn ``State/ UT`` into a metric."""
+    source = tmp_path / "nested_state_ut.xls"
+    source.write_text(
+        """<table>
+        <tr><th colspan='2'>Robust chlorination system</th></tr>
+        <tr><th>S. No.</th><th>State/ UT</th><th>Installed</th></tr>
+        <tr><td>1</td><td>Assam</td><td>73</td></tr>
+        </table>""",
+        encoding="utf-8",
+    )
+    connection = _connection()
+    document = parse_source(source, "report", {"filename": source.name})
+    persist_canonical_source(connection, document, {"filename": source.name}, "nested-state-ut-test")
+    row = connection.execute(
+        """SELECT sr.metric_name, sr.value_raw, gd.state_name
+           FROM structured_records sr
+           JOIN geography_dimensions gd ON gd.geography_id = sr.geography_id
+           WHERE sr.metric_name = 'Installed'"""
+    ).fetchone()
+    assert tuple(row) == ("Installed", "73", "Assam")
+
+
 def test_multilevel_table_state_name_is_carried_to_every_metric_in_the_row(tmp_path):
     """A report may use ``State Name`` and a three-level metric header."""
     source = tmp_path / "habitation_coverage.xls"

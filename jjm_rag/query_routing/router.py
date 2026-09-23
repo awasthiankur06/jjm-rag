@@ -59,6 +59,12 @@ class QueryRouter:
         elif re.search(r"\bselected\s+(?:source|metric/header|metric|header)\s*:", q):
             intent = "structured"
             strategy = "structured"
+        # A state/district-wise data request asks for rows from a report even
+        # when the report title itself includes the word "Format". Handle it
+        # before the document-identity/format lookup rules below.
+        elif re.search(r"\b(?:state|district)\s*[- ]?wise\b", q) and "data" in q:
+            intent = "structured"
+            strategy = "structured"
         # ``conversions`` is a J6 numeric field, not a request to compare
         # document versions.  Version routing is therefore word-boundary
         # based for the overloaded token rather than a substring check.
@@ -113,7 +119,7 @@ class QueryRouter:
         elif any(term in q for term in ["format", "code", "reference", "field"]):
             intent = "exact"
             strategy = "exact"
-        elif any(term in q for term in ["count", "total", "compare", "difference", "sum", "average", "percentage of", "percentage change", "higher", "more", "larger", "highest", "how many", "district", "state", "coverage", "fhtc", "verified", "pending", "completed", "planned", "installed", "geotagged", "population", "households", "connections", "schemes", "laborator", "as of", "financial year", "fy "]) or any(char.isdigit() for char in q):
+        elif any(term in q for term in ["count", "total", "compare", "difference", "sum", "average", "percentage of", "percentage change", "higher", "more", "larger", "highest", "how many", "district", "state", "coverage", "fhtc", "verified", "pending", "completed", "planned", "installed", "geotagged", "population", "households", "connections", "scheme", "schemes", "cost", "costs", "laborator", "as of", "financial year", "fy "]) or any(char.isdigit() for char in q):
             intent = "structured"
             strategy = "structured"
         elif any(term in q for term in ["sanction", "name", "document", "report", "status"]):

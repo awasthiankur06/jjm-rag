@@ -21,12 +21,11 @@ function escapeHtml(value) {
 }
 
 function renderMarkdown(value, citations = []) {
-  const citationNumbers = new Set(citations.map(citation => Number(String(citation.citation_id || '').match(/(\d+)$/)?.[1])).filter(Boolean));
   const inline = text => escapeHtml(text)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[(\d+)\]/g, (match, number) => citationNumbers.has(Number(number))
-      ? `<button type="button" class="citation-link" data-citation="${number}" title="View source and provenance" aria-label="View source ${number}">↗</button>`
-      : match);
+    // Keep provenance in the API/audit contract, but do not render source
+    // controls or citation markers in this demo UI.
+    .replace(/\[\d+\]/g, '');
   const lines = String(value || '').split('\n');
   const rendered = [];
   let listOpen = false;
@@ -77,24 +76,14 @@ function addAssistantMessage(response) {
   const grounded = response.confidence?.grounded === true;
   const level = response.confidence?.level || 'unknown';
   const citations = Array.isArray(response.citations) ? response.citations : [];
-  const sources = citations.length ? `<div class="sources">${citations.map(citationDetail).join('')}</div>` : '';
   const status = grounded ? `<span class="badge">Grounded · ${escapeHtml(level)}</span>` : `<span class="badge abstain">Insufficient evidence</span>`;
   const retrieval = response.retrieval || {};
   const channels = Array.isArray(retrieval.channels) ? retrieval.channels.join(', ') : 'none';
   const node = document.createElement('article');
   node.className = 'message assistant';
   const clarification = response.clarification;
-  node.innerHTML = `<div class="message-label">JJM RAG</div><div class="message-body">${renderMarkdown(response.answer || 'No answer returned.', citations)}</div><div class="meta-row">${status}<span>${escapeHtml(retrieval.route || 'unknown')} route</span><span>${escapeHtml(String(response.confidence?.evidence_count ?? 0))} evidence items</span><span>${escapeHtml(channels)}</span></div>${sources}`;
+  node.innerHTML = `<div class="message-label">JJM RAG</div><div class="message-body">${renderMarkdown(response.answer || 'No answer returned.', citations)}</div><div class="meta-row">${status}<span>${escapeHtml(retrieval.route || 'unknown')} route</span><span>${escapeHtml(String(response.confidence?.evidence_count ?? 0))} evidence items</span><span>${escapeHtml(channels)}</span></div>`;
   messages.append(node);
-  node.querySelectorAll('.citation-link').forEach(button => {
-    button.addEventListener('click', () => {
-      const target = node.querySelector(`#source-evidence-${button.dataset.citation}`);
-      if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      target.classList.add('source-highlight');
-      window.setTimeout(() => target.classList.remove('source-highlight'), 1400);
-    });
-  });
   if (clarification) {
     pendingClarification = { originalQuestion: response.retrieval?.original_query || conversationContext.at(-1) || '', required: clarification.required || [] };
     if (Array.isArray(clarification.options) && clarification.options.length) {
@@ -105,7 +94,7 @@ function addAssistantMessage(response) {
         button.type = 'button';
         button.className = 'clarification-choice';
         button.textContent = option;
-        button.addEventListener('click', () => askQuestion(option));
+        button.addEventListener('click', () => askQuestion(option, true));
         choices.append(button);
       });
       node.querySelector('.message-body').after(choices);
@@ -131,7 +120,7 @@ async function checkHealth() {
   }
 }
 
-async function askQuestion(question) {
+async function askQuestion(question, isClarificationChoice = false) {
   const originalQuestion = question;
   // Source-choice options are physical filenames.  Always use the API's
   // explicit marker rather than display wording such as "source/report";
@@ -139,7 +128,12 @@ async function askQuestion(question) {
   // the same clarification indefinitely.
   const required = pendingClarification?.required || [];
   const selectedField = required.includes('source/report') || required.includes('source') ? 'source' : (required.join(' or ') || 'detail');
-  const composedQuestion = pendingClarification?.originalQuestion ? `${pendingClarification.originalQuestion}\nSelected ${selectedField}: ${question}` : question;
+  // Only a button click is a clarification selection. A user may type a
+  // completely new question while choices from the previous turn remain on
+  // screen; treating it as a selected source/metric corrupts that new query.
+  const composedQuestion = isClarificationChoice && pendingClarification?.originalQuestion
+    ? `${pendingClarification.originalQuestion}\nSelected ${selectedField}: ${question}`
+    : question;
   addUserMessage(originalQuestion);
   welcome.hidden = true;
   sendButton.disabled = true;

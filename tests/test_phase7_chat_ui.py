@@ -25,7 +25,11 @@ def test_chat_assets_use_existing_api_boundary():
     assert client.get("/").status_code == 200
     assert "JJM RAG Console" in client.get("/").text
     assert client.get("/static/styles.css").status_code == 200
-    assert client.get("/static/app.js").status_code == 200
+    app_js = client.get("/static/app.js")
+    assert app_js.status_code == 200
+    assert "citation-link" not in app_js.text
+    assert "async function askQuestion(question, isClarificationChoice = false)" in app_js.text
+    assert "isClarificationChoice && pendingClarification?.originalQuestion" in app_js.text
     assert client.get("/health").json() == {"status": "healthy"}
     assert client.get("/ready").json()["status"] == "ready"
     response = client.post("/api/v1/query", json={"query": "test"})

@@ -116,8 +116,16 @@ class RagService:
             channels["exact"] = self.evidence_store.exact(normalized_query, plan.top_k)
         if plan.lexical:
             channels["lexical"] = self.evidence_store.lexical(normalized_query, plan.top_k)
+        overview_request = self._requests_report_overview(normalized_query)
         if plan.structured:
-            channels["structured"] = self.evidence_store.structured(normalized_query, plan.filters, plan.top_k * 5)
+            # A report-level district/state request needs enough rows to show
+            # every source-defined metric for the requested geography.  It is
+            # still bounded so a broad corpus request cannot exhaust memory.
+            # State-level reports commonly contain 34 rows × 12 source-defined
+            # metrics.  Keep the entire ordinary report table together rather
+            # than silently returning an arbitrary first 200 values.
+            structured_limit = 600 if overview_request else plan.top_k * 5
+            channels["structured"] = self.evidence_store.structured(normalized_query, plan.filters, structured_limit)
         warnings: list[str] = []
         if plan.semantic and self.semantic:
             try:
@@ -140,8 +148,11 @@ class RagService:
                 for name, items in channels.items()
             }
         answer_type = self._answer_type(normalized_query, plan)
-        missing_entity = self._missing_required_entity(normalized_query, answer_type)
-        selection_limit = 40 if answer_type in {"FACT", "CALCULATION", "COMPARISON"} else plan.top_k
+        # A recognised report overview is intentionally a complete row/table
+        # request.  It must not inherit a row-level missing-entity prompt
+        # (for example, a district request) from conversational context.
+        missing_entity = None if overview_request else self._missing_required_entity(normalized_query, answer_type)
+        selection_limit = 600 if overview_request else (40 if answer_type in {"FACT", "CALCULATION", "COMPARISON"} else plan.top_k)
         if answer_type in {"CALCULATION", "COMPARISON"}:
             protected = self._protect_required_structured_operands(normalized_query, channels.get("structured", []))
             if protected:
@@ -215,6 +226,14 @@ class RagService:
             # validation. Do not make an external generation service a
             # requirement for returning that validated result.
             answer = self._deterministic_calculation_answer(calculation)
+        elif overview_request and structured_facts:
+            # A complete state/district report can contain hundreds of
+            # validated cells.  Sending all of them to an LLM is both slow and
+            # unnecessary: it delays the response, risks truncation, and is
+            # replaced by this same deterministic, provenance-backed view
+            # below.  Return the complete source-defined overview directly.
+            answer = self._deterministic_overview_answer(structured_facts, selected)
+            warnings.append("returned validated structured report overview without generation")
         elif self.llm and selected:
             try:
                 answer = self._generate(normalized_query, selected, calculation=calculation)
@@ -235,12 +254,10 @@ class RagService:
             answer = self._retrieval_answer(selected[:1])
             warnings.append("generation refusal was replaced by direct source evidence")
         elif answer_type == "FACT":
-            if self._requests_report_overview(normalized_query) and structured_facts:
-                answer = self._deterministic_overview_answer(structured_facts, selected)
-                warnings.append("generation result was replaced by validated structured report overview")
-                fact = None
-            else:
-                fact = self._best_fact(normalized_query, structured_facts)
+            # The overview above is already the final complete answer.  Do
+            # not collapse it back to a single ranked cell during the normal
+            # fact-safety pass.
+            fact = None if overview_request and structured_facts else self._best_fact(normalized_query, structured_facts)
             # The deterministic replacement is only valid for persisted
             # canonical structured facts.  Lightweight stores used by callers
             # may expose an untyped numeric snippet; replacing an LLM answer
@@ -366,6 +383,28 @@ class RagService:
         lowered = query.lower()
         if re.search(r"\bselected\s+(?:metric/header|metric|header)\s*:", lowered):
             return False
+        # A request for a named state/district-wise report is a request for
+        # the report row, including all of its source-defined columns. It is
+        # not a request for an arbitrary one of those columns. This remains
+        # narrow so generic "district data" questions still clarify safely.
+        if re.search(r"\b(?:district|state)\s*[- ]?wise\b", lowered) and any(
+            phrase in lowered for phrase in ("rural population", "number of population", "report", "status", "data")
+        ):
+            return True
+        # ``Status of Scheme Planning and Costs for <place>`` is the natural
+        # language form of a complete PM3-style report-row request.  It names
+        # the report subject and geography, not one arbitrary column, so show
+        # its source-defined row rather than entering a metric-clarification
+        # loop.  This is concept-based, not tied to a physical filename.
+        if all(term in lowered for term in ("status", "scheme")) and (
+            "planning" in lowered or "cost" in lowered
+        ):
+            return True
+        # A geo-tagged-water-source status request names a report subject and
+        # a geography, but not one arbitrary column. Treat it as the complete
+        # reported row so a raw report heading cannot masquerade as an answer.
+        if "status" in lowered and "geo-tagged" in lowered and "water source" in lowered:
+            return True
         # A broad title can match several reports or several columns.  Only
         # summarize after the user has chosen the physical source; before
         # then the normal source/metric clarification remains mandatory.
@@ -429,6 +468,18 @@ class RagService:
         """
         if re.search(r"\bselected\s+source\s*:", query, re.I):
             return None
+        # "District-wise" and "state-wise" are source-derived scope words.
+        # Prefer that declared row grain before deciding whether two physical
+        # files are genuinely competing sources.
+        lowered = query.lower()
+        if re.search(r"\bdistrict\s*[- ]?wise\b", lowered):
+            granular_facts = [fact for fact in facts if fact.get("metadata", {}).get("district")]
+            if granular_facts:
+                facts = granular_facts
+        elif re.search(r"\bstate\s*[- ]?wise\b", lowered):
+            granular_facts = [fact for fact in facts if not fact.get("metadata", {}).get("district")]
+            if granular_facts:
+                facts = granular_facts
         # A concrete geography can resolve a logical report family when all
         # retrieved structured rows for that geography originate from one
         # physical source.  This is common for compatible state/district
@@ -462,6 +513,7 @@ class RagService:
             term for term in re.findall(r"[a-z0-9]+", query.lower())
             if len(term) >= 4 and term not in {"state", "district", "selected", "source", "metric", "header", "status"}
         }
+        relevant_facts: list[dict[str, Any]] = []
         for fact in facts:
             metadata = fact.get("metadata", {})
             if not metadata.get("header_path"):
@@ -469,6 +521,18 @@ class RagService:
             path_text = str(metadata.get("header_path") or "").lower()
             if not query_terms or any(term in path_text for term in query_terms):
                 relevant_fact = True
+                relevant_facts.append(fact)
+        # Retrieval deliberately over-fetches for recall.  Once a distinctive
+        # source-defined header is found, unrelated structured rows must not
+        # manufacture a source ambiguity.  Keep only the header-relevant rows
+        # for the source-identity decision; later ranking still retains the
+        # original evidence set.
+        if relevant_facts:
+            facts = relevant_facts
+        for fact in facts:
+            metadata = fact.get("metadata", {})
+            if not metadata.get("header_path"):
+                continue
             document_id = str(metadata.get("document_id") or "")
             filename = str(fact.get("filename") or "")
             if document_id and filename:
@@ -481,13 +545,21 @@ class RagService:
         if not relevant_fact:
             sources = {}
             source_identities = {}
+            # Exact/lexical retrieval uses individual words as recall
+            # signals, so a general term such as "system" can retrieve a
+            # guideline or an unrelated workbook. A source clarification is
+            # admissible only when the source identity itself overlaps with
+            # more than one meaningful query term (when available).
+            minimum_identity_matches = 2 if len(query_terms) >= 3 else 1
             for item in evidence:
                 metadata = item.get("metadata", {})
                 document_id = str(metadata.get("document_id") or "")
                 filename = str(item.get("filename") or "")
-                if document_id and filename:
+                identity = f"{filename} {metadata.get('extracted_document_title') or ''}".lower()
+                identity_matches = sum(term in identity for term in query_terms)
+                if document_id and filename and identity_matches >= minimum_identity_matches:
                     sources[document_id] = filename
-                    source_identities[document_id] = f"{filename} {metadata.get('extracted_document_title') or ''}".lower()
+                    source_identities[document_id] = identity
         if len(sources) < 2:
             return None
         titles = ({str(fact.get("metadata", {}).get("extracted_document_title") or "") for fact in facts if fact.get("metadata", {}).get("header_path")} if relevant_fact else set())

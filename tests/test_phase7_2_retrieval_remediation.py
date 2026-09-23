@@ -17,6 +17,8 @@ def test_router_handles_corpus_structured_vocabulary():
     assert router.route("Which report defines the CS1(A) coverage fields?").strategy == "exact"
     assert router.route("Quality report\nSelected source: quality (1).xls").strategy == "structured"
     assert router.route("Remaining conversions to Govt. FHTC for Kokrajhar").strategy == "structured"
+    assert router.route("State wise data for Robust chlorination system Disinfection system Format").strategy == "structured"
+    assert router.route("What is the Status of Scheme Planning and Costs for Uttar Pradesh").strategy == "structured"
     assert router.route("What is JJM?").strategy == "semantic"
     assert router.route("What is the soul purpose of JJM?").strategy == "semantic"
     assert router.route("What about Jal Jeevan Mission?").strategy == "semantic"
