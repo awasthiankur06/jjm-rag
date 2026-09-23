@@ -71,6 +71,14 @@ sudo -u jjmrag -H /opt/jjm-rag/current/.venv/bin/python -m jjm_rag.production.cl
 sudo -u jjmrag -H /opt/jjm-rag/current/.venv/bin/python -m jjm_rag.production.cloud_cli --checkpoint /var/lib/jjm-rag/semantic_index_checkpoint.json
 ```
 
+To import the bundled, split Qdrant snapshot after reassembly, run:
+
+```bash
+bash deployment/rhel7/scripts/60-import-qdrant-snapshot.sh
+```
+
+The import script refuses to overwrite the JJM collection and never modifies unrelated Qdrant collections.
+
 ## Start and verify
 
 ```bash
