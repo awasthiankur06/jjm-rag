@@ -24,6 +24,14 @@ sudo bash deployment/rhel7/scripts/40-install-httpd.sh
 
 Use a release ID containing only letters, digits, `.`, `_`, or `-`. Configure real credentials only in `/etc/jjm-rag/jjm-rag.env`; never put them in this repository or command arguments.
 
+To populate the known local PostgreSQL/Qdrant values and enter provider keys without echoing them, run:
+
+```bash
+sudo bash deployment/rhel7/scripts/70-configure-runtime.sh
+```
+
+The script writes keys only to `/etc/jjm-rag/jjm-rag.env`, which is root-owned and readable by the `jjmrag` service group. It never prints keys or writes them into Git.
+
 ### RHEL 7 Python package note
 
 When using the documented micromamba runtime, install compiled `numpy` and `pandas` in that runtime before application installation. The release installer creates a virtual environment with access to those packages and refuses to compile source distributions on RHEL 7's legacy compiler.
