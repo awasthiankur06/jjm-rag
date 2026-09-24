@@ -102,6 +102,33 @@ function addAssistantMessage(response) {
   } else pendingClarification = null;
 }
 
+function addStreamingAssistantMessage() {
+  const node = document.createElement('article');
+  node.className = 'message assistant streaming';
+  node.innerHTML = '<div class="message-label">JJM RAG</div><div class="message-body">Checking grounded evidence…</div>';
+  messages.append(node);
+  return node;
+}
+
+async function consumeSse(response, onEvent) {
+  const reader = response.body?.getReader();
+  if (!reader) throw new Error('Streaming is not supported by this browser.');
+  const decoder = new TextDecoder();
+  let buffer = '';
+  while (true) {
+    const { value, done } = await reader.read();
+    buffer += decoder.decode(value || new Uint8Array(), { stream: !done });
+    const blocks = buffer.split(/\r?\n\r?\n/);
+    buffer = blocks.pop() || '';
+    for (const block of blocks) {
+      const event = block.split(/\r?\n/).find(line => line.startsWith('event:'))?.slice(6).trim() || 'message';
+      const data = block.split(/\r?\n/).filter(line => line.startsWith('data:')).map(line => line.slice(5).trim()).join('\n');
+      if (data) onEvent(event, JSON.parse(data));
+    }
+    if (done) break;
+  }
+}
+
 function addError(message) {
   const node = document.createElement('div');
   node.className = 'error-box';
@@ -141,9 +168,29 @@ async function askQuestion(question, isClarificationChoice = false) {
   sendLabel.textContent = 'Querying corpus';
   try {
     conversationContext.push(composedQuestion);
-    const response = await fetch('/api/v1/query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: composedQuestion, context: conversationContext.slice(-6) }) });
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.detail || 'The RAG service could not answer this request.');
+    const response = await fetch('/api/v1/query/stream', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'text/event-stream' }, body: JSON.stringify({ query: composedQuestion, context: conversationContext.slice(-6) }) });
+    if (!response.ok) {
+      const payload = await response.json();
+      throw new Error(payload.detail || 'The RAG service could not answer this request.');
+    }
+    const streamingNode = addStreamingAssistantMessage();
+    const body = streamingNode.querySelector('.message-body');
+    let streamedAnswer = '';
+    let payload = null;
+    await consumeSse(response, (event, data) => {
+      if (event === 'token') {
+        streamedAnswer += String(data.text || '');
+        body.innerHTML = renderMarkdown(streamedAnswer);
+        spinner.hidden = true;
+        sendLabel.textContent = 'Generating answer';
+      } else if (event === 'final') {
+        payload = data;
+      } else if (event === 'error') {
+        throw new Error(data.detail || 'The RAG service could not answer this request.');
+      }
+    });
+    if (!payload) throw new Error('The answer stream ended without a final grounded response.');
+    streamingNode.remove();
     addAssistantMessage(payload);
   } catch (error) {
     addError(error.message || 'The RAG service could not be reached.');

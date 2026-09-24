@@ -6,7 +6,7 @@ import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
-from typing import Any, Sequence
+from typing import Any, Iterator, Sequence
 
 
 class ProviderError(RuntimeError):
@@ -107,3 +107,47 @@ class XaiLLMProvider:
         except (KeyError, IndexError, TypeError) as error:
             raise ProviderError("xAI provider returned an invalid response") from error
         return {"text": message, "model": response.get("model", self.model), "usage": response.get("usage", {})}
+
+    def stream_generate(self, system: str, user: str, *, max_tokens: int = 800, temperature: float = 0.0) -> Iterator[str]:
+        """Yield xAI OpenAI-compatible chat-completion deltas.
+
+        Retrieval and grounding selection happen before this method is called.
+        A stream failure is raised to the RAG layer, which replaces any draft
+        output with its existing deterministic grounded fallback.
+        """
+        if not self.config.api_key:
+            raise ProviderError("provider is not configured")
+        payload = {
+            "model": self.model,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+            "stream": True,
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+        }
+        request = urllib.request.Request(
+            f"{self.config.base_url}/chat/completions",
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Authorization": f"Bearer {self.config.api_key}", "Content-Type": "application/json", "Accept": "text/event-stream"},
+            method="POST",
+        )
+        try:
+            direct_opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+            with direct_opener.open(request, timeout=self.config.timeout_seconds) as response:
+                for raw_line in response:
+                    line = raw_line.decode("utf-8").strip()
+                    if not line.startswith("data:"):
+                        continue
+                    data = line[5:].strip()
+                    if data == "[DONE]":
+                        return
+                    try:
+                        chunk = json.loads(data)
+                        content = chunk["choices"][0].get("delta", {}).get("content", "")
+                    except (KeyError, IndexError, TypeError, json.JSONDecodeError) as error:
+                        raise ProviderError("xAI streaming provider returned an invalid chunk") from error
+                    if isinstance(content, str) and content:
+                        yield content
+        except urllib.error.HTTPError as error:
+            raise ProviderError(f"provider rejected streaming request with HTTP {error.code}") from error
+        except (urllib.error.URLError, TimeoutError) as error:
+            raise ProviderError("streaming provider request failed") from error

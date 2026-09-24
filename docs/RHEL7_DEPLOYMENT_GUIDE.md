@@ -304,6 +304,10 @@ Create `/etc/httpd/conf.d/jjm-rag.conf`. Use certificates supplied by your organ
     ProxyRequests Off
     ProxyPreserveHost On
     ProxyAddHeaders On
+    # Keep Server-Sent Events open while grounded answers are streamed.
+    # Place this more-specific route before the catch-all route.
+    ProxyPass        /api/v1/query/stream http://127.0.0.1:8000/api/v1/query/stream connectiontimeout=5 timeout=900
+    ProxyPassReverse /api/v1/query/stream http://127.0.0.1:8000/api/v1/query/stream
     ProxyPass        / http://127.0.0.1:8000/ connectiontimeout=5 timeout=90
     ProxyPassReverse / http://127.0.0.1:8000/
 

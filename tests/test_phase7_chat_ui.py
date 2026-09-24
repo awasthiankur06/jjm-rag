@@ -8,7 +8,10 @@ class FakeService:
     semantic = object()
     llm = object()
 
-    def query(self, query, *, filters=None, retrieval_only=False, context=None):
+    def query(self, query, *, filters=None, retrieval_only=False, context=None, on_token=None):
+        if on_token is not None:
+            on_token("Grounded ")
+            on_token("answer [1].")
         return QueryResponse(
             "request-1",
             "Grounded answer [1].",
@@ -35,3 +38,10 @@ def test_chat_assets_use_existing_api_boundary():
     response = client.post("/api/v1/query", json={"query": "test"})
     assert response.status_code == 200
     assert response.json()["citations"][0]["filename"] == "guide.pdf"
+    streamed = client.post("/api/v1/query/stream", json={"query": "test"})
+    assert streamed.status_code == 200
+    assert streamed.headers["content-type"].startswith("text/event-stream")
+    assert 'event: token\ndata: {"text": "Grounded "}' in streamed.text
+    assert "event: final" in streamed.text
+    assert "/api/v1/query/stream" in app_js.text
+    assert "consumeSse" in app_js.text
