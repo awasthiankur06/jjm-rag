@@ -12,6 +12,7 @@ from .rag import RagService
 def create_app(service: RagService):
     try:
         from fastapi import Body, FastAPI, HTTPException
+        from fastapi.encoders import jsonable_encoder
         from fastapi.responses import FileResponse, StreamingResponse
         from fastapi.staticfiles import StaticFiles
     except ImportError as error:
@@ -61,7 +62,9 @@ def create_app(service: RagService):
         query_text, filters, options, context = parse_request(request)
 
         def sse(event: str, payload: dict[str, Any]) -> str:
-            return f"event: {event}\ndata: {json.dumps(payload, ensure_ascii=False)}\n\n"
+            # Repository responses can contain PostgreSQL Decimal values.
+            # Match FastAPI's normal response encoding before serialising SSE.
+            return f"event: {event}\ndata: {json.dumps(jsonable_encoder(payload), ensure_ascii=False)}\n\n"
 
         def event_stream():
             events: queue.Queue[tuple[str, Any]] = queue.Queue()

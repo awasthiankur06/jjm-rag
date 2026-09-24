@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from fastapi.testclient import TestClient
 
 from jjm_rag.production.api import create_app
@@ -16,7 +18,7 @@ class FakeService:
             "request-1",
             "Grounded answer [1].",
             {"grounded": True, "level": "high", "evidence_count": 1},
-            [{"content_unit_id": "content-1", "filename": "guide.pdf", "provenance_id": "prov-1", "source_type": "semantic"}],
+            [{"content_unit_id": "content-1", "filename": "guide.pdf", "provenance_id": "prov-1", "source_type": "semantic", "numeric_value": Decimal("123.45")}],
             [],
             {"route": "semantic", "channels": ["semantic"], "candidate_count": 1},
             [],
@@ -43,5 +45,6 @@ def test_chat_assets_use_existing_api_boundary():
     assert streamed.headers["content-type"].startswith("text/event-stream")
     assert 'event: token\ndata: {"text": "Grounded "}' in streamed.text
     assert "event: final" in streamed.text
+    assert '"numeric_value": 123.45' in streamed.text
     assert "/api/v1/query/stream" in app_js.text
     assert "consumeSse" in app_js.text
